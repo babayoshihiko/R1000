@@ -1,0 +1,22 @@
+---
+title: "edit()"
+format: html
+editor: source
+---
+
+```{r}
+df1 <- data.frame(ID = 1:3,
+                 T0 = c(95,90,80),
+                 T1 = c(90,100,85))
+```
+
+```{r}
+df2 <- read.table(
+  text = "ID,T0,T1
+  1,95,90
+  2,90,100
+  3,80,85",
+  sep = ",",
+  header = TRUE)
+```
+
