@@ -242,7 +242,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#パッケージをインストール" id="toc-パッケージをインストール" class="nav-link" data-scroll-target="#パッケージをインストール"><span class="toc-section-number">2.8</span>  パッケージをインストール</a></li>
   <li><a href="#r-の更新" id="toc-r-の更新" class="nav-link" data-scroll-target="#r-の更新"><span class="toc-section-number">2.9</span>  R の更新</a></li>
   <li><a href="#関数の中身を見る" id="toc-関数の中身を見る" class="nav-link" data-scroll-target="#関数の中身を見る"><span class="toc-section-number">2.10</span>  関数の中身を見る</a></li>
-  <li><a href="#qmdrmd-での画像の挿入" id="toc-qmdrmd-での画像の挿入" class="nav-link" data-scroll-target="#qmdrmd-での画像の挿入"><span class="toc-section-number">2.11</span>  QMD/Rmd での画像の挿入</a></li>
+  <li><a href="#qmdrmd-での表の挿入" id="toc-qmdrmd-での表の挿入" class="nav-link" data-scroll-target="#qmdrmd-での表の挿入"><span class="toc-section-number">2.11</span>  QMD/Rmd での表の挿入</a></li>
+  <li><a href="#qmdrmd-での画像の挿入" id="toc-qmdrmd-での画像の挿入" class="nav-link" data-scroll-target="#qmdrmd-での画像の挿入"><span class="toc-section-number">2.12</span>  QMD/Rmd での画像の挿入</a></li>
   </ul>
 </nav>
     </div>
@@ -518,8 +519,8 @@ Tip
 </div>
 <p>Source ペインに新たなタブができ、関数の中身が表示されます。</p>
 </section>
-<section id="qmdrmd-での画像の挿入" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="qmdrmd-での画像の挿入"><span class="header-section-number">2.11</span> QMD/Rmd での画像の挿入</h2>
+<section id="qmdrmd-での表の挿入" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="qmdrmd-での表の挿入"><span class="header-section-number">2.11</span> QMD/Rmd での表の挿入</h2>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -533,7 +534,205 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 012: 画像ファイルを挿入 (1): PNG</p>
+<p>TIP 012: 表の挿入 (1)</p>
+</div>
+</div>
+<p>Quarto Document での表作成は、見出しとデータ部分を <code>---</code> (ダッシュ記号の数はいくつでも良い) で区切ることで可能。列を追加するには、<code>|</code> を使う。日本語キーボードでは、<code>0</code> の 3 つ隣 (SHIFT キーを押しながら)。</p>
+<p>https://quarto.org/docs/authoring/tables.html</p>
+<pre><code>| fruit  | price  |
+|---|-|
+| apple  | 2.05   |
+| pear   | 1.37   |
+| orange | 3.09   |</code></pre>
+<p>演習: https://github.com/babayoshihiko/R1000/blob/main/exercise/table_not_df/table_Qmd.qmd</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>TIP 013: 表の挿入 (2)</p>
+</div>
+</div>
+<p>左よせ、右よせ、中央揃いは、<code>:</code> を使う。ヘッダ部分には適用されない。</p>
+<pre><code>| Default | Left | Right | Center |
+|---------|:-----|------:|:------:|
+| 12      | 12   |    12 |   12   |
+| 123     | 123  |   123 |  123   |
+| 1       | 1    |     1 |   1    |</code></pre>
+<p>演習: https://github.com/babayoshihiko/R1000/blob/main/exercise/table_not_df/table_Qmd.qmd</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>TIP 014: 表の挿入 (3): キャプションを設定</p>
+</div>
+</div>
+<p>キャプションには、<code>:</code> を使う。</p>
+<table class="table">
+<caption>果物</caption>
+<thead>
+<tr class="header">
+<th>fruit</th>
+<th>price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>apple</td>
+<td>2.05</td>
+</tr>
+<tr class="even">
+<td>pear</td>
+<td>1.37</td>
+</tr>
+<tr class="odd">
+<td>orange</td>
+<td>3.09</td>
+</tr>
+</tbody>
+</table>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>TIP 015: 表の挿入 (4): 列幅を変更</p>
+</div>
+</div>
+<p>以下は、R Markdown にはなかった機能。タイトルを書く <code>:</code> にオプションを設定することができる。</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>fruit</th>
+<th>price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>apple</td>
+<td>2.05</td>
+</tr>
+<tr class="even">
+<td>pear</td>
+<td>1.37</td>
+</tr>
+<tr class="odd">
+<td>orange</td>
+<td>3.09</td>
+</tr>
+</tbody>
+</table>
+<p>ドキュメントでは、ダッシュ記号の数で、第 1 列が 75%、第 2 列が 25% になると書かれているが、実際にはそうならない。</p>
+<table class="table">
+<colgroup>
+<col style="width: 75%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>fruit</th>
+<th>price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>apple</td>
+<td>2.05</td>
+</tr>
+<tr class="even">
+<td>pear</td>
+<td>1.37</td>
+</tr>
+<tr class="odd">
+<td>orange</td>
+<td>3.09</td>
+</tr>
+</tbody>
+</table>
+<p>こちらは機能する。</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>TIP 016: 表の挿入 (5): 1 行おきに背景色を変える</p>
+</div>
+</div>
+<p>1 行おきに背景色を変える方法。</p>
+<table class="table">
+<caption>{.striped .hover}</caption>
+<thead>
+<tr class="header">
+<th>fruit</th>
+<th>price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>apple</td>
+<td>2.05</td>
+</tr>
+<tr class="even">
+<td>pear</td>
+<td>1.37</td>
+</tr>
+<tr class="odd">
+<td>orange</td>
+<td>3.09</td>
+</tr>
+</tbody>
+</table>
+<p>演習: https://github.com/babayoshihiko/R1000/blob/main/exercise/table_not_df/table_Qmd.qmd</p>
+</section>
+<section id="qmdrmd-での画像の挿入" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="qmdrmd-での画像の挿入"><span class="header-section-number">2.12</span> QMD/Rmd での画像の挿入</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>TIP 017: 画像ファイルを挿入 (1): PNG</p>
 </div>
 </div>
 <p>本文中に</p>
@@ -552,21 +751,21 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 013: 画像ファイルの挿入 (2): PNG (ggplot2)</p>
+<p>TIP 018: 画像ファイルの挿入 (2): PNG (ggplot2)</p>
 </div>
 </div>
 <p>次の方法は、ggplot2 を使って PNG ファイルを挿入する方法です。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)   <span class="co"># rasterGrob()</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick) <span class="co"># image_read()</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>()) <span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_custom</span>(<span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/xxx.png"</span>), <span class="at">interpolate=</span><span class="cn">TRUE</span>), <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">10</span>, <span class="at">ymin=</span><span class="dv">0</span>, <span class="at">ymax=</span><span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)   <span class="co"># rasterGrob()</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick) <span class="co"># image_read()</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>()) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_custom</span>(<span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/xxx.png"</span>), <span class="at">interpolate=</span><span class="cn">TRUE</span>), <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">10</span>, <span class="at">ymin=</span><span class="dv">0</span>, <span class="at">ymax=</span><span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>多くのパッケージを必要とします。長所として、ggplot2 を使って　PNG ファイルの上にテキストや矢印などを追加することができます。</p>
 <p>しかし、位置の調整が難しいことが短所です。</p>
@@ -583,25 +782,25 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 014: 画像ファイルの挿入 (3): PDF</p>
+<p>TIP 019: 画像ファイルの挿入 (3): PDF</p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)  <span class="co"># qplot()</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)     <span class="co"># rasterGrob()</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)   <span class="co"># image_read_pdf(), image_draw()</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>pdfArtile <span class="ot">&lt;-</span> <span class="fu">image_read_pdf</span>(<span class="st">"paper/Kojima-2017.pdf"</span>, <span class="at">density=</span><span class="dv">74</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">qplot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">geom=</span><span class="st">"blank"</span>) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_custom</span>(<span class="fu">rasterGrob</span>(<span class="fu">image_draw</span>(pdfArtile[<span class="dv">2</span>]), <span class="at">interpolate=</span><span class="cn">TRUE</span>), <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">10</span>, <span class="at">ymin=</span><span class="dv">0</span>, <span class="at">ymax=</span><span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>,<span class="at">xmin=</span><span class="fl">0.5</span>,<span class="at">xmax=</span><span class="fl">5.0</span>,<span class="at">ymin=</span><span class="fl">2.2</span>,<span class="at">ymax=</span><span class="fl">3.8</span>, <span class="at">alpha=</span><span class="dv">0</span>, <span class="at">fill=</span><span class="st">"white"</span>, <span class="at">colour=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">clip =</span> <span class="st">"off"</span>)  <span class="sc">+</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)  <span class="co"># qplot()</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)     <span class="co"># rasterGrob()</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)   <span class="co"># image_read_pdf(), image_draw()</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>pdfArtile <span class="ot">&lt;-</span> <span class="fu">image_read_pdf</span>(<span class="st">"paper/Kojima-2017.pdf"</span>, <span class="at">density=</span><span class="dv">74</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">qplot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">geom=</span><span class="st">"blank"</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_custom</span>(<span class="fu">rasterGrob</span>(<span class="fu">image_draw</span>(pdfArtile[<span class="dv">2</span>]), <span class="at">interpolate=</span><span class="cn">TRUE</span>), <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">10</span>, <span class="at">ymin=</span><span class="dv">0</span>, <span class="at">ymax=</span><span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>,<span class="at">xmin=</span><span class="fl">0.5</span>,<span class="at">xmax=</span><span class="fl">5.0</span>,<span class="at">ymin=</span><span class="fl">2.2</span>,<span class="at">ymax=</span><span class="fl">3.8</span>, <span class="at">alpha=</span><span class="dv">0</span>, <span class="at">fill=</span><span class="st">"white"</span>, <span class="at">colour=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">clip =</span> <span class="st">"off"</span>)  <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -616,7 +815,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 015: 画像ファイルを横に並べる (1)</p>
+<p>TIP 020: 画像ファイルを横に並べる (1)</p>
 </div>
 </div>
 <p>画像が十分小さければ、自然に横に並びます。</p>
@@ -634,32 +833,32 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 016: 画像ファイルを横に並べる (2): <strong>{gridExtra}</strong></p>
+<p>TIP 021: 画像ファイルを横に並べる (2): <strong>{gridExtra}</strong></p>
 </div>
 </div>
 <p>ggplot2 でプロットを作成しておき、<strong>{gridExtra}</strong> の <code>grid.arrange()</code> 関数で並べます。ncol が列数、nrow が行数を指定します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)      <span class="co"># rasterGrob()</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)    <span class="co"># image_read()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)      <span class="co"># rasterGrob()</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)    <span class="co"># image_read()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Linking to ImageMagick 6.9.12.93
 Enabled features: cairo, fontconfig, freetype, heic, lcms, pango, raw, rsvg, webp
 Disabled features: fftw, ghostscript, x11</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra) <span class="co">#grid.arrange</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>img1 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No1.png"</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No2.png"</span>))</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(img1, img2, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">nrow=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra) <span class="co">#grid.arrange</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>img1 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No1.png"</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No2.png"</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(img1, img2, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">nrow=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="rstudio_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+<p><img src="rstudio_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><strong>{gridExtra}</strong> では、より複雑なレイアウトも可能です。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>img3 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No3.png"</span>))</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(img1, img2, img3, <span class="at">layout_matrix=</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">ncol=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>img3 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No3.png"</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(img1, img2, img3, <span class="at">layout_matrix=</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">ncol=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="rstudio_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+<p><img src="rstudio_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>layout_matrix 引数にわらすのは Matrix クラスです。以下の様に、1 を縦に並べることで、上の様なレイアウトになります。</p>
