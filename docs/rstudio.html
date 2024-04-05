@@ -720,7 +720,7 @@ Tip
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)  <span class="co"># qplot()</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)     <span class="co"># rasterGrob()</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)   <span class="co"># image_read_pdf(), image_draw()</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>pdfArtile <span class="ot">&lt;-</span> <span class="fu">image_read_pdf</span>(<span class="st">"paper/Kojima-2017.pdf"</span>, <span class="at">density=</span><span class="dv">74</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>pdfArtile <span class="ot">&lt;-</span> <span class="fu">image_read_pdf</span>(<span class="st">"xxx.pdf"</span>, <span class="at">density=</span><span class="dv">74</span>)</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">qplot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">geom=</span><span class="st">"blank"</span>) <span class="sc">+</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_custom</span>(<span class="fu">rasterGrob</span>(<span class="fu">image_draw</span>(pdfArtile[<span class="dv">2</span>]), <span class="at">interpolate=</span><span class="cn">TRUE</span>), <span class="at">xmin=</span><span class="dv">0</span>, <span class="at">xmax=</span><span class="dv">10</span>, <span class="at">ymin=</span><span class="dv">0</span>, <span class="at">ymax=</span><span class="dv">10</span>) <span class="sc">+</span></span>
@@ -770,24 +770,19 @@ Tip
 <p>ggplot2 でプロットを作成しておき、<strong>{gridExtra}</strong> の <code>grid.arrange()</code> 関数で並べます。ncol が列数、nrow が行数を指定します。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)      <span class="co"># rasterGrob()</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)    <span class="co"># image_read()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Linking to ImageMagick 6.9.12.93
-Enabled features: cairo, fontconfig, freetype, heic, lcms, pango, raw, rsvg, webp
-Disabled features: fftw, ghostscript, x11</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra) <span class="co">#grid.arrange</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>img1 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No1.png"</span>))</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No2.png"</span>))</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(img1, img2, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">nrow=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)    <span class="co"># image_read()</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra) <span class="co">#grid.arrange</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>img1 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No1.png"</span>))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No2.png"</span>))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(img1, img2, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">nrow=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="rstudio_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><strong>{gridExtra}</strong> では、より複雑なレイアウトも可能です。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>img3 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No3.png"</span>))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(img1, img2, img3, <span class="at">layout_matrix=</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">ncol=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>img3 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/No3.png"</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(img1, img2, img3, <span class="at">layout_matrix=</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">ncol=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="rstudio_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
 </div>
