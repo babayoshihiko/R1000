@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./dataframe.html" rel="next">
+<link href="./if.html" rel="next">
 <link href="./rstudio.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -179,42 +179,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dataframe.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">データフレーム</span></a>
+  <a href="./if.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">if</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./table.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">表</span></a>
+  <a href="./dataframe.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">データフレーム</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">グラフ (ggplot2)</span></a>
+  <a href="./table.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">表</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./packaging.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">パッケージ開発</span></a>
+  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">グラフ (ggplot2)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">git</span></a>
+  <a href="./packaging.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">パッケージ開発</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">TeX で PDF 出力</span></a>
+  <a href="./git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">git</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./thesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">論文</span></a>
+  <a href="./tex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">TeX で PDF 出力</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
+  <a href="./thesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">論文</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -239,9 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#文字列" id="toc-文字列" class="nav-link" data-scroll-target="#文字列"><span class="toc-section-number">3.6</span>  文字列</a></li>
   <li><a href="#変換" id="toc-変換" class="nav-link" data-scroll-target="#変換"><span class="toc-section-number">3.7</span>  変換</a></li>
   <li><a href="#オブジェクトを削除" id="toc-オブジェクトを削除" class="nav-link" data-scroll-target="#オブジェクトを削除"><span class="toc-section-number">3.8</span>  オブジェクトを削除</a></li>
-  <li><a href="#論理テスト" id="toc-論理テスト" class="nav-link" data-scroll-target="#論理テスト"><span class="toc-section-number">3.9</span>  論理テスト</a></li>
-  <li><a href="#ブール演算" id="toc-ブール演算" class="nav-link" data-scroll-target="#ブール演算"><span class="toc-section-number">3.10</span>  ブール演算</a></li>
-  <li><a href="#命名法" id="toc-命名法" class="nav-link" data-scroll-target="#命名法"><span class="toc-section-number">3.11</span>  命名法</a></li>
+  <li><a href="#命名法" id="toc-命名法" class="nav-link" data-scroll-target="#命名法"><span class="toc-section-number">3.9</span>  命名法</a></li>
   </ul>
 </nav>
     </div>
@@ -650,7 +653,7 @@ Tip
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ci</span>(saikoro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   n mean       sd        se lower95ci upper95ci
- 100  3.3 1.737873 0.1737873  2.955168  3.644832</code></pre>
+ 100 3.44 1.725156 0.1725156  3.097692  3.782308</code></pre>
 </div>
 </div>
 </section>
@@ -897,8 +900,8 @@ Tip
 </div>
 <p>これで右上の Environment ペインのオブジェクトがなくなりました。</p>
 </section>
-<section id="論理テスト" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="論理テスト"><span class="header-section-number">3.9</span> 論理テスト</h2>
+<section id="命名法" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="命名法"><span class="header-section-number">3.9</span> 命名法</h2>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -912,205 +915,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 045: 論理演算</p>
-</div>
-</div>
-<p>論理演算は、「i は 1 よりも大きいか?」「i の中に 1 は入っているか?」などの比較を行うことです。</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>演算子</th>
-<th>構文</th>
-<th>テスト</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>&gt;</code></td>
-<td><code>a &gt; b</code></td>
-<td>a は b より大きいか?</td>
-</tr>
-<tr class="even">
-<td><code>&gt;=</code></td>
-<td><code>a &gt;= b</code></td>
-<td>a は b 以上か?</td>
-</tr>
-<tr class="odd">
-<td><code>&lt;</code></td>
-<td><code>a &gt;= b</code></td>
-<td>a は b より小さいか?</td>
-</tr>
-<tr class="even">
-<td><code>&lt;=</code></td>
-<td><code>a &lt;= b</code></td>
-<td>a は b 以上か?</td>
-</tr>
-<tr class="odd">
-<td><code>==</code></td>
-<td><code>a == b</code></td>
-<td>a と b は等しいか?</td>
-</tr>
-<tr class="even">
-<td><code>!=</code></td>
-<td><code>a != b</code></td>
-<td>a と b は等しくないか?</td>
-</tr>
-<tr class="odd">
-<td><code>%in%</code></td>
-<td><code>a %in c(1, 2, 3)</code></td>
-<td>a は、1, 2, 3 のうちいずれかの値か?</td>
-</tr>
-</tbody>
-</table>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div class="cell">
-
-</div>
-<p>TIP 046: 論理演算: 異なる mode の比較</p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="st">"1"</span> <span class="sc">==</span> <span class="dv">1</span>){</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"character と numeric も比較可能"</span>)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"xcharacter と numeric は比較不可能"</span>)</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "character と numeric も比較可能"</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="cn">TRUE</span> <span class="sc">==</span> <span class="dv">1</span>){</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"TRUE は 1"</span>)</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"TRUE は 0"</span>)</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "TRUE は 1"</code></pre>
-</div>
-</div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div class="cell">
-
-</div>
-<p>TIP 047: 論理演算: NA</p>
-</div>
-</div>
-<p>ベクトルが NA であると、論理演算の結果は NA となります。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-</div>
-<p>この場合、まず、NA であるかどうかを判定する必要があります。</p>
-<p>以下の様な条件式は、エラーとなります。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">==</span> <span class="dv">1</span>){</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is larger than 1."</span>)</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is not larger than 1."</span>)</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<pre><code>Error in if (x == 1) { : missing value where TRUE/FALSE needed</code></pre>
-<p>このエラーメッセージは、 (x == 1) が TRUE でも FALSE でもない (NA) ために発生しています。</p>
-</section>
-<section id="ブール演算" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="ブール演算"><span class="header-section-number">3.10</span> ブール演算</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div class="cell">
-
-</div>
-<p>TIP 048: ブール演算</p>
-</div>
-</div>
-<p>ブール演算とは、</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>演算子</th>
-<th>構文</th>
-<th>テスト</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>&amp;</code></td>
-<td><code>cond1 &amp; cond2</code></td>
-<td>AND</td>
-</tr>
-<tr class="even">
-<td><code>|</code></td>
-<td><code>cond1 | cond2</code></td>
-<td>OR: Shift + 0 の３つ右にあるキー</td>
-</tr>
-<tr class="odd">
-<td><code>xor</code></td>
-<td><code>a zorb</code></td>
-<td>a は b より小さいか?</td>
-</tr>
-<tr class="even">
-<td><code>!</code></td>
-<td><code>!cond</code></td>
-<td>例: <code>!is.na(x)</code> は x は NA でない</td>
-</tr>
-<tr class="odd">
-<td><code>all</code></td>
-<td><code>all(cond1, cond2, cond3)</code></td>
-<td><code>&amp;</code> の拡張</td>
-</tr>
-<tr class="even">
-<td><code>any</code></td>
-<td><code>any(cond1, cond2, cond3)</code></td>
-<td><code>|</code> の拡張</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="命名法" class="level2" data-number="3.11">
-<h2 data-number="3.11" class="anchored" data-anchor-id="命名法"><span class="header-section-number">3.11</span> 命名法</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div class="cell">
-
-</div>
-<p>TIP 049: 命名法</p>
+<p>TIP 045: 命名法</p>
 </div>
 </div>
 <p>データや関数には、命名規則があります。最低限として、数字で始めることはできません。<code>2x</code> などのベクトルは作成することはできません。<code>Error: unexpected symbol in "2x"</code> というエラーとなります。</p>
@@ -1266,8 +1071,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./dataframe.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">データフレーム</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./if.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">if</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
