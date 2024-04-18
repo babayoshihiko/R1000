@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Yoshihiko Baba">
-<meta name="dcterms.date" content="2024-03-02">
 
-<title>R1000</title>
+<title>R1000 - 12&nbsp; 臨床研究</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,7 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./python.html" rel="next">
+<link href="./thesis.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -135,7 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">R1000</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">臨床研究</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -160,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -220,7 +219,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./clinical.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">臨床研究</span></a>
+  <a href="./clinical.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">臨床研究</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -242,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#ランダム化" id="toc-ランダム化" class="nav-link active" data-scroll-target="#ランダム化"><span class="toc-section-number">12.1</span>  ランダム化</a></li>
   </ul>
 </nav>
     </div>
@@ -251,26 +250,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">R1000</h1>
+<h1 class="title"><span id="clinical" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">臨床研究</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Yoshihiko Baba </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 2, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -278,19 +265,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>R 言語は、統計解析を行うためのプログラミング言語です。RStudio は、R 言語を快適に使用する統合開発環境です。</p>
-<p>これまで、Zoom を使ってオンラインで RStudio 勉強会を開催してきました。時間帯は早朝 7:30-9:00 という朝活です。この勉強会は現在でも継続しています。https://saturdaymorning.connpass.com/</p>
-<p>このサイトは、勉強会から生まれたものです。このサイトの形式としては、Cookbook や逆引き辞典の様に、「R でやりたいこと」を小さく分割しています。基本的には、プログラミング初心者でもわかる様にしています。</p>
-<p>逆に、R に備わっているものの、ほとんど使わない機能などは紹介していません。</p>
-<p>R は、フリーソフトウェアです。10,000 を超えるパッケージがあり、たくさんの関数があります。パッケージは <strong>{package}</strong> と表示し、関数は <code>function()</code> と表示しています。</p>
-<p>また、R を実行するためのコードは、</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-<p>という様に、背景を灰色にして表示しています。一部、R 以外のプログラミング言語のものもあります。</p>
-<p>R でやりたいことの分割単位を TIP と定義しています。</p>
+<p>https://cran.r-project.org/web/views/ClinicalTrials.html.</p>
+<section id="ランダム化" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="ランダム化"><span class="header-section-number">12.1</span> ランダム化</h2>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -300,14 +280,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Tip
 </div>
 </div>
-<div class="callout-body-container callout-body" title="Tip with Title">
+<div class="callout-body-container callout-body">
 <div class="cell">
 
 </div>
-<p>TIP 123: このように表示</p>
+<p>TIP 117: ブロックランダム化</p>
 </div>
 </div>
-<p>この後、解説が続く形にしています。</p>
+<p><strong>{blockrand}</strong> パッケージは、ブロックランダム化を行う。引数には、全体のサンプルサイズ (<code>n</code>)、群数 (<code>num.levels</code>)、ブロックサイズ (<code>block.sizes</code>) などを指定する。</p>
+<p>ブロックサイズを動的に変更することはできないようである。</p>
+<p>返り値は、データフレームで、行数は <code>n</code> と同じまたは少し多い。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blockrand)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">59</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">2</span>, <span class="co"># three treatments</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>), <span class="co"># arm names</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">"stratum"</span>, <span class="co"># stratum name</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">"arm"</span>, <span class="co"># stratum abbrev</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="co"># times arms = 3,6,9</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">"block"</span>) <span class="co"># stratum abbrev</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>TIP 118: Pocock and Simon 法</p>
+</div>
+</div>
+<p>Pocock and Simon 法は、最初の被験者は単純無作為化で、その後は既存の割付をみて群間差がないように割り付けていく方法です。</p>
+<p><strong>{covadap}</strong> パッケージの <code>PocSim()</code> 関数を使います。</p>
+<p>まず、ダミーデータを作ってみましょう。n = 100 で、性別、年齢３区分、血圧３区分のデータフレームです。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"gender"</span> <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>), <span class="dv">100</span>, <span class="cn">TRUE</span>, <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span>)),</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"age"</span> <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"18-35"</span>, <span class="st">"36-50"</span>, <span class="st">"&gt;50"</span>), <span class="dv">100</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"bloodpressure"</span> <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"normal"</span>, <span class="st">"high"</span>, <span class="st">"hyper"</span>), <span class="dv">100</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>{covadap}</strong> パッケージの <code>PocSim()</code> 関数を使ってランダム化し、<code>df1</code> に <code>group</code> 列を追加します。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(covadap)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">PocSim</span>(df1, <span class="at">p =</span> <span class="fl">0.85</span>, <span class="at">print.results =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>_________________________________________________________
+Design: Pocock and Simon
+
+Sample_size: 100
+
+n_cov: 3
+
+n_levels: 2 3 3
+
+var_names: gender age bloodpressure
+_________________________________________________________
+IMBALANCE MEASURES
+ 
+Loss: 0.63
+
+Mahalanobis: 0.58
+
+Overall Imb: 2
+_________________________________________________________
+STRATA IMBALANCES
+ 
+   gender   age bloodpressure N.strata A.strata D.strata
+1  female 36-50        normal        3        1       -1
+2    male 36-50          high        5        2       -1
+3  female 36-50          high        8        5        2
+4    male 36-50        normal        9        5        1
+5    male 36-50         hyper       10        6        2
+6    male 18-35          high        9        5        1
+7  female 18-35        normal        3        0       -3
+8  female 36-50         hyper        5        2       -1
+9    male   &gt;50         hyper        9        3       -3
+10   male   &gt;50        normal       10        7        4
+11 female 18-35         hyper        2        1        0
+12 female   &gt;50         hyper        7        4        1
+13   male 18-35         hyper        6        3        0
+14   male 18-35        normal        6        3        0
+15 female   &gt;50        normal        3        1       -1
+16 female 18-35          high        2        2        2
+17 female   &gt;50          high        2        1        0
+18   male   &gt;50          high        1        0       -1
+_________________________________________________________
+WITHIN COVARIATE IMBALANCES
+ 
+gender.female: -1
+
+gender.male: 3
+
+age.36-50: 2
+
+age.18-35: 0
+
+age.&gt;50: 0
+
+bloodpressure.normal: 0
+
+bloodpressure.high: 3
+
+bloodpressure.hyper: -1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>group <span class="ot">&lt;-</span> res<span class="sc">$</span>Assignments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>群間の比較をしてみましょう。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CreateTableOne</span>(<span class="fu">c</span>(<span class="st">"gender"</span>,<span class="st">"age"</span>,<span class="st">"bloodpressure"</span>),<span class="st">"group"</span>,df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   Stratified by group
+                    B          A          p      test
+  n                 49         51                    
+  gender = male (%) 31 (63.3)  34 (66.7)   0.883     
+  age (%)                                  0.970     
+     &gt;50            16 (32.7)  16 (31.4)             
+     18-35          14 (28.6)  14 (27.5)             
+     36-50          19 (38.8)  21 (41.2)             
+  bloodpressure (%)                        0.853     
+     high           12 (24.5)  15 (29.4)             
+     hyper          20 (40.8)  19 (37.3)             
+     normal         17 (34.7)  17 (33.3)             </code></pre>
+</div>
+</div>
+<p>バランスもよく、群間の有意差もみられない無作為化ができました。</p>
+<div class="cell">
+
+</div>
 
 
 </section>
@@ -448,10 +554,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./thesis.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">論文</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./python.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

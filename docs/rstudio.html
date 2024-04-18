@@ -220,7 +220,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
+  <a href="./clinical.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">臨床研究</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -249,6 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#関数の中身を見る" id="toc-関数の中身を見る" class="nav-link" data-scroll-target="#関数の中身を見る"><span class="toc-section-number">2.10</span>  関数の中身を見る</a></li>
   <li><a href="#qmdrmd-での表の挿入" id="toc-qmdrmd-での表の挿入" class="nav-link" data-scroll-target="#qmdrmd-での表の挿入"><span class="toc-section-number">2.11</span>  QMD/Rmd での表の挿入</a></li>
   <li><a href="#qmdrmd-での画像の挿入" id="toc-qmdrmd-での画像の挿入" class="nav-link" data-scroll-target="#qmdrmd-での画像の挿入"><span class="toc-section-number">2.12</span>  QMD/Rmd での画像の挿入</a></li>
+  <li><a href="#addin" id="toc-addin" class="nav-link" data-scroll-target="#addin"><span class="toc-section-number">2.13</span>  Addin</a></li>
   </ul>
 </nav>
     </div>
@@ -796,6 +802,56 @@ Tip
 <p>[</p>
 <span class="math display">\[\begin{pmatrix} 1 &amp; 2 \\ 1 &amp; 3 \\ \end{pmatrix}\]</span>
 <p>]</p>
+</section>
+<section id="addin" class="level2" data-number="2.13">
+<h2 data-number="2.13" class="anchored" data-anchor-id="addin"><span class="header-section-number">2.13</span> Addin</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>TIP 022: addin</p>
+</div>
+</div>
+<p>Addin は、RStudio の上部、メニューアイコンにあります。Addin も R のパッケージです。インストールすると、すぐに使うことができます。</p>
+<p>Addin は、デフォルトのものは少ないので、追加でインストールしましょう。</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>TIP 023: <strong>{styler}</strong></p>
+</div>
+</div>
+<p><strong>{styler}</strong> パッケージをインストールしてみましょう。</p>
+<p>以下のコードは、インデントされていません。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"hello"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>コードを選択し、Addins &gt; Style selection を実行すると、以下のようになります。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"hello"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell">
 
 </div>

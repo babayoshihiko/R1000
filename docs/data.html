@@ -219,7 +219,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
+  <a href="./clinical.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">臨床研究</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -286,7 +291,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 022: データ型: <code>mode()</code></p>
+<p>TIP 024: データ型: <code>mode()</code></p>
 </div>
 </div>
 <p>R では、変数のことをベクトルと言います。「アトミックベクトル」ということもあります。多くのプログラミングでは、</p>
@@ -310,7 +315,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 023: <code>mode()</code> でデータ型を確認</p>
+<p>TIP 025: <code>mode()</code> でデータ型を確認</p>
 </div>
 </div>
 <p>R の基本データ型 (mode) は、以下の 6 つあります。</p>
@@ -363,7 +368,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 024: データ型: <code>typeof()</code></p>
+<p>TIP 026: データ型: <code>typeof()</code></p>
 </div>
 </div>
 <p>数値のデータ型 (mode が numeric なもの) に対しては、細分類があります。主要なものとしては、「整数」(integer) と、小数も扱うことのできる「倍精度浮動小数点数」(double) と言われているものです。</p>
@@ -396,7 +401,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 025: ベクトル (1): <code>c()</code> 関数</p>
+<p>TIP 027: ベクトル (1): <code>c()</code> 関数</p>
 </div>
 </div>
 <p>変数は一つとは限りません。同じ mode の変数をまとめたベクトルというものが R では基本になります。</p>
@@ -423,7 +428,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 026: ベクトル (2): 等差数列</p>
+<p>TIP 028: ベクトル (2): 等差数列</p>
 </div>
 </div>
 <p>1 から 100 などの連続した等差数列は、とても簡単に作ることができます。</p>
@@ -447,7 +452,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 027: ベクトル (3): サイコロを振る</p>
+<p>TIP 029: ベクトル (3): サイコロを振る</p>
 </div>
 </div>
 <p>サイコロを振る様に、ランダムに数値を作ることもできます。1 から 6 までの値を、10 回作ります。</p>
@@ -470,7 +475,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 028: 計算</p>
+<p>TIP 030: 計算</p>
 </div>
 </div>
 <p>四則演算は +, -, *, / という記号を使います。</p>
@@ -496,7 +501,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 029: 階乗</p>
+<p>TIP 031: 階乗</p>
 </div>
 </div>
 <div class="cell">
@@ -517,7 +522,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 030: 対数</p>
+<p>TIP 032: 対数</p>
 </div>
 </div>
 <p>対数は、e を底とするものは <code>log()</code> 関数、10 を底とするものは <code>log10()</code> です。</p>
@@ -541,7 +546,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 031: ベクトル</p>
+<p>TIP 033: ベクトル</p>
 </div>
 </div>
 <p>変数の最小単位はベクトルというもので、同じ mode の複数の値を格納することができます。「アトミックベクトル」ということもあります。</p>
@@ -577,7 +582,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 032: 繰り返し処理</p>
+<p>TIP 034: 繰り返し処理</p>
 </div>
 </div>
 <p><code>for</code> 文を使った繰り返し処理の例を示します。<code>a</code></p>
@@ -610,7 +615,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 033: 要約統計量</p>
+<p>TIP 035: 要約統計量</p>
 </div>
 </div>
 <p>要約統計量とは、いくつかある数値の合計 (<code>sum()</code>)、平均値 (<code>mean()</code>)、中央値 (<code>median()</code>)、最大値 (<code>max()</code>)、標準偏差 (standard deviation, <code>sd()</code>)、四分位範囲 (interquartile range, <code>IQR()</code>) などのことです。</p>
@@ -631,7 +636,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 034: 95%信頼区間</p>
+<p>TIP 036: 95%信頼区間</p>
 </div>
 </div>
 <p>95%信頼区間 (confidence interval) を得るには、<strong>{epiDisplay}</strong> が必要です。</p>
@@ -653,7 +658,7 @@ Tip
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ci</span>(saikoro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   n mean       sd        se lower95ci upper95ci
- 100 3.44 1.725156 0.1725156  3.097692  3.782308</code></pre>
+ 100 3.71 1.634817 0.1634817  3.385617  4.034383</code></pre>
 </div>
 </div>
 </section>
@@ -672,7 +677,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 035: NA を削除</p>
+<p>TIP 037: NA を削除</p>
 </div>
 </div>
 <p>ベクトル内に NA 値があると、うまくいかないことが多くなります。</p>
@@ -699,7 +704,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 036: NA を 0 に設定</p>
+<p>TIP 038: NA を 0 に設定</p>
 </div>
 </div>
 <div class="cell">
@@ -723,7 +728,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 037: 文字の結合 (1): <code>paste()</code> と <code>paste0()</code></p>
+<p>TIP 039: 文字の結合 (1): <code>paste()</code> と <code>paste0()</code></p>
 </div>
 </div>
 <p>二つの文字列を結合する際は、<code>paste()</code> 関数を使います。自動的に半角スペースが追加されます。</p>
@@ -749,7 +754,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 038: 文字の結合 (2): <code>sprintf()</code></p>
+<p>TIP 040: 文字の結合 (2): <code>sprintf()</code></p>
 </div>
 </div>
 <div class="cell">
@@ -768,7 +773,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 039: 文字の結合 (3): <strong>{stringr}</strong></p>
+<p>TIP 041: 文字の結合 (3): <strong>{stringr}</strong></p>
 </div>
 </div>
 <div class="cell">
@@ -794,7 +799,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 040: 数字を文字に変換 (1): <code>as.character()</code></p>
+<p>TIP 042: 数字を文字に変換 (1): <code>as.character()</code></p>
 </div>
 </div>
 <p>mode を変換するには、<code>as.*()</code> 関数を使います。</p>
@@ -816,7 +821,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 041: 数字を文字に変換 (2): “002”</p>
+<p>TIP 043: 数字を文字に変換 (2): “002”</p>
 </div>
 </div>
 <p>1 を “001” のように、フォーマットします。</p>
@@ -844,7 +849,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 042: 数字を文字に変換 (3): “1,000”</p>
+<p>TIP 044: 数字を文字に変換 (3): “1,000”</p>
 </div>
 </div>
 <div class="cell">
@@ -864,7 +869,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 043: 文字を因子に変換</p>
+<p>TIP 045: 文字を因子に変換</p>
 </div>
 </div>
 <p>文字列 (character) を因子 (factor) に変換します。</p>
@@ -890,7 +895,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 044: オブジェクトを削除</p>
+<p>TIP 046: オブジェクトを削除</p>
 </div>
 </div>
 <p>R で作業を続けていると、ベクトルやデータフレームがたくさんできることがあります。</p>
@@ -915,7 +920,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 045: 命名法</p>
+<p>TIP 047: 命名法</p>
 </div>
 </div>
 <p>データや関数には、命名規則があります。最低限として、数字で始めることはできません。<code>2x</code> などのベクトルは作成することはできません。<code>Error: unexpected symbol in "2x"</code> というエラーとなります。</p>

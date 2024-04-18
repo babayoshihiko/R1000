@@ -219,7 +219,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
+  <a href="./clinical.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">臨床研究</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -276,7 +281,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 106 TeX とは</p>
+<p>TIP 111: TeX とは</p>
 </div>
 </div>
 <p>TeX とは、R とは全く別のソフトウェアです。</p>
@@ -296,7 +301,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 107 tinytex で TeX パッケージをインストール</p>
+<p>TIP 112: tinytex で TeX パッケージをインストール</p>
 </div>
 </div>
 <p>TeX も、R と同様に必要なパッケージを追加インストールする方式になっています。<strong>{tinytex}</strong> は、その名の通りインストールは小さめなので、必要に応じて TeX パッケージをインストールします。</p>
@@ -308,7 +313,7 @@ Tip
 <p>tinytex::tlmgr_install(“scheme-full”) で、すべての TeX パッケージをインストールしておく。</p>
 <p>apalike がないというエラーが出たら、_output.yml に以下を追加</p>
 <p>citation_package: natbib</p>
-<p>tinytex::tlmgr_install(“upmendex”) tinytex::tlmgr_install(“multirow”) tinytex::tlmgr_install(“pdfcrop”)</p>
+<p>この他、“upmendex”、“multirow”、“pdfcrop” などを追加でインストールしておくと良い。</p>
 <section id="日本語-pdf" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="日本語-pdf"><span class="header-section-number">10.1</span> 日本語 PDF</h2>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -324,7 +329,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 108 rmdja で日本語 PDF</p>
+<p>TIP 113: rmdja で日本語 PDF</p>
 </div>
 </div>
 <p>日本語PDF を作成する場合、これが最も成功率が高い。</p>
@@ -346,7 +351,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 109 Quarto で日本語 PDF</p>
+<p>TIP 114: Quarto で日本語 PDF</p>
 </div>
 </div>
 <p>Quarto Document を選択すると、R Markdown よりも日本語 PDF が作りやすい。このときも rmdja を使う。</p>

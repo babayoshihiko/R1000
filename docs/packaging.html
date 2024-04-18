@@ -219,7 +219,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
+  <a href="./clinical.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">臨床研究</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -237,6 +242,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#os-処理" id="toc-os-処理" class="nav-link active" data-scroll-target="#os-処理"><span class="toc-section-number">8.1</span>  OS 処理</a></li>
+  <li><a href="#エラー処理" id="toc-エラー処理" class="nav-link" data-scroll-target="#エラー処理"><span class="toc-section-number">8.2</span>  エラー処理</a></li>
+  <li><a href="#データ" id="toc-データ" class="nav-link" data-scroll-target="#データ"><span class="toc-section-number">8.3</span>  データ</a></li>
   </ul>
 </nav>
     </div>
@@ -276,7 +283,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 098 パッケージ作成の最初</p>
+<p>TIP 102 パッケージ作成の最初</p>
 </div>
 </div>
 <div class="cell">
@@ -296,7 +303,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 099 チェック</p>
+<p>TIP 103 チェック</p>
 </div>
 </div>
 <div class="cell">
@@ -316,7 +323,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 100 各種ドキュメントを作成する</p>
+<p>TIP 104 各種ドキュメントを作成する</p>
 </div>
 </div>
 <div class="cell">
@@ -337,7 +344,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 101 OS ごとに処理を変える</p>
+<p>TIP 105 OS ごとに処理を変える</p>
 </div>
 </div>
 <div class="cell">
@@ -348,6 +355,40 @@ Tip
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(<span class="fu">Sys.info</span>()[<span class="st">'sysname'</span>] <span class="sc">==</span> <span class="st">"Windows"</span>) {</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Windows"</span>)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="エラー処理" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="エラー処理"><span class="header-section-number">8.2</span> エラー処理</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>TIP 106 <code>stop()</code></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>func <span class="ot">&lt;-</span> <span class="cf">function</span>(someVal){</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(someVal)) <span class="fu">stop</span>(<span class="st">"someVal is NA."</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="データ" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="データ"><span class="header-section-number">8.3</span> データ</h2>
+<p>パッケージにデータがある場合、多くの場合、<code>R/sysdata.rda</code> ファイルに保存されています。このファイルは、パッケージをアタッチした際に自動的に読み込まれます。</p>
+<p>sysdata.rda を作成するには、あらかじめベクトルやデータフレームなどを作成し、<code>use_data()</code> 関数を使います。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>internal_this <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>internal_that <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(internal_this, internal_that, <span class="at">internal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 
