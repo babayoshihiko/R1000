@@ -124,6 +124,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.31/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
 
 </head>
 
@@ -241,7 +251,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#ランダム化" id="toc-ランダム化" class="nav-link active" data-scroll-target="#ランダム化"><span class="toc-section-number">12.1</span>  ランダム化</a></li>
+  <li><a href="#メタ分析" id="toc-メタ分析" class="nav-link active" data-scroll-target="#メタ分析"><span class="toc-section-number">12.1</span>  メタ分析</a></li>
+  <li><a href="#ランダム化" id="toc-ランダム化" class="nav-link" data-scroll-target="#ランダム化"><span class="toc-section-number">12.2</span>  ランダム化</a></li>
   </ul>
 </nav>
     </div>
@@ -269,8 +280,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 <p>https://cran.r-project.org/web/views/ClinicalTrials.html.</p>
-<section id="ランダム化" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="ランダム化"><span class="header-section-number">12.1</span> ランダム化</h2>
+<section id="メタ分析" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="メタ分析"><span class="header-section-number">12.1</span> メタ分析</h2>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -284,21 +295,65 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 117: ブロックランダム化</p>
+<p>TIP 117: フローチャート</p>
+</div>
+</div>
+<p>メタ分析ですが、一番使いやすいのは RCT 用のパッケージ <strong>{consort}</strong> です。</p>
+<p>データフレームに、研究名、除外基準１、除外基準２の列を作成します。除外基準には、理由を文字列で書きます。</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item" id="htmlwidget-f21f02b0c9b00f52137e" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-f21f02b0c9b00f52137e">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["Baba Y (2020)","Suminaga M (2023)","Sato D (2034)","Sasaki K (2034)"],["理由 1","理由 1","理由 2",""],[null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Study<\/th>\n      <th>Excl1<\/th>\n      <th>Excl2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Study","targets":1},{"name":"Excl1","targets":2},{"name":"Excl2","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>このデータフレームを、以下の様に処理します。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(consort)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">consort_plot</span>(<span class="at">data =</span> dfMeta,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">orders =</span> <span class="fu">c</span>(<span class="at">Study =</span> <span class="st">"検索 (PubMed)"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Excl1    =</span> <span class="st">"除外"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Study =</span> <span class="st">"タイトルと要約</span><span class="sc">\n</span><span class="st">Risk of Bias 2.0"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Excl2    =</span> <span class="st">"除外"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Study =</span> <span class="st">"メタ分析"</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">side_box =</span> <span class="fu">c</span>(<span class="st">"Excl1"</span>, <span class="st">"Excl2"</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">0.9</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="clinical_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="ランダム化" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="ランダム化"><span class="header-section-number">12.2</span> ランダム化</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+
+</div>
+<p>TIP 118: ブロックランダム化</p>
 </div>
 </div>
 <p><strong>{blockrand}</strong> パッケージは、ブロックランダム化を行う。引数には、全体のサンプルサイズ (<code>n</code>)、群数 (<code>num.levels</code>)、ブロックサイズ (<code>block.sizes</code>) などを指定する。</p>
 <p>ブロックサイズを動的に変更することはできないようである。</p>
 <p>返り値は、データフレームで、行数は <code>n</code> と同じまたは少し多い。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blockrand)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">59</span>, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">2</span>, <span class="co"># three treatments</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>), <span class="co"># arm names</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">"stratum"</span>, <span class="co"># stratum name</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">"arm"</span>, <span class="co"># stratum abbrev</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="co"># times arms = 3,6,9</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">"block"</span>) <span class="co"># stratum abbrev</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blockrand)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">59</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">2</span>, <span class="co"># three treatments</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>), <span class="co"># arm names</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">"stratum"</span>, <span class="co"># stratum name</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">"arm"</span>, <span class="co"># stratum abbrev</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="co"># times arms = 3,6,9</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">"block"</span>) <span class="co"># stratum abbrev</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -313,22 +368,22 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 118: Pocock and Simon 法</p>
+<p>TIP 119: Pocock and Simon 法</p>
 </div>
 </div>
 <p>Pocock and Simon 法は、最初の被験者は単純無作為化で、その後は既存の割付をみて群間差がないように割り付けていく方法です。</p>
 <p><strong>{covadap}</strong> パッケージの <code>PocSim()</code> 関数を使います。</p>
 <p>まず、ダミーデータを作ってみましょう。n = 100 で、性別、年齢３区分、血圧３区分のデータフレームです。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"gender"</span> <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>), <span class="dv">100</span>, <span class="cn">TRUE</span>, <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span>)),</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"age"</span> <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"18-35"</span>, <span class="st">"36-50"</span>, <span class="st">"&gt;50"</span>), <span class="dv">100</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"bloodpressure"</span> <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"normal"</span>, <span class="st">"high"</span>, <span class="st">"hyper"</span>), <span class="dv">100</span>, <span class="cn">TRUE</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"gender"</span> <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>), <span class="dv">100</span>, <span class="cn">TRUE</span>, <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span>)),</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"age"</span> <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"18-35"</span>, <span class="st">"36-50"</span>, <span class="st">"&gt;50"</span>), <span class="dv">100</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"bloodpressure"</span> <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"normal"</span>, <span class="st">"high"</span>, <span class="st">"hyper"</span>), <span class="dv">100</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>{covadap}</strong> パッケージの <code>PocSim()</code> 関数を使ってランダム化し、<code>df1</code> に <code>group</code> 列を追加します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(covadap)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">PocSim</span>(df1, <span class="at">p =</span> <span class="fl">0.85</span>, <span class="at">print.results =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(covadap)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">PocSim</span>(df1, <span class="at">p =</span> <span class="fl">0.85</span>, <span class="at">print.results =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>_________________________________________________________
 Design: Pocock and Simon
@@ -343,71 +398,71 @@ var_names: gender age bloodpressure
 _________________________________________________________
 IMBALANCE MEASURES
  
-Loss: 0.63
+Loss: 0.46
 
-Mahalanobis: 0.58
+Mahalanobis: 0.41
 
 Overall Imb: 2
 _________________________________________________________
 STRATA IMBALANCES
  
    gender   age bloodpressure N.strata A.strata D.strata
-1  female 36-50        normal        3        1       -1
-2    male 36-50          high        5        2       -1
-3  female 36-50          high        8        5        2
-4    male 36-50        normal        9        5        1
-5    male 36-50         hyper       10        6        2
-6    male 18-35          high        9        5        1
-7  female 18-35        normal        3        0       -3
-8  female 36-50         hyper        5        2       -1
-9    male   &gt;50         hyper        9        3       -3
-10   male   &gt;50        normal       10        7        4
-11 female 18-35         hyper        2        1        0
-12 female   &gt;50         hyper        7        4        1
-13   male 18-35         hyper        6        3        0
-14   male 18-35        normal        6        3        0
-15 female   &gt;50        normal        3        1       -1
-16 female 18-35          high        2        2        2
-17 female   &gt;50          high        2        1        0
-18   male   &gt;50          high        1        0       -1
+1    male 36-50         hyper        7        4        1
+2    male   &gt;50        normal        6        3        0
+3    male   &gt;50          high        6        1       -4
+4    male 18-35        normal        9        5        1
+5  female   &gt;50         hyper        2        1        0
+6    male   &gt;50         hyper        5        3        1
+7  female   &gt;50        normal        3        3        3
+8  female   &gt;50          high        6        4        2
+9  female 18-35        normal        5        1       -3
+10   male 18-35          high        9        5        1
+11 female 18-35         hyper        4        3        2
+12 female 36-50         hyper        1        0       -1
+13 female 36-50        normal        4        1       -2
+14   male 36-50        normal       10        6        2
+15   male 36-50          high        7        3       -1
+16   male 18-35         hyper        9        4       -1
+17 female 36-50          high        4        2        0
+18 female 18-35          high        3        2        1
 _________________________________________________________
 WITHIN COVARIATE IMBALANCES
  
-gender.female: -1
+gender.male: 0
 
-gender.male: 3
+gender.female: 2
 
-age.36-50: 2
+age.36-50: -1
 
-age.18-35: 0
+age.&gt;50: 2
 
-age.&gt;50: 0
+age.18-35: 1
 
-bloodpressure.normal: 0
+bloodpressure.hyper: 2
 
-bloodpressure.high: 3
+bloodpressure.normal: 1
 
-bloodpressure.hyper: -1</code></pre>
+bloodpressure.high: -1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>group <span class="ot">&lt;-</span> res<span class="sc">$</span>Assignments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>group <span class="ot">&lt;-</span> res<span class="sc">$</span>Assignments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>群間の比較をしてみましょう。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CreateTableOne</span>(<span class="fu">c</span>(<span class="st">"gender"</span>,<span class="st">"age"</span>,<span class="st">"bloodpressure"</span>),<span class="st">"group"</span>,df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CreateTableOne</span>(<span class="fu">c</span>(<span class="st">"gender"</span>,<span class="st">"age"</span>,<span class="st">"bloodpressure"</span>),<span class="st">"group"</span>,df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   Stratified by group
                     B          A          p      test
   n                 49         51                    
-  gender = male (%) 31 (63.3)  34 (66.7)   0.883     
-  age (%)                                  0.970     
-     &gt;50            16 (32.7)  16 (31.4)             
-     18-35          14 (28.6)  14 (27.5)             
-     36-50          19 (38.8)  21 (41.2)             
-  bloodpressure (%)                        0.853     
-     high           12 (24.5)  15 (29.4)             
-     hyper          20 (40.8)  19 (37.3)             
-     normal         17 (34.7)  17 (33.3)             </code></pre>
+  gender = male (%) 34 (69.4)  34 (66.7)   0.938     
+  age (%)                                  0.924     
+     &gt;50            13 (26.5)  15 (29.4)             
+     18-35          19 (38.8)  20 (39.2)             
+     36-50          17 (34.7)  16 (31.4)             
+  bloodpressure (%)                        0.924     
+     high           18 (36.7)  17 (33.3)             
+     hyper          13 (26.5)  15 (29.4)             
+     normal         18 (36.7)  19 (37.3)             </code></pre>
 </div>
 </div>
 <p>バランスもよく、群間の有意差もみられない無作為化ができました。</p>
