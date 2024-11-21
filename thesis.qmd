@@ -1,0 +1,70 @@
+# 論文 {#thesis}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+## Quarto
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: Quarto Book
+:::
+
+New Project \> New Directory \> Quarto Book
+
+
+## 文献管理
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: Zotero を読み込む
+:::
+
+Zotero で文献管理を行なっている場合、
+
+https://www.zotero.org/
+
+にログイン後、
+
+https://www.zotero.org/settings/keys
+
+から API キーをコピーしておきます。
+
+```{r}
+library(grid)      # rasterGrob()
+library(magick)    # image_read()
+library(gridExtra) # grid.arrange
+img1 <- rasterGrob(image_read("img/thesis-zotero.png"))
+img2 <- rasterGrob(image_read("img/thesis-zotero-2.png"))
+grid.arrange(img1, img2, ncol=2, nrow=1)
+```
+
+```{r eval=FALSE}
+library(RefManageR)
+ReadZotero(user = "7 桁の数字",
+  .params = c(key = "24 文字の API キー"),
+  temp.file = "references.bib",
+  delete.file = FALSE)
+```
+
+```{r eval=FALSE, echo=FALSE}
+library(RefManageR)
+ReadZotero(user = "7 桁の数字",
+  .params = c(key = "24 文字の API キー"),
+  temp.file = "references.bib",
+  delete.file = FALSE)
+```
+
+現状、以下の様なエラーが出て、一部しかダウンロードされていません。日本語に未対応か？
+
+Error in ReadZotero(user = "7 桁の数字", .params = c(key = "24 文字の API キー"), : Could not parse the returned BibTeX results. If 'delete.file' is FALSE, you can try viewing and editing the file: references.bib
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```

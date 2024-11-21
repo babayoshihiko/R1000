@@ -1,0 +1,38 @@
+project:
+  type: book
+
+book:
+  title: "R1000"
+  author: "Yoshihiko Baba"
+  date: "3/2/2024"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - rstudio.qmd
+    - data.qmd
+    - if.qmd
+    - dataframe.qmd
+    - table.qmd
+    - ggplot2.qmd
+    - packaging.qmd
+    - git.qmd
+    - tex.qmd
+    - thesis.qmd
+    - clinical.qmd
+    - python.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc-depth: 3
+    toc-expand: 3
+  pdf:
+    documentclass: bxjsbook
+    classoption: xelatex,ja=standard
+    default-image-extension: png
+    include-in-header:  preamble.tex
+    include-after-body: after_body.tex
+    papersize: A4
+
+editor: source
+

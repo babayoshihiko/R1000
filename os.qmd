@@ -1,0 +1,77 @@
+# 特定の OS の問題 {#os}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+## Windows
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP \`r sprintf("%03d", i)\`\` OneDrive 問題
+:::
+
+Windows では、パッケージが OneDrive というフォルダに保存される。ところが、ユーザ名が日本語でああると、パッケージを読み込めなくなってしまう。また、この中には、R のバージョンごとにサブフォルダがある。つまり、バージョンアップをするたびに今までのパッケージは使われなくなる（これは macOS や Linux でも同様）。R のバージョンアップのたびに、パッケージを一からインストールるしなければならない。
+
+こうした問題を避けるため、(1) 別の場所にパッケージ専用のフォルダを作成し、(2) そこを読み込むように設定する。
+
+(1) C ドライブ直下に R フォルダ（"C:\R"）を作っておく。
+
+(2) 以下のディレクトリ内に .Renviron というファイルを作成しよう（ファイル名の最初はドット記号）。
+
+-   Windows : C:\Users\username\Documents
+
+テキストファイルは、RStudio のメニューから、File \> New File \> Text File を選択する。
+
+ここに、以下のように記述する。
+
+R_LIBS="C:/R" LANGUAGE="en" \# 日本語の場合 ja
+
+Windows ではバックスラッシュが正しいが、R ではスラッシュを使う点に注意。
+
+## macOS
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)\`: ggplot で日本語を表示 (1): フォント指定
+:::
+
+```{r eval=FALSE}
+theme(text = element_text(family = "HiraginoSans-W3"))
+```
+
+```{r eval=FALSE}
+tm_layout(fontfamily = "HiraginoSans-W3")
+```
+
+なお、以下は ggplot ではない Base プロット
+
+```{r eval=FALSE}
+grid.text("B. 線に沿った標高", gp = gpar(fontfamily="HiraginoSans-W3"))
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: ggplot で日本語を表示 (2): ragg
+:::
+
+まず、RStudio の環境設定、General Graphics の Backend を AGG にします。
+
+ragg を使うには、以下のうちのいずれかを行います。
+
+1. 図を出力するチャンクオプションに `dev="ragg_png"` を追加する
+2. `knitr::opts_chunk(dev = "ragg_png")` を設定する
+3. YAML ヘッダ部分に `dev: "ragg_png"` を加える
+
+ragg の弱点として、Quarto/Rmd で knit/Build した場合には日本語が表示されますが、 Run Current Chunk をした場合には 文字化けしてしまいます。
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```

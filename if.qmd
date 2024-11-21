@@ -1,0 +1,188 @@
+# if {#if}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)` if
+:::
+
+R における if の基本
+
+```{r}
+a <- 2
+if (a == 1) {
+  print("a is one.")
+} else if (a == 2) {
+  print("a is two.")
+} else {
+  print("a is neither 1 nor 2.")
+}
+```
+
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)` `ifelse()`
+:::
+
+R には if else を行う関数もある。ベクタやデータフレームにも使える。
+
+```{r}
+result <- data.frame(
+  student = c("Yamada", "Sato", "Takahashi"),
+  score = c(45, 90, 65)
+)
+result$pass <- ifelse (result$score >= 60, "PASS", "FAIL")
+```
+```{r echo=FALSE}
+library(DT)
+DT::datatable(result)
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)` `switch()`
+:::
+
+`switch()` 関数は、条件が複数あり、if else をたくさん書くような場合にコンパクトに書くことができる。
+
+```{r}
+switch (3, "frailty", "frailty", "frailty", "prefrailty", "prefrailty", "robust")
+```
+
+ただし、条件にベクトルやデータフレームを使うことができない点が不便。**{dplyr}** の `case_when()` 関数を使うと、データフレームにも適用できる。
+
+```{r message = FALSE}
+library(dplyr)
+dfFrailty <- data.frame(
+  id = 1:6,
+  score = c(5, 4, 2, 0, 0, 1)
+)
+dfFrailty$frailty <- case_when(dfFrailty$score == 0 ~ "robust",
+                        dfFrailty$score == 1 ~ "prefrailty",
+                        dfFrailty$score == 2 ~ "prefrailty",
+                        dfFrailty$score >= 3 ~ "frailty")
+```
+```{r echo=FALSE}
+library(DT)
+DT::datatable(dfFrailty)
+```
+
+## 論理テスト
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 論理演算
+:::
+
+論理演算は、「i は 1 よりも大きいか?」「i の中に 1 は入っているか?」などの比較を行うことです。
+
+| 演算子 | 構文 | テスト |
+| ------ | ---- | ------ |
+| `>` | `a > b` | a は b より大きいか? |
+| `>=` | `a >= b` | a は b 以上か? |
+| `<` | `a >= b` | a は b より小さいか? |
+| `<=` | `a <= b` | a は b 以上か? |
+| `==` | `a == b` | a と b は等しいか? |
+| `!=` | `a != b` | a と b は等しくないか? |
+| `%in%` | `a %in c(1, 2, 3)` | a は、1, 2, 3 のうちいずれかの値か? |
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 論理演算: 異なる mode の比較
+:::
+
+```{r}
+if ("1" == 1){
+  print("character と numeric も比較可能")
+} else {
+  print("xcharacter と numeric は比較不可能")
+}
+```
+
+```{r}
+if (TRUE == 1){
+  print("TRUE は 1")
+} else {
+  print("TRUE は 0")
+}
+```
+
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 論理演算: NA
+:::
+
+ベクトルが NA であると、論理演算の結果は NA となります。
+
+```{r}
+1 == NA
+```
+
+この場合、まず、NA であるかどうかを判定する必要があります。
+
+以下の様な条件式は、エラーとなります。
+
+```{r eval = FALSE}
+x <- NA
+if (x == 1){
+  print("x is larger than 1.")
+} else {
+  print("x is not larger than 1.")
+}
+```
+```
+Error in if (x == 1) { : missing value where TRUE/FALSE needed
+```
+
+このエラーメッセージは、 (x == 1) が TRUE でも FALSE でもない (NA) ために発生しています。
+
+## ブール演算
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: ブール演算
+:::
+
+ブール演算とは、
+
+
+| 演算子 | 構文 | テスト |
+| ------ | ---- | ------ |
+| `&` | `cond1 & cond2` | AND |
+| `|` | `cond1 | cond2` | OR: Shift + 0 の３つ右にあるキー |
+| `xor` | `a zorb` | a は b より小さいか? |
+| `!` | `!cond` | 例: `!is.na(x)` は x は NA でない |
+| `all` | `all(cond1, cond2, cond3)` | `&` の拡張 |
+| `any` | `any(cond1, cond2, cond3)` | `|` の拡張 |
+
+
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```

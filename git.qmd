@@ -1,0 +1,98 @@
+# git {#git}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+## GitHub
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: GitHub からプロジェクトをダウンロード
+:::
+
+流れとしては、以下のようになります。
+
+1.  GitHub 上で、元のレポジトリ（これを upstream という）から、自分のレポジトリにフォークする
+2.  フォークしたレポジトリ（origin という）から、自分のパソコンに取り込む（local という）
+
+最初のフォークは、ブラウザ上で行います。
+
+次に、ローカルに取り込みます。これは、RStudio で、File \> New Project
+
+追加 (https://stackoverflow.com/questions/41283955/github-keeps-saying-this-branch-is-x-commits-ahead-y-commits-behind)
+
+git remote add upstream https://github.com/upstream/repo.git
+
+upstream と同じ状態にしたい時は
+
+git pull --rebase upstream main git push --force-with-lease origin main
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: プロジェクトを GitHub に登録
+:::
+
+前提条件として、
+
+-   GitHub ですでにアカウントを作成済み
+-   そのプロジェクトの右上ペイン（Environment のあるペイン）に Git タブがない
+
+まず、既存のプロジェクトを GitHub に登録します。この作業は最初の１回だけで良いはずです。 主に３つの方法があります。どれか一つを選んでください。
+
+-   R/RStudio でそのプロジェクトを開いておき、Console で `usethis::use_git()` とする。
+-   RStudio で、 Tools \> Project Options ... \> Git/SVN と進む。"Version control system" で "Git" を選択し、Confirm New Git Repository? には Yes!
+-   シェルで `git init` を実行。
+
+これで、右上に Git タブができたり、Files に .gitignore というファイルができたりします。
+
+早速、.gitignore に、GitHub で公開・管理しないファイルを登録しておきます。最初の４行がこうなっていると思います。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: 認証
+:::
+
+GitHub を使ってソース管理をする場合には、Personal Access Token による認証が必要です。
+
+1.  GitHub 上で、 personal access token (PAT) を端末ごとに作成
+
+-   fine-grained と classic がある。fine-grained は、色々設定できすぎて大変。classic を使う。
+-   expiration を never にしておく。
+-   write:packages にチェック
+
+2.  ローカルで、以下を実行
+
+```{R eval=FALSE}
+install.packages("gitcreds")
+library(gitcreds)
+gitcreds_set()
+```
+
+ここで、2: Replace these credentials を選択し、上で作成した PAT をコピペ
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: GitHub でタグをつける
+:::
+
+```{bash eval=FALSE}
+git tag -a v0.0.12 -m 'version 0.0.12'
+git push origin v0.0.12
+```
+
+
+
+
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```

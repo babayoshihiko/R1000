@@ -1,0 +1,605 @@
+# データフレーム {#dataframe}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+## データフレームを作る
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: データフレームを作る (1) 列ごとに作る
+:::
+
+```{r eval=FALSE}
+x <- c(1, 2, 3)
+y <- c("red", "green", "blue")
+z <- c(TRUE, FALSE, TRUE)
+df <- data.frame(x, y, z)
+```
+
+この方式だと、x, y, z というベクトルもできてしまう。
+
+以下のコードはベクトルを作らないでデータフレームを作ります。
+
+```{r eval=FALSE}
+dfAnimal <- data.frame(rating=1:4,
+                animal=c('koala', 'hedgehog', 'sloth', 'panda'),
+                country=c('Australia', 'Italy', 'Peru', 'China'),
+                avg_sleep_hours=c(21, 18, 17, 10))
+```
+
+演習: https://github.com/babayoshihiko/R1000/blob/main/exercise/dataframe/create.qmd
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: データフレームを作る (2) CSV 的な作り方
+:::
+
+```{r eval=FALSE}
+df <- read.table(text = "PatientID, T0, T1, T2
+1,21,20,18
+2,28,26,26
+3,18,15,18
+4,12,15,16
+5,11,11,13", 
+header = TRUE, 
+colClasses=c("factor", "integer", "double", "character"), 
+sep=",")
+```
+
+データ型を指定しているので、
+
+ここでは、列区切りをコンマ としましたが (`sep = ","`)、データ内でコンマを使いたい時などは列区切りを別の記号にします。
+
+```{r eval=FALSE}
+df <- read.table(text = "PatientID, T0, T1, T2
+1/21/20/18
+2/28/26/26
+3/18/15/18
+4/12/15/16
+5/11/11/13", 
+header = TRUE, 
+colClasses=c("factor", "integer", "double", "character"), 
+sep="/")
+```
+
+演習: https://github.com/babayoshihiko/R1000/blob/main/exercise/dataframe/create.qmd
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: データフレームを作る (3) 行列からデータフレームに変換
+:::
+
+行列もエクセルの様に 2x2 でデータを持っています。データフレームは、列ごとに異なる mode を設定できますが、行列はすべて同じ mode でなければなりません。
+
+```{r eval=FALSE}
+my_matrix <- matrix(c(1, 2, 3, 4, 5, 6), nrow=2)
+df_from_matrix <- data.frame(my_matrix)
+```
+
+## よく使われるデータフレーム
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: よく使われるデータフレーム
+:::
+
+R の勉強をしていると、よく出てくるデータフレームがあります。有名なものは、`iris` と `mtcars` です。
+
+これは、R に組み込まれており、`data(iris)` または `data(mtcars)` とするだけで使える様になります。Console に `data(` (カッコを閉じず) まで入力すると、その他のデータフレームが表示されます。
+
+iris とは、植物のアヤメのことで、統計学でも有名な Ronald Aylmer Fisher が論文で使用したデータです。iris には setosa、versicolor、virginica という種と、がく片（sepal）の長さ、幅、および花弁（petal）の長さ、幅のデータがあります。
+
+mtcars については、`?mtcars` として調べてみてください。
+
+## NA 処理
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 多重代入法
+:::
+
+データで紹介した `na.omit()` も使うこともできますが、その他の方法を紹介します。
+
+```{r eval=FALSE}
+df <- read.table(text = "PatientID, Gender, T1, T2
+1,M, 20, 18
+2,F, NA, 26
+3,NA, 15, 18
+4,M, 15, NA
+5,F, 11, NA", header = TRUE, colClasses=c("factor", "factor", "integer", "integer"), sep=",")
+```
+
+Gender は一つ NA、T1 も 1 つ NA、T2 は 2 つ NA があります。
+
+```{r eval=FALSE}
+library(mice)
+df_miced <- mice(df,
+                 m = 20,
+                 maxit = 50,
+                 method = "pmm",
+                 seed = 1234)
+```
+
+df_miced\$imp を見ると、Gender と T1 は 20 回補完されました。T2 は 2x20 回補完されました。
+
+## 列名を変更
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 列名を変更
+:::
+
+まず、データフレーム `df` の列を確認します。
+
+```{r eval=FALSE}
+colnames(df)[1:ncol(df)]
+```
+
+\[1\] "タイムスタンプ"
+
+\[2\] "性別"
+
+\[3\] "経験"
+
+例えば、16番目の列を変えたい場合、
+
+```{r eval=FALSE}
+colnames(df)[16] <- "知見"
+```
+
+とします。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 列にラベルを設定
+:::
+
+列名を日本語にしたり、空白を中に入れることは、あまり好ましくありません。一方、表や図を作成するときに、列名が使われます。
+
+列にラベルを設定することができます。
+
+```{r}
+df<- data.frame(col1=1:4,
+  col2=1:4)
+attr(df$col1, "label") <- "Column 1"
+attr(df$col2, "label") <- "第２列"
+```
+
+```{r echo=FALSE}
+library(DT)
+datatable(df)
+```
+
+
+
+## 新たに列を作る
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 複数選択を処理 (1)
+:::
+
+Google Document でアンケート調査をすると、複数選択はセル内に押し込まれます。これを、独立した列に格納します。
+
+```{r eval=TRUE}
+df <- read.table(text = "ID/Gender/Fruit
+1/M/Apple,Orange
+2/F/Apple
+3/M/Banana
+4/M/NA
+5/F/Orange", header = TRUE, 
+colClasses=c("factor", "factor", "character"), sep="/")
+```
+
+```{r eval=TRUE}
+df$Apple = ifelse(grepl("Apple", df$Fruit), 1, 0)
+df$Orange = ifelse(grepl("Orange", df$Fruit), 1, 0)
+df$Banana = ifelse(grepl("Banana", df$Fruit), 1, 0)
+df
+```
+
+```{r echo=FALSE}
+df <- read.table(text = "ID/Gender/Fruit
+1/M/Apple,Orange
+2/F/Apple
+3/M/Banana
+4/M/NA
+5/F/Orange", header = TRUE, colClasses=c("factor", "factor", "character"), sep="/")
+```
+
+**{dplyr}** を使う方法もあります。
+
+```{r eval=TRUE}
+library(dplyr)
+df <- mutate(df, Apple = ifelse(grepl("Apple", Fruit), 1, 0))
+df <- mutate(df, Orange = ifelse(grepl("Orange", Fruit), 1, 0))
+df <- mutate(df, Banana = ifelse(grepl("Banana", Fruit), 1, 0))
+df
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 複数選択を処理 (2) OR 文
+:::
+
+R 言語で、OR 文を使うには、`|` 記号を使います。
+
+```{r eval=TRUE}
+df <- read.table(text = "ID/Gender/Fruit
+1/M/Apple,Orange
+2/F/RINGO
+3/M/Banana
+4/M/NA
+5/F/Orange", header = TRUE, colClasses=c("factor", "factor", "character"), sep="/")
+```
+
+```{r eval=TRUE}
+df$Apple = ifelse(grepl("Apple", df$Fruit) | grepl("RINGO", df$Fruit), 1, 0)
+df$Orange = ifelse(grepl("Orange", df$Fruit), 1, 0)
+df$Banana = ifelse(grepl("Banana", df$Fruit), 1, 0)
+df
+```
+
+## 部分集合
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 条件に合う列だけの部分集合を作る
+:::
+
+```{r echo=TRUE}
+df <- read.table(text = "ID/Gender/Include/Fruit
+1/M/TRUE/Apple,Orange
+2/F/TRUE/Apple
+3/M/TRUE/Banana
+4/M/FALSE/NA
+5/F/TRUE/Orange", header = TRUE, colClasses=c("factor", "factor", "logical", "character"), sep="/")
+df
+```
+
+```{r eval=TRUE}
+df <- df[df$Include == TRUE,]
+df
+```
+
+```{r echo=TRUE}
+df <- read.table(text = "ID/Gender/Include/Fruit
+1/M/TRUE/Apple,Orange
+2/F/TRUE/Apple
+3/M/TRUE/Banana
+4/M/FALSE/NA
+5/F/TRUE/Orange", header = TRUE, colClasses=c("factor", "factor", "logical", "character"), sep="/")
+```
+
+```{r eval=TRUE}
+df <- subset(df, Include == TRUE)
+df
+```
+
+## 手動で編集
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: データフレームを手動で編集
+:::
+
+Console で、以下の様に入力します。
+
+```{r eval=FALSE}
+df <- edit(df)
+```
+
+この画面で編集後、Quit を押すと、データフレームが変更されています。
+
+データフレームを表示させている場合、自動的に更新されるわけではないので、再表示させてみてください。
+
+演習: https://github.com/babayoshihiko/R1000/blob/main/exercise/dataframe/edit.qmd
+
+## Long 形式と Wide 形式
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: Wide 形式
+:::
+
+Excel などでデータを準備する際には、なんとなく使用している「型」があると思われます。
+
+一例として、10人の生徒の体力を見るために、50m走の時間（Speed, 秒）と、幅跳びの距離（Jump, m）を、４月(April)、９月（September)、３月（March)の３回計測したとします。
+
+おそらく、このような表を作成するのではないでしょうか。
+
+```{r echo=FALSE}
+library(readxl)
+dfWide <- read_excel("kentei4.xlsx", 
+    sheet = "wide")
+```
+
+```{r echo=FALSE}
+library(DT)
+datatable(dfWide)
+```
+
+このように、被験者一人につき一つの行で、50m走3回と幅跳び3回分を横に広く (wide) に書く形式を Wide 形式と言います。
+
+この形式はとても見やすく、このままだいたいの作図もできます。
+
+一方で、この形式のままでは作図できないものがあります。 その一つが、帯グラフになります。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: Long 形式
+:::
+
+```{r echo=FALSE}
+library(readxl)
+dfWide <- read_excel("kentei4.xlsx", 
+    sheet = "long")
+```
+
+```{r echo=FALSE}
+library(DT)
+datatable(dfWide)
+```
+
+このように、数値が常に同じ列に入っているような形式を Long 形式といいます。
+
+## ひどいデータ
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: データのクリーニング (1)
+:::
+
+実際には、ひどいデータにしょっちゅう出くわします。
+
+例えば、男性は M、女性は F とコード化したとしましょう。
+
+```{r}
+library(readxl)
+dfKentei4Dirty <- read_excel("kentei4.xlsx", sheet = "bad-factor-sample")
+```
+
+みてみると、大文字、小文字、さらには半角と全角が入り混じっています。 これを因子にしてみるとよくわかります。
+
+```{r}
+datatable(dfKentei4Dirty)
+```
+
+```{r}
+dfKentei4Dirty$Sex1 <- factor(dfKentei4Dirty$Sex)
+```
+
+８つも水準があります。 どうにか、MとFだけにしたいので、`stringi` パッケージの `stri_trans_nfkc()` 関数と、base パッケージの `toupper()` 関数を使ってみます。
+
+```{r}
+library(stringi)
+dfKentei4Dirty$Sex2 <- factor(
+  toupper(
+    stri_trans_nfkc(dfKentei4Dirty$Sex)), 
+  levels = c("M", "F"))
+```
+
+このように、ひどいデータを修正する作業を、cleaning や sanitizing といいます。こういった処理に特化したパッケージもありますが、日本語にうまく対応しているのはないようなので、今のところ上記のコードが一番よさそうです。
+
+## データフレームを出力
+
+ここでは、データフレームを Quarto Document または R Markdown から HTML および PDF 出力する方法を紹介します。
+
+```{r echo = FALSE}
+df <- data.frame(Number=1:4,
+  English=c('one', 'two', 'three', 'four'),
+  Japanese=c('いち', 'に', 'さん', 'よん'))
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: knitr::kable()
+:::
+
+```{r}
+library(knitr)
+kable(df)
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: **{xtable}**
+:::
+
+```{r}
+library(xtable)
+print(xtable(df), type = "html")
+```
+
+**{xtable}** は、PDF に出力するときに強みを発揮します。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: **{stargazer}**
+:::
+
+```{r}
+library(stargazer)
+stargazer(df, type = "html")
+```
+
+**{stargazer}** も、HTML よりも PDF で強みを発揮します。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: **{DT}**
+:::
+
+```{r}
+library(DT)
+datatable(df)
+```
+
+**{DT}** は、大きなデータを HTML で表示するときに最適です。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: **{gt}**
+:::
+
+```{r}
+library(gt)
+gt1 <- gt(df)
+tab_style(gt1, 
+  style = list(cell_fill(color = "#b2f7ef"),
+  cell_text(weight = "bold")),
+  locations = cells_body(columns = English))
+```
+
+gt は、画像として出力されいます。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: **{formattable}**
+:::
+
+```{r message = FALSE}
+library(formattable)
+formattable(df,
+  list(Number = color_bar("#e9c46a")))
+```
+
+**{formattable}** は、余計なメッセージが出るので、コードチャンクに `message = FALSE` を追加します。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: **{kableExtra}**
+:::
+
+```{r message = FALSE}
+library(kableExtra)
+k1 <- kbl(df)
+k2 <- kable_paper(k1) 
+column_spec(k2, 
+  2, 
+  color = "white",
+  background = "#e9c46a")
+```
+
+**{kableExtra}** は、余計なメッセージが出るので、コードチャンクに `message = FALSE` を追加します。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: **{flextable}**
+:::
+
+```{r message = FALSE}
+library(flextable)
+flextable(df)
+```
+**{flextable}** は、余計なメッセージが出るので、コードチャンクに `message = FALSE` を追加します。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: **{reactable}**
+:::
+
+```{r}
+library(reactable)
+library(reactablefmtr)
+reactable(df,
+  defaultColDef = colDef(cell = data_bars(df, 
+    box_shadow = TRUE, round_edges = TRUE,
+    text_position = "outside-base",
+    fill_color = c("#e81cff", "#40c9ff"),
+    background = "#e5e5e5",
+    fill_gradient = TRUE)
+))
+```
+
+**{reactable}** は、並べ替えができます。`English` や `Japanese` をクリックしてみてください。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: colorDF
+:::
+
+```{r}
+library(colorDF)
+colorDF(df)
+```
+
+Console では色がついて表示されます。
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```

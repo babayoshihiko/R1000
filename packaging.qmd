@@ -1,0 +1,101 @@
+# パッケージ開発 {#packaging}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)` パッケージ作成の最初
+:::
+
+```{r eval=FALSE}
+library(devtools)
+load_all()
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)` チェック
+:::
+
+```{r eval=FALSE}
+devtools::check()
+```
+
+時間がかかる。vignette も作成する。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)` 各種ドキュメントを作成する
+:::
+
+```{r eval=FALSE}
+devtools::document()
+```
+
+
+
+
+
+## OS 処理
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)` OS ごとに処理を変える
+:::
+
+```{r eval=FALSE}
+if(Sys.info()['sysname'] == "Darwin"){
+  print("macOS")
+} else if(Sys.info()['sysname'] == "Linux") {
+  print("Linux")
+} else if(Sys.info()['sysname'] == "Windows") {
+  print("Windows")
+}
+```
+
+## エラー処理
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)` `stop()`
+:::
+
+```{r eval=FALSE}
+func <- function(someVal){
+  if (is.na(someVal)) stop("someVal is NA.")
+}
+```
+
+##  データ
+
+パッケージにデータがある場合、多くの場合、`R/sysdata.rda` ファイルに保存されています。このファイルは、パッケージをアタッチした際に自動的に読み込まれます。
+
+sysdata.rda を作成するには、あらかじめベクトルやデータフレームなどを作成し、`use_data()` 関数を使います。
+
+```{r eval=FALSE}
+internal_this <- 1
+internal_that <- 2
+usethis::use_data(internal_this, internal_that, internal = TRUE)
+```
+
+
+
+
+
+
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```

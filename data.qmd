@@ -1,0 +1,547 @@
+# データ {#data}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+## 基本データ型
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: データ型: `mode()`
+:::
+
+R では、変数のことをベクトルと言います。「アトミックベクトル」ということもあります。多くのプログラミングでは、
+
+i = 1
+
+の様に表記します。R でも `=` を使うこともできますが、`<-` を使うこともできます。
+
+```{r}
+a <- 1
+b <- "01"
+c <- TRUE
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: `mode()` でデータ型を確認
+:::
+
+R の基本データ型 (mode) は、以下の 6 つあります。
+
+-   numeric
+-   complex
+-   character
+-   logical
+-   list
+-   raw
+
+```{r}
+a <- 1
+mode(a)
+```
+
+```{r}
+b <- "1"
+mode(b)
+```
+
+```{r}
+c <- TRUE
+mode(c)
+```
+
+```{r}
+d <- NA
+mode(d)
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: データ型: `typeof()`
+:::
+
+数値のデータ型 (mode が numeric なもの) に対しては、細分類があります。主要なものとしては、「整数」(integer) と、小数も扱うことのできる「倍精度浮動小数点数」(double) と言われているものです。
+
+細分類は、`typeof()` 関数で確認することができます。
+
+整数を作成する際には、数値の後ろに `L` をつけます。なぜ `L` なのか、、、R に詳しい人でもわからないようです。
+
+```{r}
+a <- 1L
+typeof(a)
+```
+
+```{r}
+b <- 1.1
+typeof(b)
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: ベクトル (1): `c()` 関数
+:::
+
+変数は一つとは限りません。同じ mode の変数をまとめたベクトルというものが R では基本になります。
+
+ベクトルを作るには、`c()` 関数を使います。
+
+```{r echo=FALSE}
+a <- c(1, 2, 3)
+b <- c("A", "B", "C")
+c <- c(TRUE, FALSE)
+```
+
+ベクトルの i 番目の要素を取り出すには、`a[i]` のように`[ ]` を使います。
+
+```{r echo=FALSE}
+a <- c(9, 10, 11)
+print(a[1])  # 9 が表示される
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: ベクトル (2): 等差数列
+:::
+
+1 から 100 などの連続した等差数列は、とても簡単に作ることができます。
+
+```{r eval=FALSE}
+a <- 1:100
+```
+
+初項 3、公差 2 を 55 まで作ります。
+
+```{r eval=FALSE}
+a <- seq.int(from = 3, to = 55, by = 2)
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: ベクトル (3): サイコロを振る
+:::
+
+サイコロを振る様に、ランダムに数値を作ることもできます。1 から 6 までの値を、10 回作ります。
+
+```{r eval=FALSE}
+a <- sample(1:6, 10, replace = TRUE)
+```
+
+## 計算
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 計算
+:::
+
+四則演算は +, -, \*, / という記号を使います。
+
+```{r eval=FALSE}
+3 * 5 # 15 になります
+8 / 2 #  4 になります
+```
+
+べき乗は \^ を使います。平方根は、`sqrt()` 関数を使います。
+
+```{r eval=FALSE}
+9 ^ 2   # 81 になります
+sqrt(9) #  3 になります
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 階乗
+:::
+
+```{r eval=FALSE}
+n <- 10
+gamma(n+1)
+prod(1:n)
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 対数
+:::
+
+対数は、e を底とするものは `log()` 関数、10 を底とするものは `log10()` です。
+
+```{r eval=FALSE}
+log(10)     # 2.302585
+log10(10)   # 1
+```
+
+## ベクトル
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: ベクトル
+:::
+
+変数の最小単位はベクトルというもので、同じ mode の複数の値を格納することができます。「アトミックベクトル」ということもあります。
+
+ベクトルは、`c()` 関数を使って作ることができます。
+
+```{r}
+a <- c("one", "two", "three", "four", "five")
+```
+
+i 番目の要素は、`a[i]` という形で取り出すことができます。
+
+```{r}
+a[3]
+```
+
+多くのプログラミング言語では、i は 0 から始まりますが、R は 1 から始まります。R が「統計の言語」のためこの様な仕様となっっています。
+
+複数の要素を取り出す際にも、`c()` 関数を使って指定します。
+
+```{r}
+a[c(2,4)]
+```
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 繰り返し処理
+:::
+
+`for` 文を使った繰り返し処理の例を示します。`a`
+
+```{r}
+a <- c("one", "two", "three", "four", "five")
+for (element in a){
+  print (element)
+}
+```
+
+## ダミーデータ
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: `rnorm()`
+:::
+
+関数 `rnorm()` で、ダミーデータを作ることができます。
+
+最初の引数は、作りたいダミーデータの数です (サンプルサイズ)。
+
+また、平均と標準偏差を指定することもできます。
+
+```{r}
+rnorm(10, mean=10, sd=5)
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: `runif()`
+:::
+
+関数 `runif`()` で、ダミーデータを作ることができます。
+
+最初の引数は、作りたいダミーデータの数です (サンプルサイズ)。
+
+また、最小値と最大値を指定することもできます。
+
+```{r}
+as.integer(runif(10, min=0, max=10))
+```
+
+## 要約統計量
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 要約統計量
+:::
+
+要約統計量とは、いくつかある数値の合計 (`sum()`)、平均値 (`mean()`)、中央値 (`median()`)、最大値 (`max()`)、標準偏差 (standard deviation, `sd()`)、四分位範囲 (interquartile range, `IQR()`) などのことです。
+
+```{r eval=FALSE}
+saikoro <- sample(1:6, 100, replace = TRUE)
+mean(saikoro)
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 95%信頼区間
+:::
+
+95%信頼区間 (confidence interval) を得るには、**{epiDisplay}** が必要です。
+
+```{r eval=TRUE}
+library(epiDisplay)
+saikoro <- sample(1:6, 100, replace = TRUE)
+ci(saikoro)
+```
+
+## NA 処理
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: NA を削除
+:::
+
+ベクトル内に NA 値があると、うまくいかないことが多くなります。
+
+```{r eval=FALSE}
+a <- c(1, 2, NA, 3, NA, 4, 5)
+mean(a)
+```
+
+`NA` があることで、平均値が計算されず、`NA` が返ってきます。
+
+次の様に NA を削除しましょう。
+
+```{r eval=FALSE}
+a <- na.omit(a)
+mean(a)
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: NA を 0 に設定
+:::
+
+```{r eval=FALSE}
+a <- c(1, 2, NA, 3, NA, 4, 5)
+a[is.na(a)] <- 0
+```
+
+なお、ロジスティック回帰などの統計手法では多重代入法という処理方法もあります。これはデータフレームで扱います。
+
+## 文字列
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 文字の結合 (1): `paste()` と `paste0()`
+:::
+
+二つの文字列を結合する際は、`paste()` 関数を使います。自動的に半角スペースが追加されます。
+
+```{r}
+a <- "Hello"
+b <- "World"
+paste(a, b) # Hello World となる
+```
+
+なお、半角スペースを入れたくない場合、`paste0()` 関数を使います。
+
+```{r}
+paste0(a, b) # HelloWorld となる
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 文字の結合 (2): `sprintf()`
+:::
+
+```{r eval=FALSE}
+sprintf("%s %s", a, b) # Hello World となる
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 文字の結合 (3): **{stringr}**
+:::
+
+**{stringr}** パッケージの `str_c()` 関数は、`pasteo()` 関数と似た様に使うことができます。ただし、`NA` などの扱いが変わります。
+
+```{r eval=FALSE}
+library(stringr)
+c <- NA
+str_c(a, b) # "HelloWorld" となる
+paste(a, c) # "Hello NA" となる
+str_c(a, c) # NA となる
+```
+
+## 変換
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 数字を文字に変換 (1): `as.character()`
+:::
+
+mode を変換するには、`as.*()` 関数を使います。
+
+単純に数字を文字にします。
+
+```{r eval=FALSE}
+a <- 1
+b <- as.character(a)
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 数字を文字に変換 (2): "002"
+:::
+
+1 を "001" のように、フォーマットします。
+
+```{r eval=FALSE}
+a <- 1
+b <- sprintf("%03d", a) # "001" となる
+```
+
+書式指定は % で始まります。最後は d や f などの決められた英数字で終わります。d は第 2 引数 (a) を整数として解釈するという意味で、f は浮動小数点として解釈するという意味です。
+
+中間の "03" は、3 桁に満たない場合は 0 で埋める、という意味になります。
+
+```{r eval=FALSE}
+a <- 10.1234
+b <- sprintf("%.2f", a) # "10.12" となる
+```
+
+中間の ".2" は、小数点以下第 3 位を四捨五入する、という意味になります。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 数字を文字に変換 (3): "1,000"
+:::
+
+```{r eval=FALSE}
+a <- 1000
+b <- format(a, big.mark = ",") # "1,000" となる
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 文字を因子に変換
+:::
+
+文字列 (character) を因子 (factor) に変換します。
+
+```{r eval=FALSE}
+a <- c("F", "M", "M", "F)"
+b <- factor(a, levels=c("F", "M"))
+```
+
+ロジスティック回帰などを行う場合、引数 `levels` で最初にあるものが参照値になります。
+
+`as.factor()` という関数もありますが、これは `levels` 引数をとらないので、`factor()` 関数を使うとよいでしょう。なお、`as.factor()` は、単に `factor()` に投げるだけの関数です。
+
+## オブジェクトを削除
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: オブジェクトを削除
+:::
+
+R で作業を続けていると、ベクトルやデータフレームがたくさんできることがあります。
+
+作業をクリアにするために、これらを削除したい時があります。まず、変数を削除するには `rm()` 関数を使います。また、変数をすべて列挙する `ls()` 関数をその引数に使います。
+
+```{r eval=FALSE}
+rm(list=ls())
+```
+
+これで右上の Environment ペインのオブジェクトがなくなりました。
+
+
+
+
+
+
+## 命名法
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: 命名法
+:::
+
+データや関数には、命名規則があります。最低限として、数字で始めることはできません。`2x` などのベクトルは作成することはできません。`Error: unexpected symbol in "2x"` というエラーとなります。
+
+予約語と言われる単語は避けます。予約語としては、`if` や `TRUE` など R で使われる語を使おうとすると、`Error: unexpected assignment in "if <-"` とエラーが出ます。
+
+予約語ではないが、避けた方が良いのは、`T` や `F` です。`T` は `TRUE`、`F` は `FALSE` の省略形として使われています。F 値を格納しようとして `F` という変数を使おうとすると、おかしなことになることがあります。
+
+基本的には、英語で意味が分かりやすい名前をつけます。例えば、`df_population` や `dfPopulation` という名前であれば、人口データのデータフレームであることがわかります。
+
+Wikipedia の[命名規則](https://ja.wikipedia.org/wiki/%E5%91%BD%E5%90%8D%E8%A6%8F%E5%89%87_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0))
+
+
+
+
+
+
+
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```

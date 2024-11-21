@@ -1,0 +1,107 @@
+# 表 {#table}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+
+
+
+## クロス集計
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: クロス集計 `ftable()`
+:::
+
+データをインポートし、データフレーム `dfInjury` に格納します。
+
+```{r}
+library(readxl)
+dfInjury <- read_excel("kentei4.xlsx", sheet = "p55-raw")
+dfInjury$Reason <- factor(dfInjury$Reason)
+dfInjury$Gender <- factor(dfInjury$Gender)
+```
+
+次に、Base R にある `ftable()` 関数を使って、クロス集計表を出力してみます。
+
+```{r}
+ftable(dfInjury, row.vars = "Gender", col.vars = "Reason")
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: クロス集計 **{crosstable}**
+:::
+
+これは、確認するためには十分ですが、報告書にこのまま記載するわけにはいきません。 そこで、もう少し見た目の良い表を作るために **{crosstable}** というパッケージを追加してみます。
+
+```{r}
+library(crosstable)
+as_flextable(crosstable(dfInjury, cols = Reason, by = Gender))
+```
+
+## 要約
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: **{tables}**
+:::
+
+```{r}
+library(tables)
+table_options(htmloptions(head=FALSE))
+toHTML(tabular(dfInjury$Reason ~ dfInjury$Gender))
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: **{tableone}**
+:::
+
+医療系の場合、クロス集計表には、質的データにはχ二乗検定、量的データにはt検定（どちらも正規分布を仮定しています）を行い、その p 値を付すことが多い用です。 なお、上記の `crosstable` でも、`test = TRUE` という引数を追加することで検定結果を追加することができます。
+
+そこで、医療系にあったクロス集計表を作成してみます。
+
+```{r}
+library(tableone)
+CreateTableOne(data = dfInjury, strata = "Gender", factorVars = "Reason")
+```
+
+医療系ということもあり、引数も比較的わかりやすいものになっています。
+
+引数
+
+-   `data`: データフレーム
+-   `strata`: 層別化する列
+-   `factorVars`: データが因子の列。χ二乗検定される。他の列は量的データとみなされ、t検定される。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: クロス集計 **{rpivotTable}**
+:::
+
+
+最後に、インタラクティブに操作することができる **{rpivotTable}** パッケージを紹介します。 これは、HTML の特徴を生かして、ウェブページ上で表示を変えることができるものになります。
+
+```{r}
+library(rpivotTable)
+rpivotTable(dfInjury, rows="Gender", cols="Reason", width="100%", height="400px")
+```
+
+
+
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```

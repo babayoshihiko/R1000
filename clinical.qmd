@@ -1,0 +1,121 @@
+# 臨床研究 {#clinical}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+https://cran.r-project.org/web/views/ClinicalTrials.html.
+
+## メタ分析
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: フローチャート
+:::
+
+メタ分析ですが、一番使いやすいのは RCT 用のパッケージ **{consort}** です。
+
+データフレームに、研究名、除外基準１、除外基準２の列を作成します。除外基準には、理由を文字列で書きます。
+
+```{r include=FALSE}
+dfMeta <- read.table(text = "Study, Excl1, Excl2
+Baba Y (2020),理由 1,
+Suminaga M (2023),理由 1,
+Sato D (2034),理由 2,
+Sasaki K (2034),,",
+header = TRUE,
+sep=",")
+```
+```{r echo=FALSE}
+library(DT)
+datatable(dfMeta)
+```
+
+このデータフレームを、以下の様に処理します。
+
+```{r dev="ragg_png"}
+library(consort)
+out <- consort_plot(data = dfMeta,
+  orders = c(Study = "検索 (PubMed)",
+  Excl1    = "除外",
+  Study = "タイトルと要約\nRisk of Bias 2.0",
+  Excl2    = "除外",
+  Study = "メタ分析"),
+  side_box = c("Excl1", "Excl2"),
+  cex = 0.9)
+plot(out)
+```
+
+
+## ランダム化
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: ブロックランダム化
+:::
+
+**{blockrand}** パッケージは、ブロックランダム化を行う。引数には、全体のサンプルサイズ (`n`)、群数 (`num.levels`)、ブロックサイズ (`block.sizes`) などを指定する。
+
+ブロックサイズを動的に変更することはできないようである。
+
+返り値は、データフレームで、行数は `n` と同じまたは少し多い。
+
+```{r}
+library(blockrand)
+a <- blockrand(n = 59, 
+                     num.levels = 2, # three treatments
+                     levels = c("1", "2"), # arm names
+                     stratum = "stratum", # stratum name
+                     id.prefix = "arm", # stratum abbrev
+                     block.sizes = c(2,2), # times arms = 3,6,9
+                     block.prefix = "block") # stratum abbrev
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: Pocock and Simon 法
+:::
+
+Pocock and Simon 法は、最初の被験者は単純無作為化で、その後は既存の割付をみて群間差がないように割り付けていく方法です。
+
+**{covadap}** パッケージの `PocSim()` 関数を使います。
+
+まず、ダミーデータを作ってみましょう。n = 100 で、性別、年齢３区分、血圧３区分のデータフレームです。
+
+```{r message=FALSE}
+df1 <- data.frame("gender" = sample(c("female", "male"), 100, TRUE, c(1 / 3, 2 / 3)),
+                  "age" = sample(c("18-35", "36-50", ">50"), 100, TRUE),
+                  "bloodpressure" = sample(c("normal", "high", "hyper"), 100, TRUE),
+                   stringsAsFactors = TRUE)
+```
+
+**{covadap}** パッケージの `PocSim()` 関数を使ってランダム化し、`df1` に `group` 列を追加します。
+
+```{r message=FALSE}
+require(covadap)
+res <- PocSim(df1, p = 0.85, print.results = TRUE)
+df1$group <- res$Assignments
+```
+
+群間の比較をしてみましょう。
+
+```{r}
+library(tableone)
+CreateTableOne(c("gender","age","bloodpressure"),"group",df1)
+```
+
+バランスもよく、群間の有意差もみられない無作為化ができました。
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```
+
+## 疫学
+
+

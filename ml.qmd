@@ -1,0 +1,19 @@
+# 機械学習 {#ml}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+## 機械学習
+
+機械学習には、大きく分けて 3 つのメタパッケージがあります。ここでいうメタパッケージとは、さまざまな機械学習を統一した方法で実行できる様にしています。
+
+* caret
+* mlr3
+* tidymodels
+
+
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```

@@ -1,0 +1,45 @@
+# データフレーム {#dataframe}
+
+```{r echo=FALSE}
+i <- getOption("i")
+```
+
+## データフレーム
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: データフレーム iris を使う
+:::
+
+R では、エクセルなどを読み込んだ形式のデータがあります。
+
+R についているデータフレームに iris というものがあります。このデータフレームは、他のチュートリアルでもよく使われています。このデータフレームを呼び出してみましょう。
+
+```{r}
+data(iris)
+```
+
+iris とは、植物のアヤメのことです。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: iris の中身を表示する
+:::
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: iris の mode を確認する
+:::
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: Rmd と dataframe を並べて表示する
+:::

@@ -1,0 +1,77 @@
+# TeX で PDF 出力 {#tex}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: TeX とは
+:::
+
+TeX とは、R とは全く別のソフトウェアです。
+
+TeX は、組版システムと言い、活版印刷のような文字や図版などの要素を紙面に配置します。現代では、数式などを含めた文書を PDF 形式で出力する際によく用いえられます。
+
+Rmd や Bookdown、Quarto などで、PDF 出力をするときに、裏で TeX が実行されています。
+
+TeX は、独自のシステムなので https://www.tug.org/texlive/ からインストールすることもできます。ところが、R でインストールすることもできます。それが tinytex という CRAN パッケージです。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: tinytex で TeX パッケージをインストール
+:::
+
+TeX も、R と同様に必要なパッケージを追加インストールする方式になっています。**{tinytex}** は、その名の通りインストールは小さめなので、必要に応じて TeX パッケージをインストールします。
+
+```{r eval=FALSE}
+library(tinytex)
+tinytex::tlmgr_install("multirow")
+tinytex::tlmgr_update()
+```
+
+tinytex::tlmgr_install("scheme-full") で、すべての TeX パッケージをインストールしておく。
+
+apalike がないというエラーが出たら、\_output.yml に以下を追加
+
+citation_package: natbib
+
+この他、"upmendex"、"multirow"、"pdfcrop" などを追加でインストールしておくと良い。
+
+## 日本語 PDF
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: rmdja で日本語 PDF
+:::
+
+日本語PDF を作成する場合、これが最も成功率が高い。
+
+```{r eval=FALSE}
+remotes::install_github('Gedevan-Aleksizde/rmdja@development', upgrade = "never")
+```
+
+bookdown の場合、
+
+rmdja::pdf_book_ja: default
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: Quarto で日本語 PDF
+:::
+
+Quarto Document を選択すると、R Markdown よりも日本語 PDF が作りやすい。このときも rmdja を使う。
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```

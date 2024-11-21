@@ -1,0 +1,49 @@
+# 他のプログラミング言語 {#python}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+Quarto Documento や R Markdown のコードチャンクは、R 言語だけではなく、Bash、D3、Python,
+Rcpp、SQL、Stan にも対応しています。
+
+## Bash を使ってみる
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)` Bash を使ってみる
+:::
+
+Bash は、macOS や Linux ではデフォルトでインストール済みのはずです。Windows ではインストールされていない場合があるので、その場合は使用できません。
+
+コードチャンクの \`\`\`{r} を \`\`\`{bash} にすると、Bash コードを実行するコードチャンクになります。
+
+```{bash}
+pwd
+```
+
+## Python を使ってみる
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)` Python を使ってみる
+:::
+
+コードチャンクの \`\`\`{r} を \`\`\`{python} にすると、Python コードを実行するコードチャンクになります。なお、**{reticulate}** パッケージを使います。
+
+```{python}
+import sys
+sys.version
+```
+
+これを実行すると、Console が Python に変わり、`>` が `>>>` になります。
+
+
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```
