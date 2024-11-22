@@ -70,7 +70,58 @@ i <- i + 1
 TIP `r sprintf("%03d", i)`: Quarto で日本語 PDF
 :::
 
-Quarto Document を選択すると、R Markdown よりも日本語 PDF が作りやすい。このときも rmdja を使う。
+Quarto Document を選択すると、R Markdown よりも日本語 PDF が作りやすい。このときも **{rmdja}** を使う。
+
+1. パッケージ **{rmdja}** をインストール
+
+2. TeX ファイルを二つ作成
+
+preamble.tex
+```
+\usepackage{color}
+\usepackage{makeidx}
+\usepackage{colortbl}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+```
+
+after_body.tex
+```
+
+```
+
+3. _quarto.yml を以下のように編集
+
+```
+format:
+  pdf:
+    documentclass: bxjsbook
+    classoption: xelatex,ja=standard
+    default-image-extension: png
+    include-in-header:  preamble.tex
+    include-after-body: after_body.tex
+    papersize: A4
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: Quarto で索引を作成
+:::
+
+TeX ファイルを二つ作成
+
+preamble.tex
+```
+\makeindex
+```
+
+after_body.tex
+```
+\printindex
+```
+
 
 ```{r echo=FALSE}
 save(i, file = "variable.RData")
