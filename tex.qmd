@@ -122,6 +122,43 @@ after_body.tex
 \printindex
 ```
 
+## TinyTex 更新
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: TinyTex 更新
+:::
+
+TinyTex は、TeX と呼ばれる R とは異なるソフトウェアを管理しています。TeX も、独自のパッケージ体系を持っています。
+
+TeX パッケージの更新方法
+
+```{r eval=FALSE}
+tinytex::tlmgr_update()
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: PDF 作成時に自動更新させない
+:::
+
+TinyTex は、Bookdown や Quarto などで PDF 作成時に、TeX を更新しようとします。
+
+.Rprofile に、以下の行を追加します。このファイルは、
+
+- Windows: C:\Users\<YourUsername>\Documents\.Rprofile
+- macOS/Linux: ~/.Rprofile (or /Users/<YourUsername>/.Rprofile on macOS)
+
+にあるか、ない場合は自分で作成します。
+
+```
+options(tinytex.auto_install = FALSE)
+```
+
 
 ```{r echo=FALSE}
 save(i, file = "variable.RData")

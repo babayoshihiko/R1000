@@ -10,6 +10,7 @@ book:
     - intro.qmd
     - rstudio.qmd
     - data.qmd
+    - datetime.qmd
     - if.qmd
     - dataframe.qmd
     - table.qmd

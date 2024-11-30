@@ -1,0 +1,74 @@
+# 日付時間 {#datetime}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+## Excel から読み込み
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: **{readxl}** で読み込み
+:::
+
+Excel で、あらかじめ Date 型、Time 型、Date (DateTime) 型の 3 つのセルを準備しておきました。
+
+- Date: 2024/1/1
+- Time: 13:00:00
+- DateTime: 2024/1/1 13:00:00
+
+```{r}
+library(readxl)
+datetime <- read_excel("datetime.xlsx", 
+    col_types = c("date", "date", "date"))
+```
+
+読み込んだ結果は、
+
+- Date: "2024-01-01"
+- Time: "1899-12-31 13:00:00"
+- DateTime: "2024-01-01 13:00:00"
+
+Time 型は、勝手に日付が追加されるようです。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: **{lubridate}** で時間のみ抽出
+:::
+
+`datetime$time` には、``1899-12-31 13:00:00'' というデータが格納されています。もともと日付はなかったので、1899-12-31 に意味はありません。
+
+そこで、時間データのみ抽出します。
+
+```{r}
+library(lubridate)
+hms(datetime$time)
+hour(datetime$time)
+minute(datetime$time)
+second(datetime$time)
+```
+
+`hms()` という関数がありますが、うまく機能しません。`hour()` などの関数は機能しています。
+
+## **{lubridate}** パッケージ
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: **{lubridate}** Cheat Sheet
+:::
+
+![Cheatsheet](https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf)
+
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```
