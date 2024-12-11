@@ -1,0 +1,123 @@
+# NA {#na}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+## NA とは
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)` NA とは
+:::
+
+エクセルや CSV などからデータをインポートする際に、データの入っていないセルは NA と表示されます。
+
+```{r include=FALSE}
+df <- read.table(text = "Factor, Character, Double
+1,Sato,
+,Takahashi,2.7
+3,,3.4", 
+header = TRUE, 
+colClasses=c("factor", "character", "double"), 
+sep=",")
+df[2,"Factor"] <- NA
+df[3,"Character"] <- NA
+df[1,"Double"] <- NA
+
+library(DT)
+```
+
+まず、データフレームを用意します。それぞれ、データ型を表している列名になっています。
+
+RStudio でデータフレームを表示させると、通常は `NA` と表示されます。なお、RStudio 上では、Factor は `NA` とは表示されないようです。
+
+```{r echo=FALSE}
+rowCallback <- c(
+    "function(row, data){",
+    "  for(var i=0; i<data.length; i++){",
+    "    if(data[i] === null){",
+    "      $('td:eq('+i+')', row).html('NA')",
+    "        .css({'color': 'rgb(151,151,151)', 'font-style': 'italic'});",
+    "    }",
+    "  }",
+    "}"  
+  )
+DT::datatable(df, options = list(rowCallback = JS(rowCallback)))
+```
+
+NA かどうかを確認するには、`is.na()` 関数を使います。
+
+```{r}
+is.na(df[2,"Factor"])
+```
+
+```{r}
+is.na(df[3,"Character"])
+```
+
+```{r}
+is.na(df[1,"Double"])
+```
+
+## 数える
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)` 指定した列の `NA` を数える
+:::
+
+```{r eval=FALSE}
+sum(is.na(df$Double))
+```
+
+## 置き換え
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)` すべての列の置き換え
+:::
+
+すべての列の NA を 0 に置き換えます。ただし、Factor 型のレベルに 0 がないと警告が出ます。
+
+```{r eval=FALSE}
+df[is.na(df)] <- 0
+```
+```{r echo=FALSE}
+df2 <- df
+df2[is.na(df2)] <- 0
+DT::datatable(df2, options = list(rowCallback = JS(rowCallback)))
+```
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)` 指定した列の置き換え
+:::
+
+Double 列の `NA` を 0 に置き換えます。
+
+```{r eval=FALSE}
+df[is.na(df$Double),"Double"] <- 0
+```
+```{r echo=FALSE}
+df2 <- df
+df2[is.na(df2$Double),"Double"] <- 0
+DT::datatable(df2, options = list(rowCallback = JS(rowCallback)))
+```
+
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```

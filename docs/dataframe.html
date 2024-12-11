@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; データフレーム – R1000</title>
+<title>R1000 - 6&nbsp; データフレーム</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,12 +17,11 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +32,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -47,13 +46,43 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -64,7 +93,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./table.html" rel="next">
+<link href="./na.html" rel="next">
 <link href="./if.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -81,13 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -96,12 +119,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
+
 <link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
 <script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
@@ -128,18 +150,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <body class="nav-sidebar floating">
 
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dataframe.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">データフレーム</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">データフレーム</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -147,123 +165,118 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R1000</a> 
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rstudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">RStudio</span></span></a>
+  <a href="./rstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">データ</span></span></a>
+  <a href="./data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">データ</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./if.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">if</span></span></a>
+  <a href="./datetime.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">日付時間</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dataframe.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">データフレーム</span></span></a>
+  <a href="./if.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">if</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">表</span></span></a>
+  <a href="./dataframe.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">データフレーム</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">グラフ (ggplot2)</span></span></a>
+  <a href="./na.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NA</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./packaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">パッケージ開発</span></span></a>
+  <a href="./table.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">表</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">git</span></span></a>
+  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">グラフ (ggplot2)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">TeX で PDF 出力</span></span></a>
+  <a href="./packaging.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">パッケージ開発</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./thesis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">論文</span></span></a>
+  <a href="./git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">git</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./clinical.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">臨床研究</span></span></a>
+  <a href="./tex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">TeX で PDF 出力</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></span></a>
+  <a href="./thesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">論文</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./clinical.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">臨床研究</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#データフレームを作る" id="toc-データフレームを作る" class="nav-link active" data-scroll-target="#データフレームを作る"><span class="header-section-number">5.1</span> データフレームを作る</a></li>
-  <li><a href="#よく使われるデータフレーム" id="toc-よく使われるデータフレーム" class="nav-link" data-scroll-target="#よく使われるデータフレーム"><span class="header-section-number">5.2</span> よく使われるデータフレーム</a></li>
-  <li><a href="#na-処理" id="toc-na-処理" class="nav-link" data-scroll-target="#na-処理"><span class="header-section-number">5.3</span> NA 処理</a></li>
-  <li><a href="#列名を変更" id="toc-列名を変更" class="nav-link" data-scroll-target="#列名を変更"><span class="header-section-number">5.4</span> 列名を変更</a></li>
-  <li><a href="#新たに列を作る" id="toc-新たに列を作る" class="nav-link" data-scroll-target="#新たに列を作る"><span class="header-section-number">5.5</span> 新たに列を作る</a></li>
-  <li><a href="#部分集合" id="toc-部分集合" class="nav-link" data-scroll-target="#部分集合"><span class="header-section-number">5.6</span> 部分集合</a></li>
-  <li><a href="#手動で編集" id="toc-手動で編集" class="nav-link" data-scroll-target="#手動で編集"><span class="header-section-number">5.7</span> 手動で編集</a></li>
-  <li><a href="#long-形式と-wide-形式" id="toc-long-形式と-wide-形式" class="nav-link" data-scroll-target="#long-形式と-wide-形式"><span class="header-section-number">5.8</span> Long 形式と Wide 形式</a></li>
-  <li><a href="#ひどいデータ" id="toc-ひどいデータ" class="nav-link" data-scroll-target="#ひどいデータ"><span class="header-section-number">5.9</span> ひどいデータ</a></li>
-  <li><a href="#データフレームを出力" id="toc-データフレームを出力" class="nav-link" data-scroll-target="#データフレームを出力"><span class="header-section-number">5.10</span> データフレームを出力</a></li>
+  <li><a href="#データフレームを作る" id="toc-データフレームを作る" class="nav-link active" data-scroll-target="#データフレームを作る"><span class="toc-section-number">6.1</span>  データフレームを作る</a></li>
+  <li><a href="#よく使われるデータフレーム" id="toc-よく使われるデータフレーム" class="nav-link" data-scroll-target="#よく使われるデータフレーム"><span class="toc-section-number">6.2</span>  よく使われるデータフレーム</a></li>
+  <li><a href="#na-処理" id="toc-na-処理" class="nav-link" data-scroll-target="#na-処理"><span class="toc-section-number">6.3</span>  NA 処理</a></li>
+  <li><a href="#列名を変更" id="toc-列名を変更" class="nav-link" data-scroll-target="#列名を変更"><span class="toc-section-number">6.4</span>  列名を変更</a></li>
+  <li><a href="#新たに列を作る" id="toc-新たに列を作る" class="nav-link" data-scroll-target="#新たに列を作る"><span class="toc-section-number">6.5</span>  新たに列を作る</a></li>
+  <li><a href="#部分集合" id="toc-部分集合" class="nav-link" data-scroll-target="#部分集合"><span class="toc-section-number">6.6</span>  部分集合</a></li>
+  <li><a href="#手動で編集" id="toc-手動で編集" class="nav-link" data-scroll-target="#手動で編集"><span class="toc-section-number">6.7</span>  手動で編集</a></li>
+  <li><a href="#long-形式と-wide-形式" id="toc-long-形式と-wide-形式" class="nav-link" data-scroll-target="#long-形式と-wide-形式"><span class="toc-section-number">6.8</span>  Long 形式と Wide 形式</a></li>
+  <li><a href="#ひどいデータ" id="toc-ひどいデータ" class="nav-link" data-scroll-target="#ひどいデータ"><span class="toc-section-number">6.9</span>  ひどいデータ</a></li>
+  <li><a href="#データフレームを出力" id="toc-データフレームを出力" class="nav-link" data-scroll-target="#データフレームを出力"><span class="toc-section-number">6.10</span>  データフレームを出力</a></li>
   </ul>
 </nav>
     </div>
@@ -272,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="dataframe" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">データフレーム</span></span></h1>
+<h1 class="title"><span id="dataframe" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">データフレーム</span></span></h1>
 </div>
 
 
@@ -285,23 +298,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
+<div class="cell">
 
-<section id="データフレームを作る" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="データフレームを作る"><span class="header-section-number">5.1</span> データフレームを作る</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+</div>
+<section id="データフレームを作る" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="データフレームを作る"><span class="header-section-number">6.1</span> データフレームを作る</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 057: データフレームを作る (1) 列ごとに作る</p>
+<div class="cell">
+
+</div>
+<p>TIP 060: データフレームを作る (1) 列ごとに作る</p>
 </div>
 </div>
 <div class="cell">
@@ -319,17 +336,20 @@ Tip
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">avg_sleep_hours=</span><span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">18</span>, <span class="dv">17</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>演習: https://github.com/babayoshihiko/R1000/blob/main/exercise/dataframe/create.qmd</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 058: データフレームを作る (2) CSV 的な作り方</p>
+<div class="cell">
+
+</div>
+<p>TIP 061: データフレームを作る (2) CSV 的な作り方</p>
 </div>
 </div>
 <div class="cell">
@@ -357,17 +377,20 @@ Tip
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="at">sep=</span><span class="st">"/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>演習: https://github.com/babayoshihiko/R1000/blob/main/exercise/dataframe/create.qmd</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 059: データフレームを作る (3) 行列からデータフレームに変換</p>
+<div class="cell">
+
+</div>
+<p>TIP 062: データフレームを作る (3) 行列からデータフレームに変換</p>
 </div>
 </div>
 <p>行列もエクセルの様に 2x2 でデータを持っています。データフレームは、列ごとに異なる mode を設定できますが、行列はすべて同じ mode でなければなりません。</p>
@@ -376,19 +399,22 @@ Tip
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_from_matrix <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(my_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="よく使われるデータフレーム" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="よく使われるデータフレーム"><span class="header-section-number">5.2</span> よく使われるデータフレーム</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="よく使われるデータフレーム" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="よく使われるデータフレーム"><span class="header-section-number">6.2</span> よく使われるデータフレーム</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 060: よく使われるデータフレーム</p>
+<div class="cell">
+
+</div>
+<p>TIP 063: よく使われるデータフレーム</p>
 </div>
 </div>
 <p>R の勉強をしていると、よく出てくるデータフレームがあります。有名なものは、<code>iris</code> と <code>mtcars</code> です。</p>
@@ -396,19 +422,22 @@ Tip
 <p>iris とは、植物のアヤメのことで、統計学でも有名な Ronald Aylmer Fisher が論文で使用したデータです。iris には setosa、versicolor、virginica という種と、がく片（sepal）の長さ、幅、および花弁（petal）の長さ、幅のデータがあります。</p>
 <p>mtcars については、<code>?mtcars</code> として調べてみてください。</p>
 </section>
-<section id="na-処理" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="na-処理"><span class="header-section-number">5.3</span> NA 処理</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="na-処理" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="na-処理"><span class="header-section-number">6.3</span> NA 処理</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 061: 多重代入法</p>
+<div class="cell">
+
+</div>
+<p>TIP 064: 多重代入法</p>
 </div>
 </div>
 <p>データで紹介した <code>na.omit()</code> も使うこともできますが、その他の方法を紹介します。</p>
@@ -431,19 +460,22 @@ Tip
 </div>
 <p>df_miced$imp を見ると、Gender と T1 は 20 回補完されました。T2 は 2x20 回補完されました。</p>
 </section>
-<section id="列名を変更" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="列名を変更"><span class="header-section-number">5.4</span> 列名を変更</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="列名を変更" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="列名を変更"><span class="header-section-number">6.4</span> 列名を変更</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 062: 列名を変更</p>
+<div class="cell">
+
+</div>
+<p>TIP 065: 列名を変更</p>
 </div>
 </div>
 <p>まず、データフレーム <code>df</code> の列を確認します。</p>
@@ -458,17 +490,20 @@ Tip
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df)[<span class="dv">16</span>] <span class="ot">&lt;-</span> <span class="st">"知見"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>とします。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 063: 列にラベルを設定</p>
+<div class="cell">
+
+</div>
+<p>TIP 066: 列にラベルを設定</p>
 </div>
 </div>
 <p>列名を日本語にしたり、空白を中に入れることは、あまり好ましくありません。一方、表や図を作成するときに、列名が使われます。</p>
@@ -481,24 +516,28 @@ Tip
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-146ce051744fc3bc3369" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-146ce051744fc3bc3369">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],[1,2,3,4],[1,2,3,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>col1<\/th>\n      <th>col2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"col1","targets":1},{"name":"col2","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
+<div class="datatables html-widget html-fill-item" id="htmlwidget-1a89f46d566859413e6e" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1a89f46d566859413e6e">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],[1,2,3,4],[1,2,3,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>col1<\/th>\n      <th>col2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"col1","targets":1},{"name":"col2","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
-<section id="新たに列を作る" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="新たに列を作る"><span class="header-section-number">5.5</span> 新たに列を作る</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="新たに列を作る" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="新たに列を作る"><span class="header-section-number">6.5</span> 新たに列を作る</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 064: 複数選択を処理 (1)</p>
+<div class="cell">
+
+</div>
+<p>TIP 067: 複数選択を処理 (1)</p>
 </div>
 </div>
 <p>Google Document でアンケート調査をすると、複数選択はセル内に押し込まれます。これを、独立した列に格納します。</p>
@@ -524,6 +563,9 @@ Tip
 4  4      M         &lt;NA&gt;     0      0      0
 5  5      F       Orange     0      1      0</code></pre>
 </div>
+</div>
+<div class="cell">
+
 </div>
 <p><strong>{dplyr}</strong> を使う方法もあります。</p>
 <div class="cell">
@@ -555,17 +597,20 @@ Attaching package: 'dplyr'</code></pre>
 5  5      F       Orange     0      1      0</code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 065: 複数選択を処理 (2) OR 文</p>
+<div class="cell">
+
+</div>
+<p>TIP 068: 複数選択を処理 (2) OR 文</p>
 </div>
 </div>
 <p>R 言語で、OR 文を使うには、<code>|</code> 記号を使います。</p>
@@ -592,19 +637,22 @@ Tip
 </div>
 </div>
 </section>
-<section id="部分集合" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="部分集合"><span class="header-section-number">5.6</span> 部分集合</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="部分集合" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="部分集合"><span class="header-section-number">6.6</span> 部分集合</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 066: 条件に合う列だけの部分集合を作る</p>
+<div class="cell">
+
+</div>
+<p>TIP 069: 条件に合う列だけの部分集合を作る</p>
 </div>
 </div>
 <div class="cell">
@@ -655,19 +703,22 @@ Tip
 </div>
 </div>
 </section>
-<section id="手動で編集" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="手動で編集"><span class="header-section-number">5.7</span> 手動で編集</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="手動で編集" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="手動で編集"><span class="header-section-number">6.7</span> 手動で編集</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 067: データフレームを手動で編集</p>
+<div class="cell">
+
+</div>
+<p>TIP 070: データフレームを手動で編集</p>
 </div>
 </div>
 <p>Console で、以下の様に入力します。</p>
@@ -678,67 +729,84 @@ Tip
 <p>データフレームを表示させている場合、自動的に更新されるわけではないので、再表示させてみてください。</p>
 <p>演習: https://github.com/babayoshihiko/R1000/blob/main/exercise/dataframe/edit.qmd</p>
 </section>
-<section id="long-形式と-wide-形式" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="long-形式と-wide-形式"><span class="header-section-number">5.8</span> Long 形式と Wide 形式</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="long-形式と-wide-形式" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="long-形式と-wide-形式"><span class="header-section-number">6.8</span> Long 形式と Wide 形式</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 068: Wide 形式</p>
+<div class="cell">
+
+</div>
+<p>TIP 071: Wide 形式</p>
 </div>
 </div>
 <p>Excel などでデータを準備する際には、なんとなく使用している「型」があると思われます。</p>
 <p>一例として、10人の生徒の体力を見るために、50m走の時間（Speed, 秒）と、幅跳びの距離（Jump, m）を、４月(April)、９月（September)、３月（March)の３回計測したとします。</p>
 <p>おそらく、このような表を作成するのではないでしょうか。</p>
 <div class="cell">
+
+</div>
+<div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-104ee9d519ff7fdf7db4" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-104ee9d519ff7fdf7db4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[1,2,3,4,5,6,7,8,9,10],[11.87,11.34,11.08,11.87,11.93,10.31,11.58,11.26,10.02,10.04],[3.06,3.06,3.27,3.36,3.25,2.6,2.73,3.22,2.9,2.52],[10.12,9.02,10.92,10.96,9.470000000000001,10.74,11.18,9.17,12,9.359999999999999],[2.77,3.48,3.27,3.08,2.98,2.72,3,2.76,3.15,2.68],[10.72,9.06,9.800000000000001,10.42,11.44,9.470000000000001,11.87,10.87,11.64,10.66],[2.99,2.81,3.99,4.23,3.49,3.93,3.26,4.29,3.11,2.98]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>StudentID<\/th>\n      <th>Speed (April)<\/th>\n      <th>Jump (April)<\/th>\n      <th>Speed (September)<\/th>\n      <th>Jump (September)<\/th>\n      <th>Speed (March)<\/th>\n      <th>Jump (March)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"StudentID","targets":1},{"name":"Speed (April)","targets":2},{"name":"Jump (April)","targets":3},{"name":"Speed (September)","targets":4},{"name":"Jump (September)","targets":5},{"name":"Speed (March)","targets":6},{"name":"Jump (March)","targets":7}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
+<div class="datatables html-widget html-fill-item" id="htmlwidget-09d3ae73e90c7119857d" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-09d3ae73e90c7119857d">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[1,2,3,4,5,6,7,8,9,10],[11.87,11.34,11.08,11.87,11.93,10.31,11.58,11.26,10.02,10.04],[3.06,3.06,3.27,3.36,3.25,2.6,2.73,3.22,2.9,2.52],[10.12,9.02,10.92,10.96,9.470000000000001,10.74,11.18,9.17,12,9.359999999999999],[2.77,3.48,3.27,3.08,2.98,2.72,3,2.76,3.15,2.68],[10.72,9.06,9.800000000000001,10.42,11.44,9.470000000000001,11.87,10.87,11.64,10.66],[2.99,2.81,3.99,4.23,3.49,3.93,3.26,4.29,3.11,2.98]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>StudentID<\/th>\n      <th>Speed (April)<\/th>\n      <th>Jump (April)<\/th>\n      <th>Speed (September)<\/th>\n      <th>Jump (September)<\/th>\n      <th>Speed (March)<\/th>\n      <th>Jump (March)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"StudentID","targets":1},{"name":"Speed (April)","targets":2},{"name":"Jump (April)","targets":3},{"name":"Speed (September)","targets":4},{"name":"Jump (September)","targets":5},{"name":"Speed (March)","targets":6},{"name":"Jump (March)","targets":7}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>このように、被験者一人につき一つの行で、50m走3回と幅跳び3回分を横に広く (wide) に書く形式を Wide 形式と言います。</p>
 <p>この形式はとても見やすく、このままだいたいの作図もできます。</p>
 <p>一方で、この形式のままでは作図できないものがあります。 その一つが、帯グラフになります。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 069: Long 形式</p>
+<div class="cell">
+
+</div>
+<p>TIP 072: Long 形式</p>
 </div>
 </div>
 <div class="cell">
+
+</div>
+<div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-abe41f866654d9cf41e5" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-abe41f866654d9cf41e5">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"],[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10],["April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March"],["speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump"],[10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>StudentID<\/th>\n      <th>Season<\/th>\n      <th>Subject<\/th>\n      <th>Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"StudentID","targets":1},{"name":"Season","targets":2},{"name":"Subject","targets":3},{"name":"Value","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
+<div class="datatables html-widget html-fill-item" id="htmlwidget-bf28c07514fa44e7335c" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-bf28c07514fa44e7335c">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"],[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10],["April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March"],["speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump"],[10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>StudentID<\/th>\n      <th>Season<\/th>\n      <th>Subject<\/th>\n      <th>Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"StudentID","targets":1},{"name":"Season","targets":2},{"name":"Subject","targets":3},{"name":"Value","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>このように、数値が常に同じ列に入っているような形式を Long 形式といいます。</p>
 </section>
-<section id="ひどいデータ" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="ひどいデータ"><span class="header-section-number">5.9</span> ひどいデータ</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="ひどいデータ" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="ひどいデータ"><span class="header-section-number">6.9</span> ひどいデータ</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 070: データのクリーニング (1)</p>
+<div class="cell">
+
+</div>
+<p>TIP 073: データのクリーニング (1)</p>
 </div>
 </div>
 <p>実際には、ひどいデータにしょっちゅう出くわします。</p>
@@ -751,8 +819,9 @@ Tip
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(dfKentei4Dirty)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-700de4bb11d3b56982bb" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-700de4bb11d3b56982bb">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],["M","F","M","M","F","F","M","M","F","m","f","Ⅿ","Ｆ","1","2","1","2","1","2","1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>PatientID<\/th>\n      <th>Sex<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"PatientID","targets":1},{"name":"Sex","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
+<div class="datatables html-widget html-fill-item" id="htmlwidget-cf699ab14ac2b35848df" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-cf699ab14ac2b35848df">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],["M","F","M","M","F","F","M","M","F","m","f","Ⅿ","Ｆ","1","2","1","2","1","2","1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>PatientID<\/th>\n      <th>Sex<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"PatientID","targets":1},{"name":"Sex","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
@@ -768,27 +837,33 @@ Tip
 </div>
 <p>このように、ひどいデータを修正する作業を、cleaning や sanitizing といいます。こういった処理に特化したパッケージもありますが、日本語にうまく対応しているのはないようなので、今のところ上記のコードが一番よさそうです。</p>
 </section>
-<section id="データフレームを出力" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="データフレームを出力"><span class="header-section-number">5.10</span> データフレームを出力</h2>
+<section id="データフレームを出力" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="データフレームを出力"><span class="header-section-number">6.10</span> データフレームを出力</h2>
 <p>ここでは、データフレームを Quarto Document または R Markdown から HTML および PDF 出力する方法を紹介します。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="cell">
+
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 071: knitr::kable()</p>
+<div class="cell">
+
+</div>
+<p>TIP 074: knitr::kable()</p>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped">
 <thead>
 <tr class="header">
 <th style="text-align: right;">Number</th>
@@ -821,25 +896,28 @@ Tip
 </table>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 072: <strong>{xtable}</strong></p>
+<div class="cell">
+
+</div>
+<p>TIP 075: <strong>{xtable}</strong></p>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xtable)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">xtable</span>(df), <span class="at">type =</span> <span class="st">"html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;!-- html table generated in R 4.4.2 by xtable 1.8-4 package --&gt;
-&lt;!-- Sat Nov 23 08:13:45 2024 --&gt;
+<pre><code>&lt;!-- html table generated in R 4.4.1 by xtable 1.8-4 package --&gt;
+&lt;!-- Thu Dec 12 06:55:26 2024 --&gt;
 &lt;table border=1&gt;
 &lt;tr&gt; &lt;th&gt;  &lt;/th&gt; &lt;th&gt; Number &lt;/th&gt; &lt;th&gt; English &lt;/th&gt; &lt;th&gt; Japanese &lt;/th&gt;  &lt;/tr&gt;
   &lt;tr&gt; &lt;td align="right"&gt; 1 &lt;/td&gt; &lt;td align="right"&gt;   1 &lt;/td&gt; &lt;td&gt; one &lt;/td&gt; &lt;td&gt; いち &lt;/td&gt; &lt;/tr&gt;
@@ -850,17 +928,20 @@ Tip
 </div>
 </div>
 <p><strong>{xtable}</strong> は、PDF に出力するときに強みを発揮します。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 073: <strong>{stargazer}</strong></p>
+<div class="cell">
+
+</div>
+<p>TIP 076: <strong>{stargazer}</strong></p>
 </div>
 </div>
 <div class="cell">
@@ -884,39 +965,46 @@ Please cite as: </code></pre>
 </div>
 </div>
 <p><strong>{stargazer}</strong> も、HTML よりも PDF で強みを発揮します。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 074: <strong>{DT}</strong></p>
+<div class="cell">
+
+</div>
+<p>TIP 077: <strong>{DT}</strong></p>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-15049e977ac7f4b081cf" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-15049e977ac7f4b081cf">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],[1,2,3,4],["one","two","three","four"],["いち","に","さん","よん"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Number<\/th>\n      <th>English<\/th>\n      <th>Japanese<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Number","targets":1},{"name":"English","targets":2},{"name":"Japanese","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
+<div class="datatables html-widget html-fill-item" id="htmlwidget-fd2ba1d93de0f7776197" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-fd2ba1d93de0f7776197">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],[1,2,3,4],["one","two","three","four"],["いち","に","さん","よん"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Number<\/th>\n      <th>English<\/th>\n      <th>Japanese<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Number","targets":1},{"name":"English","targets":2},{"name":"Japanese","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>{DT}</strong> は、大きなデータを HTML で表示するときに最適です。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 075: <strong>{gt}</strong></p>
+<div class="cell">
+
+</div>
+<p>TIP 078: <strong>{gt}</strong></p>
 </div>
 </div>
 <div class="cell">
@@ -927,23 +1015,24 @@ Tip
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>)),</span>
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> English))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="tcfofinbvv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tcfofinbvv table {
+
+<div id="hijeeqfbrh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hijeeqfbrh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tcfofinbvv thead, #tcfofinbvv tbody, #tcfofinbvv tfoot, #tcfofinbvv tr, #tcfofinbvv td, #tcfofinbvv th {
+#hijeeqfbrh thead, #hijeeqfbrh tbody, #hijeeqfbrh tfoot, #hijeeqfbrh tr, #hijeeqfbrh td, #hijeeqfbrh th {
   border-style: none;
 }
 
-#tcfofinbvv p {
+#hijeeqfbrh p {
   margin: 0;
   padding: 0;
 }
 
-#tcfofinbvv .gt_table {
+#hijeeqfbrh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -969,12 +1058,12 @@ Tip
   border-left-color: #D3D3D3;
 }
 
-#tcfofinbvv .gt_caption {
+#hijeeqfbrh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tcfofinbvv .gt_title {
+#hijeeqfbrh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -986,7 +1075,7 @@ Tip
   border-bottom-width: 0;
 }
 
-#tcfofinbvv .gt_subtitle {
+#hijeeqfbrh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -998,7 +1087,7 @@ Tip
   border-top-width: 0;
 }
 
-#tcfofinbvv .gt_heading {
+#hijeeqfbrh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1010,13 +1099,13 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#tcfofinbvv .gt_bottom_border {
+#hijeeqfbrh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tcfofinbvv .gt_col_headings {
+#hijeeqfbrh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1031,7 +1120,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#tcfofinbvv .gt_col_heading {
+#hijeeqfbrh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1051,7 +1140,7 @@ Tip
   overflow-x: hidden;
 }
 
-#tcfofinbvv .gt_column_spanner_outer {
+#hijeeqfbrh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1063,15 +1152,15 @@ Tip
   padding-right: 4px;
 }
 
-#tcfofinbvv .gt_column_spanner_outer:first-child {
+#hijeeqfbrh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tcfofinbvv .gt_column_spanner_outer:last-child {
+#hijeeqfbrh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tcfofinbvv .gt_column_spanner {
+#hijeeqfbrh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1083,11 +1172,11 @@ Tip
   width: 100%;
 }
 
-#tcfofinbvv .gt_spanner_row {
+#hijeeqfbrh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tcfofinbvv .gt_group_heading {
+#hijeeqfbrh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1113,7 +1202,7 @@ Tip
   text-align: left;
 }
 
-#tcfofinbvv .gt_empty_group_heading {
+#hijeeqfbrh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1128,15 +1217,15 @@ Tip
   vertical-align: middle;
 }
 
-#tcfofinbvv .gt_from_md > :first-child {
+#hijeeqfbrh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tcfofinbvv .gt_from_md > :last-child {
+#hijeeqfbrh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tcfofinbvv .gt_row {
+#hijeeqfbrh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1155,7 +1244,7 @@ Tip
   overflow-x: hidden;
 }
 
-#tcfofinbvv .gt_stub {
+#hijeeqfbrh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1168,7 +1257,7 @@ Tip
   padding-right: 5px;
 }
 
-#tcfofinbvv .gt_stub_row_group {
+#hijeeqfbrh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1182,15 +1271,15 @@ Tip
   vertical-align: top;
 }
 
-#tcfofinbvv .gt_row_group_first td {
+#hijeeqfbrh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tcfofinbvv .gt_row_group_first th {
+#hijeeqfbrh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tcfofinbvv .gt_summary_row {
+#hijeeqfbrh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1200,16 +1289,16 @@ Tip
   padding-right: 5px;
 }
 
-#tcfofinbvv .gt_first_summary_row {
+#hijeeqfbrh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tcfofinbvv .gt_first_summary_row.thick {
+#hijeeqfbrh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tcfofinbvv .gt_last_summary_row {
+#hijeeqfbrh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1219,7 +1308,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#tcfofinbvv .gt_grand_summary_row {
+#hijeeqfbrh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1229,7 +1318,7 @@ Tip
   padding-right: 5px;
 }
 
-#tcfofinbvv .gt_first_grand_summary_row {
+#hijeeqfbrh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1239,7 +1328,7 @@ Tip
   border-top-color: #D3D3D3;
 }
 
-#tcfofinbvv .gt_last_grand_summary_row_top {
+#hijeeqfbrh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1249,11 +1338,11 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#tcfofinbvv .gt_striped {
+#hijeeqfbrh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tcfofinbvv .gt_table_body {
+#hijeeqfbrh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1262,7 +1351,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#tcfofinbvv .gt_footnotes {
+#hijeeqfbrh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1276,7 +1365,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#tcfofinbvv .gt_footnote {
+#hijeeqfbrh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1285,7 +1374,7 @@ Tip
   padding-right: 5px;
 }
 
-#tcfofinbvv .gt_sourcenotes {
+#hijeeqfbrh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1299,7 +1388,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#tcfofinbvv .gt_sourcenote {
+#hijeeqfbrh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1307,123 +1396,118 @@ Tip
   padding-right: 5px;
 }
 
-#tcfofinbvv .gt_left {
+#hijeeqfbrh .gt_left {
   text-align: left;
 }
 
-#tcfofinbvv .gt_center {
+#hijeeqfbrh .gt_center {
   text-align: center;
 }
 
-#tcfofinbvv .gt_right {
+#hijeeqfbrh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tcfofinbvv .gt_font_normal {
+#hijeeqfbrh .gt_font_normal {
   font-weight: normal;
 }
 
-#tcfofinbvv .gt_font_bold {
+#hijeeqfbrh .gt_font_bold {
   font-weight: bold;
 }
 
-#tcfofinbvv .gt_font_italic {
+#hijeeqfbrh .gt_font_italic {
   font-style: italic;
 }
 
-#tcfofinbvv .gt_super {
+#hijeeqfbrh .gt_super {
   font-size: 65%;
 }
 
-#tcfofinbvv .gt_footnote_marks {
+#hijeeqfbrh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tcfofinbvv .gt_asterisk {
+#hijeeqfbrh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tcfofinbvv .gt_indent_1 {
+#hijeeqfbrh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tcfofinbvv .gt_indent_2 {
+#hijeeqfbrh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tcfofinbvv .gt_indent_3 {
+#hijeeqfbrh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tcfofinbvv .gt_indent_4 {
+#hijeeqfbrh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tcfofinbvv .gt_indent_5 {
+#hijeeqfbrh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tcfofinbvv .katex-display {
+#hijeeqfbrh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tcfofinbvv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hijeeqfbrh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
-<th id="Number" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Number</th>
-<th id="English" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">English</th>
-<th id="Japanese" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Japanese</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_right" headers="Number">1</td>
-<td class="gt_row gt_left" headers="English" style="background-color: #B2F7EF; font-weight: bold">one</td>
-<td class="gt_row gt_left" headers="Japanese">いち</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Number">2</td>
-<td class="gt_row gt_left" headers="English" style="background-color: #B2F7EF; font-weight: bold">two</td>
-<td class="gt_row gt_left" headers="Japanese">に</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="Number">3</td>
-<td class="gt_row gt_left" headers="English" style="background-color: #B2F7EF; font-weight: bold">three</td>
-<td class="gt_row gt_left" headers="Japanese">さん</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="Number">4</td>
-<td class="gt_row gt_left" headers="English" style="background-color: #B2F7EF; font-weight: bold">four</td>
-<td class="gt_row gt_left" headers="Japanese">よん</td>
-</tr>
-</tbody>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Number">Number</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="English">English</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Japanese">Japanese</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Number" class="gt_row gt_right">1</td>
+<td headers="English" class="gt_row gt_left" style="background-color: #B2F7EF; font-weight: bold;">one</td>
+<td headers="Japanese" class="gt_row gt_left">いち</td></tr>
+    <tr><td headers="Number" class="gt_row gt_right">2</td>
+<td headers="English" class="gt_row gt_left" style="background-color: #B2F7EF; font-weight: bold;">two</td>
+<td headers="Japanese" class="gt_row gt_left">に</td></tr>
+    <tr><td headers="Number" class="gt_row gt_right">3</td>
+<td headers="English" class="gt_row gt_left" style="background-color: #B2F7EF; font-weight: bold;">three</td>
+<td headers="Japanese" class="gt_row gt_left">さん</td></tr>
+    <tr><td headers="Number" class="gt_row gt_right">4</td>
+<td headers="English" class="gt_row gt_left" style="background-color: #B2F7EF; font-weight: bold;">four</td>
+<td headers="Japanese" class="gt_row gt_left">よん</td></tr>
+  </tbody>
+  
+  
 </table>
-
 </div>
 </div>
 </div>
 <p>gt は、画像として出力されいます。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 076: <strong>{formattable}</strong></p>
+<div class="cell">
+
+</div>
+<p>TIP 079: <strong>{formattable}</strong></p>
 </div>
 </div>
 <div class="cell">
@@ -1431,6 +1515,7 @@ Tip
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">formattable</span>(df,</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">Number =</span> <span class="fu">color_bar</span>(<span class="st">"#e9c46a"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
+
 <table class="table table-condensed">
 <thead>
 <tr>
@@ -1491,21 +1576,25 @@ four
 </td>
 </tr>
 </tbody>
+
 </table>
 </div>
 </div>
 <p><strong>{formattable}</strong> は、余計なメッセージが出るので、コードチャンクに <code>message = FALSE</code> を追加します。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 077: <strong>{kableExtra}</strong></p>
+<div class="cell">
+
+</div>
+<p>TIP 080: <strong>{kableExtra}</strong></p>
 </div>
 </div>
 <div class="cell">
@@ -1517,74 +1606,81 @@ Tip
 <span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">"white"</span>,</span>
 <span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">background =</span> <span class="st">"#e9c46a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="lightable-paper caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">Number</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">English</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Japanese</th>
-</tr>
-</thead>
+
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Number </th>
+   <th style="text-align:left;"> English </th>
+   <th style="text-align:left;"> Japanese </th>
+  </tr>
+ </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left; color: white !important; background-color: rgba(233, 196, 106, 255) !important;">one</td>
-<td style="text-align: left;">いち</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left; color: white !important; background-color: rgba(233, 196, 106, 255) !important;">two</td>
-<td style="text-align: left;">に</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: left; color: white !important; background-color: rgba(233, 196, 106, 255) !important;">three</td>
-<td style="text-align: left;">さん</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: left; color: white !important; background-color: rgba(233, 196, 106, 255) !important;">four</td>
-<td style="text-align: left;">よん</td>
-</tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;color: white !important;background-color: rgba(233, 196, 106, 255) !important;"> one </td>
+   <td style="text-align:left;"> いち </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;color: white !important;background-color: rgba(233, 196, 106, 255) !important;"> two </td>
+   <td style="text-align:left;"> に </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;color: white !important;background-color: rgba(233, 196, 106, 255) !important;"> three </td>
+   <td style="text-align:left;"> さん </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;color: white !important;background-color: rgba(233, 196, 106, 255) !important;"> four </td>
+   <td style="text-align:left;"> よん </td>
+  </tr>
 </tbody>
 </table>
-
 
 </div>
 </div>
 <p><strong>{kableExtra}</strong> は、余計なメッセージが出るので、コードチャンクに <code>message = FALSE</code> を追加します。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 078: <strong>{flextable}</strong></p>
+<div class="cell">
+
+</div>
+<p>TIP 081: <strong>{flextable}</strong></p>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">flextable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-6c962480{}.cl-6c8d4252{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6c90e8b2{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6c90e8c6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6c910ee6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6c910ef0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6c910efa{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6c910efb{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6c910f04{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6c910f05{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-6c962480"><thead><tr style="overflow-wrap:break-word;"><th class="cl-6c910ee6"><p class="cl-6c90e8b2"><span class="cl-6c8d4252">Number</span></p></th><th class="cl-6c910ef0"><p class="cl-6c90e8c6"><span class="cl-6c8d4252">English</span></p></th><th class="cl-6c910ef0"><p class="cl-6c90e8c6"><span class="cl-6c8d4252">Japanese</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-6c910efa"><p class="cl-6c90e8b2"><span class="cl-6c8d4252">1</span></p></td><td class="cl-6c910efb"><p class="cl-6c90e8c6"><span class="cl-6c8d4252">one</span></p></td><td class="cl-6c910efb"><p class="cl-6c90e8c6"><span class="cl-6c8d4252">いち</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6c910efa"><p class="cl-6c90e8b2"><span class="cl-6c8d4252">2</span></p></td><td class="cl-6c910efb"><p class="cl-6c90e8c6"><span class="cl-6c8d4252">two</span></p></td><td class="cl-6c910efb"><p class="cl-6c90e8c6"><span class="cl-6c8d4252">に</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6c910efa"><p class="cl-6c90e8b2"><span class="cl-6c8d4252">3</span></p></td><td class="cl-6c910efb"><p class="cl-6c90e8c6"><span class="cl-6c8d4252">three</span></p></td><td class="cl-6c910efb"><p class="cl-6c90e8c6"><span class="cl-6c8d4252">さん</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6c910f04"><p class="cl-6c90e8b2"><span class="cl-6c8d4252">4</span></p></td><td class="cl-6c910f05"><p class="cl-6c90e8c6"><span class="cl-6c8d4252">four</span></p></td><td class="cl-6c910f05"><p class="cl-6c90e8c6"><span class="cl-6c8d4252">よん</span></p></td></tr></tbody></table></div>
+
+<div class="tabwid"><style>.cl-a185ec10{}.cl-a180b772{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a182e394{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a182e39e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a182fa82{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a182fa8c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a182fa8d{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a182fa8e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a182fa96{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a182fa97{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-a185ec10"><thead><tr style="overflow-wrap:break-word;"><th class="cl-a182fa82"><p class="cl-a182e394"><span class="cl-a180b772">Number</span></p></th><th class="cl-a182fa8c"><p class="cl-a182e39e"><span class="cl-a180b772">English</span></p></th><th class="cl-a182fa8c"><p class="cl-a182e39e"><span class="cl-a180b772">Japanese</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a182fa8d"><p class="cl-a182e394"><span class="cl-a180b772">1</span></p></td><td class="cl-a182fa8e"><p class="cl-a182e39e"><span class="cl-a180b772">one</span></p></td><td class="cl-a182fa8e"><p class="cl-a182e39e"><span class="cl-a180b772">いち</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a182fa8d"><p class="cl-a182e394"><span class="cl-a180b772">2</span></p></td><td class="cl-a182fa8e"><p class="cl-a182e39e"><span class="cl-a180b772">two</span></p></td><td class="cl-a182fa8e"><p class="cl-a182e39e"><span class="cl-a180b772">に</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a182fa8d"><p class="cl-a182e394"><span class="cl-a180b772">3</span></p></td><td class="cl-a182fa8e"><p class="cl-a182e39e"><span class="cl-a180b772">three</span></p></td><td class="cl-a182fa8e"><p class="cl-a182e39e"><span class="cl-a180b772">さん</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a182fa96"><p class="cl-a182e394"><span class="cl-a180b772">4</span></p></td><td class="cl-a182fa97"><p class="cl-a182e39e"><span class="cl-a180b772">four</span></p></td><td class="cl-a182fa97"><p class="cl-a182e39e"><span class="cl-a180b772">よん</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <p><strong>{flextable}</strong> は、余計なメッセージが出るので、コードチャンクに <code>message = FALSE</code> を追加します。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 079: <strong>{reactable}</strong></p>
+<div class="cell">
+
+</div>
+<p>TIP 082: <strong>{reactable}</strong></p>
 </div>
 </div>
 <div class="cell">
@@ -1613,22 +1709,26 @@ Attaching package: 'reactablefmtr'</code></pre>
 <span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill_gradient =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-73526fc0b0f09175e6d0" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-73526fc0b0f09175e6d0">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Number":[1,2,3,4],"English":["one","two","three","four"],"Japanese":["いち","に","さん","よん"]},"columns":[{"id":"Number","name":"Number","type":"numeric","cell":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center","color":"black","fontSize":null,"fontWeight":"normal"}},"children":[" 1",{"name":"div","attribs":{"style":{"flexGrow":1,"borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"marginLeft":"6px","background":"#e5e5e5"}},"children":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":[{"name":"div","attribs":{"style":{"boxShadow":"0 6px 6px -4px #888888","borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"background":null,"backgroundImage":"linear-gradient(to right,#E81CFFFF, #40C9FFFF","border":"  ","color":"black","width":"25%","height":18,"transition":"width 1s ease","display":"flex","alignItems":"center"}},"children":[""]}]}]}]},{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center","color":"black","fontSize":null,"fontWeight":"normal"}},"children":[" 2",{"name":"div","attribs":{"style":{"flexGrow":1,"borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"marginLeft":"6px","background":"#e5e5e5"}},"children":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":[{"name":"div","attribs":{"style":{"boxShadow":"0 6px 6px -4px #888888","borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"background":null,"backgroundImage":"linear-gradient(to right,#E81CFFFF, #40C9FFFF","border":"  ","color":"black","width":"50%","height":18,"transition":"width 1s ease","display":"flex","alignItems":"center"}},"children":[""]}]}]}]},{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center","color":"black","fontSize":null,"fontWeight":"normal"}},"children":[" 3",{"name":"div","attribs":{"style":{"flexGrow":1,"borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"marginLeft":"6px","background":"#e5e5e5"}},"children":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":[{"name":"div","attribs":{"style":{"boxShadow":"0 6px 6px -4px #888888","borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"background":null,"backgroundImage":"linear-gradient(to right,#E81CFFFF, #40C9FFFF","border":"  ","color":"black","width":"75%","height":18,"transition":"width 1s ease","display":"flex","alignItems":"center"}},"children":[""]}]}]}]},{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center","color":"black","fontSize":null,"fontWeight":"normal"}},"children":[" 4",{"name":"div","attribs":{"style":{"flexGrow":1,"borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"marginLeft":"6px","background":"#e5e5e5"}},"children":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":[{"name":"div","attribs":{"style":{"boxShadow":"0 6px 6px -4px #888888","borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"background":null,"backgroundImage":"linear-gradient(to right,#E81CFFFF, #40C9FFFF","border":"  ","color":"black","width":"100%","height":18,"transition":"width 1s ease","display":"flex","alignItems":"center"}},"children":[""]}]}]}]}]},{"id":"English","name":"English","type":"character","cell":["one","two","three","four"]},{"id":"Japanese","name":"Japanese","type":"character","cell":["いち","に","さん","よん"]}],"dataKey":"faa32d0a29eadacb2fdf21776e080fb2"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+<div class="reactable html-widget html-fill-item" id="htmlwidget-0234f741f1798d59a762" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0234f741f1798d59a762">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Number":[1,2,3,4],"English":["one","two","three","four"],"Japanese":["いち","に","さん","よん"]},"columns":[{"id":"Number","name":"Number","type":"numeric","cell":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center","color":"black","fontSize":null,"fontWeight":"normal"}},"children":[" 1",{"name":"div","attribs":{"style":{"flexGrow":1,"borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"marginLeft":"6px","background":"#e5e5e5"}},"children":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":[{"name":"div","attribs":{"style":{"boxShadow":"0 6px 6px -4px #888888","borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"background":null,"backgroundImage":"linear-gradient(to right,#E81CFFFF, #40C9FFFF","border":"  ","color":"black","width":"25%","height":18,"transition":"width 1s ease","display":"flex","alignItems":"center"}},"children":[""]}]}]}]},{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center","color":"black","fontSize":null,"fontWeight":"normal"}},"children":[" 2",{"name":"div","attribs":{"style":{"flexGrow":1,"borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"marginLeft":"6px","background":"#e5e5e5"}},"children":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":[{"name":"div","attribs":{"style":{"boxShadow":"0 6px 6px -4px #888888","borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"background":null,"backgroundImage":"linear-gradient(to right,#E81CFFFF, #40C9FFFF","border":"  ","color":"black","width":"50%","height":18,"transition":"width 1s ease","display":"flex","alignItems":"center"}},"children":[""]}]}]}]},{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center","color":"black","fontSize":null,"fontWeight":"normal"}},"children":[" 3",{"name":"div","attribs":{"style":{"flexGrow":1,"borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"marginLeft":"6px","background":"#e5e5e5"}},"children":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":[{"name":"div","attribs":{"style":{"boxShadow":"0 6px 6px -4px #888888","borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"background":null,"backgroundImage":"linear-gradient(to right,#E81CFFFF, #40C9FFFF","border":"  ","color":"black","width":"75%","height":18,"transition":"width 1s ease","display":"flex","alignItems":"center"}},"children":[""]}]}]}]},{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center","color":"black","fontSize":null,"fontWeight":"normal"}},"children":[" 4",{"name":"div","attribs":{"style":{"flexGrow":1,"borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"marginLeft":"6px","background":"#e5e5e5"}},"children":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":[{"name":"div","attribs":{"style":{"boxShadow":"0 6px 6px -4px #888888","borderTopLeftRadius":9,"borderBottomLeftRadius":9,"borderTopRightRadius":9,"borderBottomRightRadius":9,"background":null,"backgroundImage":"linear-gradient(to right,#E81CFFFF, #40C9FFFF","border":"  ","color":"black","width":"100%","height":18,"transition":"width 1s ease","display":"flex","alignItems":"center"}},"children":[""]}]}]}]}]},{"id":"English","name":"English","type":"character","cell":["one","two","three","four"]},{"id":"Japanese","name":"Japanese","type":"character","cell":["いち","に","さん","よん"]}],"dataKey":"faa32d0a29eadacb2fdf21776e080fb2"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>{reactable}</strong> は、並べ替えができます。<code>English</code> や <code>Japanese</code> をクリックしてみてください。</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 080: colorDF</p>
+<div class="cell">
+
+</div>
+<p>TIP 083: colorDF</p>
 </div>
 </div>
 <div class="cell">
@@ -1656,6 +1756,9 @@ Attaching package: 'colorDF'</code></pre>
 </div>
 </div>
 <p>Console では色がついて表示されます。</p>
+<div class="cell">
+
+</div>
 
 
 </section>
@@ -1688,15 +1791,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1728,50 +1828,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1781,17 +1842,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1803,245 +1855,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -2083,18 +1899,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./if.html" class="pagination-link" aria-label="if">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">if</span></span>
+      <a href="./if.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">if</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./table.html" class="pagination-link" aria-label="表">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">表</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./na.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">NA</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

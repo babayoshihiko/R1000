@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R1000 - 13&nbsp; 論文</title>
+<title>R1000 - 4&nbsp; 日付時間</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,8 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./clinical.html" rel="next">
-<link href="./tex.html" rel="prev">
+<link href="./if.html" rel="next">
+<link href="./data.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -134,7 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">論文</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">日付時間</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -179,7 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datetime.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">日付時間</span></a>
+  <a href="./datetime.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">日付時間</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -224,7 +224,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./thesis.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">論文</span></a>
+  <a href="./thesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">論文</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -246,8 +246,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto"><span class="toc-section-number">13.1</span>  Quarto</a></li>
-  <li><a href="#文献管理" id="toc-文献管理" class="nav-link" data-scroll-target="#文献管理"><span class="toc-section-number">13.2</span>  文献管理</a></li>
+  <li><a href="#excel-から読み込み" id="toc-excel-から読み込み" class="nav-link active" data-scroll-target="#excel-から読み込み"><span class="toc-section-number">4.1</span>  Excel から読み込み</a></li>
+  <li><a href="#lubridate-パッケージ" id="toc-lubridate-パッケージ" class="nav-link" data-scroll-target="#lubridate-パッケージ"><span class="toc-section-number">4.2</span>  <strong>{lubridate}</strong> パッケージ</a></li>
   </ul>
 </nav>
     </div>
@@ -256,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="thesis" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">論文</span></span></h1>
+<h1 class="title"><span id="datetime" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">日付時間</span></span></h1>
 </div>
 
 
@@ -274,8 +274,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 
 </div>
-<section id="quarto" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="quarto"><span class="header-section-number">13.1</span> Quarto</h2>
+<section id="excel-から読み込み" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="excel-から読み込み"><span class="header-section-number">4.1</span> Excel から読み込み</h2>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -289,13 +289,27 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 127: Quarto Book</p>
+<p>TIP 050: <strong>{readxl}</strong> で読み込み</p>
 </div>
 </div>
-<p>New Project &gt; New Directory &gt; Quarto Book</p>
-</section>
-<section id="文献管理" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="文献管理"><span class="header-section-number">13.2</span> 文献管理</h2>
+<p>Excel で、あらかじめ Date 型、Time 型、Date (DateTime) 型の 3 つのセルを準備しておきました。</p>
+<ul>
+<li>Date: 2024/1/1</li>
+<li>Time: 13:00:00</li>
+<li>DateTime: 2024/1/1 13:00:00</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>datetime <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"datetime.xlsx"</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"date"</span>, <span class="st">"date"</span>, <span class="st">"date"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>読み込んだ結果は、</p>
+<ul>
+<li>Date: “2024-01-01”</li>
+<li>Time: “1899-12-31 13:00:00”</li>
+<li>DateTime: “2024-01-01 13:00:00”</li>
+</ul>
+<p>Time 型は、勝手に日付が追加されるようです。</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -309,42 +323,69 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 128: Zotero を読み込む</p>
+<p>TIP 051: <strong>{lubridate}</strong> で時間のみ抽出</p>
 </div>
 </div>
-<p>Zotero で文献管理を行なっている場合、</p>
-<p>https://www.zotero.org/</p>
-<p>にログイン後、</p>
-<p>https://www.zotero.org/settings/keys</p>
-<p>から API キーをコピーしておきます。</p>
+<p><code>datetime$time</code> には、``1899-12-31 13:00:00’’ というデータが格納されています。もともと日付はなかったので、1899-12-31 に意味はありません。</p>
+<p>そこで、時間データのみ抽出します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)      <span class="co"># rasterGrob()</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)    <span class="co"># image_read()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Linking to ImageMagick 6.9.12.93
-Enabled features: cairo, fontconfig, freetype, heic, lcms, pango, raw, rsvg, webp
-Disabled features: fftw, ghostscript, x11</code></pre>
+<pre><code>
+Attaching package: 'lubridate'</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra) <span class="co"># grid.arrange</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>img1 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/thesis-zotero.png"</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">rasterGrob</span>(<span class="fu">image_read</span>(<span class="st">"img/thesis-zotero-2.png"</span>))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(img1, img2, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">nrow=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="thesis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hms</span>(datetime<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in .parse_hms(..., order = "HMS", quiet = quiet): Some strings failed
+to parse</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hour</span>(datetime<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">minute</span>(datetime<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">second</span>(datetime<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RefManageR)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ReadZotero</span>(<span class="at">user =</span> <span class="st">"7 桁の数字"</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">.params =</span> <span class="fu">c</span>(<span class="at">key =</span> <span class="st">"24 文字の API キー"</span>),</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">temp.file =</span> <span class="st">"references.bib"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">delete.file =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>hms()</code> という関数がありますが、うまく機能しません。<code>hour()</code> などの関数は機能しています。</p>
+</section>
+<section id="lubridate-パッケージ" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="lubridate-パッケージ"><span class="header-section-number">4.2</span> <strong>{lubridate}</strong> パッケージ</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <div class="cell">
 
 </div>
-<p>現状、以下の様なエラーが出て、一部しかダウンロードされていません。日本語に未対応か？</p>
-<p>Error in ReadZotero(user = “7 桁の数字”, .params = c(key = “24 文字の API キー”), : Could not parse the returned BibTeX results. If ‘delete.file’ is FALSE, you can try viewing and editing the file: references.bib</p>
+<p>TIP 052: <strong>{lubridate}</strong> Cheat Sheet</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf" class="img-fluid"></p>
+<p></p><figcaption class="figure-caption">Cheatsheet</figcaption><p></p>
+</figure>
+</div>
 <div class="cell">
 
 </div>
@@ -488,13 +529,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tex.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">TeX で PDF 出力</span></span>
+      <a href="./data.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">データ</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./clinical.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">臨床研究</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./if.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">if</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

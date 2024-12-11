@@ -13,6 +13,7 @@ book:
     - datetime.qmd
     - if.qmd
     - dataframe.qmd
+    - na.qmd
     - table.qmd
     - ggplot2.qmd
     - packaging.qmd
