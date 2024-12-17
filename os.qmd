@@ -22,15 +22,43 @@ Windows では、パッケージが OneDrive というフォルダに保存さ�
 
 (2) 以下のディレクトリ内に .Renviron というファイルを作成しよう（ファイル名の最初はドット記号）。
 
--   Windows : C:\Users\username\Documents
+-   Windows : C:\\Users\\username\\Documents
+-   Windows : C:\\Users\\username\\OneDrive\\ドキュメント
 
 テキストファイルは、RStudio のメニューから、File \> New File \> Text File を選択する。
 
 ここに、以下のように記述する。
 
-R_LIBS="C:/R" LANGUAGE="en" \# 日本語の場合 ja
+R_LIBS="C:\\R" 
+LANGUAGE="en" \# 日本語の場合 ja
+
+また、一時ディレクトリが使えないエラーが出たときは、以下のように追加する。
+
+TMPDIR="C:\\tmp" 
+TMP="C:\\tmp" 
+TEMP="C:\\tmp"
 
 Windows ではバックスラッシュが正しいが、R ではスラッシュを使う点に注意。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)` Git タブが表示されない
+:::
+
+GitHub 関連のプロジェクトを、ユーザーディレクトリ以外に保存しいると、Git タブが表示されないことがある。
+
+C:\\Users\\username\\.gitconfig
+
+に、
+
+```
+[safe]
+    directory = *
+```
+
+と追加する。
 
 ## macOS
 
