@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; 日付時間 – R1000</title>
+<title>15&nbsp; 特定の OS の問題 – R1000</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./if.html" rel="next">
-<link href="./data.html" rel="prev">
+<link href="./python.html" rel="next">
+<link href="./clinical.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./datetime.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">日付時間</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./os.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">特定の OS の問題</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datetime.html" class="sidebar-item-text sidebar-link active">
+  <a href="./datetime.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">日付時間</span></span></a>
   </div>
 </li>
@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./os.html" class="sidebar-item-text sidebar-link">
+  <a href="./os.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">特定の OS の問題</span></span></a>
   </div>
 </li>
@@ -252,8 +252,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#excel-から読み込み" id="toc-excel-から読み込み" class="nav-link active" data-scroll-target="#excel-から読み込み"><span class="header-section-number">4.1</span> Excel から読み込み</a></li>
-  <li><a href="#lubridate-パッケージ" id="toc-lubridate-パッケージ" class="nav-link" data-scroll-target="#lubridate-パッケージ"><span class="header-section-number">4.2</span> <strong>{lubridate}</strong> パッケージ</a></li>
+  <li><a href="#windows" id="toc-windows" class="nav-link active" data-scroll-target="#windows"><span class="header-section-number">15.1</span> Windows</a></li>
+  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos"><span class="header-section-number">15.2</span> macOS</a></li>
   </ul>
 </nav>
     </div>
@@ -262,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="datetime" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">日付時間</span></span></h1>
+<h1 class="title"><span id="os" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">特定の OS の問題</span></span></h1>
 </div>
 
 
@@ -279,8 +279,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="excel-から読み込み" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="excel-から読み込み"><span class="header-section-number">4.1</span> Excel から読み込み</h2>
+<section id="windows" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="windows"><span class="header-section-number">15.1</span> Windows</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -291,27 +291,25 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 050: <strong>{readxl}</strong> で読み込み</p>
+<p>TIP 133 OneDrive 問題</p>
 </div>
 </div>
-<p>Excel で、あらかじめ Date 型、Time 型、Date (DateTime) 型の 3 つのセルを準備しておきました。</p>
+<p>Windows では、パッケージが OneDrive というフォルダに保存される。ところが、ユーザ名が日本語でああると、パッケージを読み込めなくなってしまう。また、この中には、R のバージョンごとにサブフォルダがある。つまり、バージョンアップをするたびに今までのパッケージは使われなくなる（これは macOS や Linux でも同様）。R のバージョンアップのたびに、パッケージを一からインストールるしなければならない。</p>
+<p>こうした問題を避けるため、(1) 別の場所にパッケージ専用のフォルダを作成し、(2) そこを読み込むように設定する。</p>
+<ol type="1">
+<li><p>C ドライブ直下に R フォルダ（“C:”）を作っておく。</p></li>
+<li><p>以下のディレクトリ内に .Renviron というファイルを作成しよう（ファイル名の最初はドット記号）。</p></li>
+</ol>
 <ul>
-<li>Date: 2024/1/1</li>
-<li>Time: 13:00:00</li>
-<li>DateTime: 2024/1/1 13:00:00</li>
+<li>Windows : C:\Users\username\Documents</li>
+<li>Windows : C:\Users\username\OneDrive\ドキュメント</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>datetime <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"datetime.xlsx"</span>, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"date"</span>, <span class="st">"date"</span>, <span class="st">"date"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>読み込んだ結果は、</p>
-<ul>
-<li>Date: “2024-01-01”</li>
-<li>Time: “1899-12-31 13:00:00”</li>
-<li>DateTime: “2024-01-01 13:00:00”</li>
-</ul>
-<p>Time 型は、勝手に日付が追加されるようです。</p>
+<p>テキストファイルは、RStudio のメニューから、File &gt; New File &gt; Text File を選択する。</p>
+<p>ここに、以下のように記述する。</p>
+<p>R_LIBS=“C:\R” LANGUAGE=“en” # 日本語の場合 ja</p>
+<p>また、一時ディレクトリが使えないエラーが出たときは、以下のように追加する。</p>
+<p>TMPDIR=“C:\tmp” TMP=“C:\tmp” TEMP=“C:\tmp”</p>
+<p>Windows ではバックスラッシュが正しいが、R ではスラッシュを使う点に注意。</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -322,47 +320,18 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 051: <strong>{lubridate}</strong> で時間のみ抽出</p>
+<p>TIP 134 Git タブが表示されない</p>
 </div>
 </div>
-<p><code>datetime$time</code> には、``1899-12-31 13:00:00’’ というデータが格納されています。もともと日付はなかったので、1899-12-31 に意味はありません。</p>
-<p>そこで、時間データのみ抽出します。</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'lubridate'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    date, intersect, setdiff, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hms</span>(datetime<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in .parse_hms(..., order = "HMS", quiet = quiet): Some strings failed
-to parse</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hour</span>(datetime<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 13</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">minute</span>(datetime<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">second</span>(datetime<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
-</div>
-<p><code>hms()</code> という関数がありますが、うまく機能しません。<code>hour()</code> などの関数は機能しています。</p>
+<p>GitHub 関連のプロジェクトを、ユーザーディレクトリ以外に保存しいると、Git タブが表示されないことがある。</p>
+<p>C:\Users\username\.gitconfig</p>
+<p>に、</p>
+<pre><code>[safe]
+    directory = *</code></pre>
+<p>と追加する。</p>
 </section>
-<section id="lubridate-パッケージ" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="lubridate-パッケージ"><span class="header-section-number">4.2</span> <strong>{lubridate}</strong> パッケージ</h2>
+<section id="macos" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="macos"><span class="header-section-number">15.2</span> macOS</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -373,15 +342,40 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TIP 052: <strong>{lubridate}</strong> Cheat Sheet</p>
+<p>TIP 135: ggplot で日本語を表示 (1): フォント指定</p>
 </div>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><embed src="https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf" class="img-fluid"></p>
-<figcaption>Cheatsheet</figcaption>
-</figure>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"HiraginoSans-W3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">fontfamily =</span> <span class="st">"HiraginoSans-W3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>なお、以下は ggplot ではない Base プロット</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.text</span>(<span class="st">"B. 線に沿った標高"</span>, <span class="at">gp =</span> <span class="fu">gpar</span>(<span class="at">fontfamily=</span><span class="st">"HiraginoSans-W3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>TIP 136: ggplot で日本語を表示 (2): ragg</p>
+</div>
+</div>
+<p>まず、RStudio の環境設定、General Graphics の Backend を AGG にします。</p>
+<p>ragg を使うには、以下のうちのいずれかを行います。</p>
+<ol type="1">
+<li>図を出力するチャンクオプションに <code>dev="ragg_png"</code> を追加する</li>
+<li><code>knitr::opts_chunk(dev = "ragg_png")</code> を設定する</li>
+<li>YAML ヘッダ部分に <code>dev: "ragg_png"</code> を加える</li>
+</ol>
+<p>ragg の弱点として、Quarto/Rmd で knit/Build した場合には日本語が表示されますが、 Run Current Chunk をした場合には 文字化けしてしまいます。</p>
 
 
 </section>
@@ -809,13 +803,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./data.html" class="pagination-link" aria-label="データ">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">データ</span></span>
+      <a href="./clinical.html" class="pagination-link" aria-label="臨床研究">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">臨床研究</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./if.html" class="pagination-link" aria-label="if">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">if</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./python.html" class="pagination-link" aria-label="他のプログラミング言語">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
