@@ -5,6 +5,12 @@
 _book
 variable.RData
 .Rproj.user
+/.Rproj.user/*
 .DS_Store
+R1000.Rproj
 
 /.quarto/
+.Rdata
+.httr-oauth
+.quarto
+/docs/

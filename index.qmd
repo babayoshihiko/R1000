@@ -1,3 +1,10 @@
+---
+title: R1000
+date: last-modified
+resources:
+  - .nojekyll
+---
+
 # Preface {.unnumbered}
 
 R 言語は、統計解析を行うためのプログラミング言語です。RStudio は、R 言語を快適に使用する統合開発環境です。

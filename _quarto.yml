@@ -1,10 +1,12 @@
 project:
   type: book
-
+  output-dir: docs
+execute:
+  freeze: auto
 book:
   title: "R1000"
   author: "Yoshihiko Baba"
-  date: "3/2/2024"
+  date: last-modified
   chapters:
     - index.qmd
     - intro.qmd
