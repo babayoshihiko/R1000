@@ -11,18 +11,18 @@ load("variable.RData")
 i <- i + 1
 ```
 
-TIP `r sprintf("%03d", i)` OneDrive 問題
+TIP `r sprintf("%03d", i)`: OneDrive 問題
 :::
 
 Windows では、パッケージが OneDrive というフォルダに保存される。ところが、ユーザ名が日本語でああると、パッケージを読み込めなくなってしまう。また、この中には、R のバージョンごとにサブフォルダがある。つまり、バージョンアップをするたびに今までのパッケージは使われなくなる（これは macOS や Linux でも同様）。R のバージョンアップのたびに、パッケージを一からインストールるしなければならない。
 
 こうした問題を避けるため、(1) 別の場所にパッケージ専用のフォルダを作成し、(2) そこを読み込むように設定する。
 
-(1) C ドライブ直下に R フォルダ（"C:\R"）を作っておく。
+(1) C ドライブ直下に R フォルダ（"C:\\R"）を作っておく。
 
 (2) 以下のディレクトリ内に .Renviron というファイルを作成しよう（ファイル名の最初はドット記号）。
 
--   Windows : C:\Users\username\Documents
+-   Windows : C:\\Users\\username\\Documents
 
 テキストファイルは、RStudio のメニューから、File \> New File \> Text File を選択する。
 
@@ -38,7 +38,7 @@ Windows ではバックスラッシュが正しいが、R ではスラッシュ�
 ```{r echo=FALSE}
 i <- i + 1
 ```
-TIP `r sprintf("%03d", i)\`: ggplot で日本語を表示 (1): フォント指定
+TIP `r sprintf("%03d", i)` ggplot で日本語を表示 (1): フォント指定
 :::
 
 ```{r eval=FALSE}

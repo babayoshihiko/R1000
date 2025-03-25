@@ -21,6 +21,7 @@ book:
     - tex.qmd
     - thesis.qmd
     - clinical.qmd
+    - os.qmd
     - python.qmd
 
 format:
