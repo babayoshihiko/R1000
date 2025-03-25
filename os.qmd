@@ -108,15 +108,15 @@ i <- i + 1
 TIP `r sprintf("%03d", i)`: プログラミングフォント
 :::
 
-Global Options > Appearance で 、プログラミングフォントのうち Cica や SourceCodePro などのフォントが表示されません。macOS は、これらのフォントを等幅フォントと認識しないことが原因のようです。
+Global Options > Appearance で 、プログラミングフォントのうち Cica や SourceCodePro などのフォントが表示されない。macOS は、これらのフォントを等幅フォントと認識しないことが原因。
 
-いくつか対処法がありますが、Terminal (注: Console ではありません) で一行で行う方法を示します。
+いくつか対処法があるが、Terminal (注: Console ではありません) で一行で行う方法を示す。
 
 ```{bash eval=FALSE}
 % defaults write -g NSFont -dict-add "SourceCodePro-Regular" -string "monospace"
 ```
 
-Cica の場合は、"SourceCodePro-Regular" を "Cica-Regular" とします。
+Cica の場合は、"SourceCodePro-Regular" を "Cica-Regular" とする。
 
 ```{r echo=FALSE}
 save(i, file = "variable.RData")
