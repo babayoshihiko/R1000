@@ -21,7 +21,7 @@ Bash は、macOS や Linux ではデフォルトでインストール済みの�
 
 コードチャンクの {r} を {bash} にすると、Bash コードを実行するコードチャンクになります。
 
-```{bash}
+```{bash eval=FALSE}
 pwd
 ```
 
@@ -34,9 +34,11 @@ i <- i + 1
 TIP `r sprintf("%03d", i)` Python を使ってみる
 :::
 
+Python は、macOS や Linux ではデフォルトでインストール済みのはずです。Windows ではインストールされていない場合があるので、インストールすることで使用することができます。
+
 コードチャンクの {r} を {python} にすると、Python コードを実行するコードチャンクになります。なお、**{reticulate}** パッケージを使います。
 
-```{python}
+```{python eval=FALSE}
 import sys
 sys.version
 ```

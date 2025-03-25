@@ -14,7 +14,9 @@ i <- i + 1
 TIP `r sprintf("%03d", i)` NA とは
 :::
 
-エクセルや CSV などからデータをインポートする際に、データの入っていないセルは NA と表示されます。
+R には、欠損値として `NULL`、`NA`、`NaN` があります。
+
+エクセルや CSV などからデータをインポートする際に、データの入っていないセルは `NA` と表示されます。
 
 ```{r include=FALSE}
 df <- read.table(text = "Factor, Character, Double

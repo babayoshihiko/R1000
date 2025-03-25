@@ -245,7 +245,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
+  <a href="./os.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">特定の OS の問題</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
   </div>
 </li>
     </ul>
@@ -304,14 +309,15 @@ Tip
 <p>TIP 084 NA とは</p>
 </div>
 </div>
-<p>エクセルや CSV などからデータをインポートする際に、データの入っていないセルは NA と表示されます。</p>
+<p>R には、欠損値として <code>NULL</code>、<code>NA</code>、<code>NaN</code> があります。</p>
+<p>エクセルや CSV などからデータをインポートする際に、データの入っていないセルは <code>NA</code> と表示されます。</p>
 <p>まず、データフレームを用意します。それぞれ、データ型を表している列名になっています。</p>
 <p>RStudio でデータフレームを表示させると、通常は <code>NA</code> と表示されます。なお、RStudio 上では、Factor は <code>NA</code> とは表示されないようです。</p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-979e74bd17c9d9ccb369" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-979e74bd17c9d9ccb369">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["1",null,"3"],["Sato","Takahashi",null],[null,2.7,3.4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Factor<\/th>\n      <th>Character<\/th>\n      <th>Double<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+i+')', row).html('NA')\n        .css({'color': 'rgb(151,151,151)', 'font-style': 'italic'});\n    }\n  }\n}","columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Factor","targets":1},{"name":"Character","targets":2},{"name":"Double","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-e70267438753f8d023de" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e70267438753f8d023de">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["1",null,"3"],["Sato","Takahashi",null],[null,2.7,3.4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Factor<\/th>\n      <th>Character<\/th>\n      <th>Double<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+i+')', row).html('NA')\n        .css({'color': 'rgb(151,151,151)', 'font-style': 'italic'});\n    }\n  }\n}","columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Factor","targets":1},{"name":"Character","targets":2},{"name":"Double","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 </div>
 <p>NA かどうかを確認するには、<code>is.na()</code> 関数を使います。</p>
@@ -385,8 +391,8 @@ generated</code></pre>
 </div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-1b828d5ee880e1215e90" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-1b828d5ee880e1215e90">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["1",null,"3"],["Sato","Takahashi","0"],[0,2.7,3.4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Factor<\/th>\n      <th>Character<\/th>\n      <th>Double<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+i+')', row).html('NA')\n        .css({'color': 'rgb(151,151,151)', 'font-style': 'italic'});\n    }\n  }\n}","columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Factor","targets":1},{"name":"Character","targets":2},{"name":"Double","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-a85aa58d479f590ec89e" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a85aa58d479f590ec89e">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["1",null,"3"],["Sato","Takahashi","0"],[0,2.7,3.4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Factor<\/th>\n      <th>Character<\/th>\n      <th>Double<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+i+')', row).html('NA')\n        .css({'color': 'rgb(151,151,151)', 'font-style': 'italic'});\n    }\n  }\n}","columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Factor","targets":1},{"name":"Character","targets":2},{"name":"Double","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -412,8 +418,8 @@ Tip
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-878b6c98f5f49897dd2b" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-878b6c98f5f49897dd2b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["1",null,"3"],["Sato","Takahashi",null],[0,2.7,3.4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Factor<\/th>\n      <th>Character<\/th>\n      <th>Double<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+i+')', row).html('NA')\n        .css({'color': 'rgb(151,151,151)', 'font-style': 'italic'});\n    }\n  }\n}","columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Factor","targets":1},{"name":"Character","targets":2},{"name":"Double","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-9718fd455f9e7b37316c" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9718fd455f9e7b37316c">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["1",null,"3"],["Sato","Takahashi",null],[0,2.7,3.4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Factor<\/th>\n      <th>Character<\/th>\n      <th>Double<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"rowCallback":"function(row, data){\n  for(var i=0; i<data.length; i++){\n    if(data[i] === null){\n      $('td:eq('+i+')', row).html('NA')\n        .css({'color': 'rgb(151,151,151)', 'font-style': 'italic'});\n    }\n  }\n}","columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Factor","targets":1},{"name":"Character","targets":2},{"name":"Double","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">

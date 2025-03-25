@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./python.html" rel="next">
+<link href="./os.html" rel="next">
 <link href="./thesis.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -245,7 +245,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
+  <a href="./os.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">特定の OS の問題</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></a>
   </div>
 </li>
     </ul>
@@ -302,7 +307,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 129: フローチャート</p>
+<p>TIP 130: フローチャート</p>
 </div>
 </div>
 <p>メタ分析ですが、一番使いやすいのは RCT 用のパッケージ <strong>{consort}</strong> です。</p>
@@ -310,8 +315,8 @@ Tip
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item" id="htmlwidget-4dbda6966c44e816fd42" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-4dbda6966c44e816fd42">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["Baba Y (2020)","Suminaga M (2023)","Sato D (2034)","Sasaki K (2034)"],["理由 1","理由 1","理由 2",""],[null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Study<\/th>\n      <th>Excl1<\/th>\n      <th>Excl2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Study","targets":1},{"name":"Excl1","targets":2},{"name":"Excl2","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-23bc40f4dc20fab3376a" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-23bc40f4dc20fab3376a">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["Baba Y (2020)","Suminaga M (2023)","Sato D (2034)","Sasaki K (2034)"],["理由 1","理由 1","理由 2",""],[null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Study<\/th>\n      <th>Excl1<\/th>\n      <th>Excl2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Study","targets":1},{"name":"Excl1","targets":2},{"name":"Excl2","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>このデータフレームを、以下の様に処理します。</p>
@@ -346,7 +351,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 130: ブロックランダム化</p>
+<p>TIP 131: ブロックランダム化</p>
 </div>
 </div>
 <p><strong>{blockrand}</strong> パッケージは、ブロックランダム化を行う。引数には、全体のサンプルサイズ (<code>n</code>)、群数 (<code>num.levels</code>)、ブロックサイズ (<code>block.sizes</code>) などを指定する。</p>
@@ -375,7 +380,7 @@ Tip
 <div class="cell">
 
 </div>
-<p>TIP 131: Pocock and Simon 法</p>
+<p>TIP 132: Pocock and Simon 法</p>
 </div>
 </div>
 <p>Pocock and Simon 法は、最初の被験者は単純無作為化で、その後は既存の割付をみて群間差がないように割り付けていく方法です。</p>
@@ -405,51 +410,51 @@ var_names: gender age bloodpressure
 _________________________________________________________
 IMBALANCE MEASURES
  
-Loss: 0.33
+Loss: 0.31
 
-Mahalanobis: 0.29
+Mahalanobis: 0.3
 
-Overall Imb: 2
+Overall Imb: 0
 _________________________________________________________
 STRATA IMBALANCES
  
    gender   age bloodpressure N.strata A.strata D.strata
-1    male 18-35        normal        8        5        2
-2    male 18-35          high        9        3       -3
-3  female 36-50          high        8        5        2
-4  female 18-35        normal        2        0       -2
-5    male   &gt;50        normal        6        5        4
-6  female 18-35         hyper        1        1        1
-7    male   &gt;50          high        7        5        3
-8    male 36-50         hyper        7        5        3
-9    male 36-50          high        6        2       -2
-10   male   &gt;50         hyper        9        2       -5
-11 female 36-50         hyper        6        3        0
-12   male 36-50        normal        6        2       -2
-13 female   &gt;50        normal        4        2        0
-14 female 18-35          high        2        1        0
-15 female   &gt;50         hyper        7        4        1
-16 female   &gt;50          high        3        1       -1
-17 female 36-50        normal        2        1        0
-18   male 18-35         hyper        7        4        1
+1    male 18-35        normal       11        5       -1
+2    male 36-50         hyper       11        4       -3
+3    male   &gt;50          high        9        5        1
+4  female   &gt;50        normal        4        2        0
+5    male   &gt;50         hyper        7        3       -1
+6    male   &gt;50        normal        9        5        1
+7  female 36-50         hyper        7        5        3
+8  female 18-35        normal        4        3        2
+9    male 36-50        normal        6        4        2
+10 female 18-35         hyper        4        1       -2
+11   male 18-35          high        5        3        1
+12 female   &gt;50          high        5        2       -1
+13 female 18-35          high        2        1        0
+14   male 36-50          high        7        3       -1
+15 female   &gt;50         hyper        5        3        1
+16 female 36-50        normal        2        0       -2
+17 female 36-50          high        1        0       -1
+18   male 18-35         hyper        1        1        1
 _________________________________________________________
 WITHIN COVARIATE IMBALANCES
  
-gender.male: 1
+gender.male: 0
 
-gender.female: 1
+gender.female: 0
 
-age.18-35: -1
+age.18-35: 1
 
-age.36-50: 1
+age.36-50: -2
 
-age.&gt;50: 2
+age.&gt;50: 1
 
 bloodpressure.normal: 2
 
-bloodpressure.high: -1
+bloodpressure.hyper: -1
 
-bloodpressure.hyper: 1</code></pre>
+bloodpressure.high: -1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>group <span class="ot">&lt;-</span> res<span class="sc">$</span>Assignments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -460,16 +465,16 @@ bloodpressure.hyper: 1</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   Stratified by group
                     B          A          p      test
-  n                 49         51                    
-  gender = male (%) 32 (65.3)  33 (64.7)   1.000     
-  age (%)                                  0.935     
-     &gt;50            17 (34.7)  19 (37.3)             
-     18-35          15 (30.6)  14 (27.5)             
-     36-50          17 (34.7)  18 (35.3)             
-  bloodpressure (%)                        0.924     
-     high           18 (36.7)  17 (33.3)             
-     hyper          18 (36.7)  19 (37.3)             
-     normal         13 (26.5)  15 (29.4)             </code></pre>
+  n                 50         50                    
+  gender = male (%) 33 (66.0)  33 (66.0)   1.000     
+  age (%)                                  0.914     
+     &gt;50            19 (38.0)  20 (40.0)             
+     18-35          13 (26.0)  14 (28.0)             
+     36-50          18 (36.0)  16 (32.0)             
+  bloodpressure (%)                        0.917     
+     high           15 (30.0)  14 (28.0)             
+     hyper          18 (36.0)  17 (34.0)             
+     normal         17 (34.0)  19 (38.0)             </code></pre>
 </div>
 </div>
 <p>バランスもよく、群間の有意差もみられない無作為化ができました。</p>
@@ -624,8 +629,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./python.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">他のプログラミング言語</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./os.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">特定の OS の問題</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

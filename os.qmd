@@ -24,13 +24,41 @@ Windows では、パッケージが OneDrive というフォルダに保存さ�
 
 -   Windows : C:\\Users\\username\\Documents
 
+
 テキストファイルは、RStudio のメニューから、File \> New File \> Text File を選択する。
 
 ここに、以下のように記述する。
 
-R_LIBS="C:/R" LANGUAGE="en" \# 日本語の場合 ja
+R_LIBS="C:\\R" 
+LANGUAGE="en" \# 日本語の場合 ja
+
+また、一時ディレクトリが使えないエラーが出たときは、以下のように追加する。
+
+TMPDIR="C:\\tmp" 
+TMP="C:\\tmp" 
+TEMP="C:\\tmp"
 
 Windows ではバックスラッシュが正しいが、R ではスラッシュを使う点に注意。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)` Git タブが表示されない
+:::
+
+GitHub 関連のプロジェクトを、ユーザーディレクトリ以外に保存しいると、Git タブが表示されないことがある。
+
+C:\\Users\\username\\.gitconfig
+
+に、
+
+```
+[safe]
+    directory = *
+```
+
+と追加する。
 
 ## macOS
 
@@ -38,7 +66,8 @@ Windows ではバックスラッシュが正しいが、R ではスラッシュ�
 ```{r echo=FALSE}
 i <- i + 1
 ```
-TIP `r sprintf("%03d", i)` ggplot で日本語を表示 (1): フォント指定
+
+TIP `r sprintf("%03d", i)`: ggplot で日本語を表示 (1): フォント指定
 :::
 
 ```{r eval=FALSE}
@@ -71,6 +100,23 @@ ragg を使うには、以下のうちのいずれかを行います。
 3. YAML ヘッダ部分に `dev: "ragg_png"` を加える
 
 ragg の弱点として、Quarto/Rmd で knit/Build した場合には日本語が表示されますが、 Run Current Chunk をした場合には 文字化けしてしまいます。
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)`: プログラミングフォント
+:::
+
+Global Options > Appearance で 、プログラミングフォントのうち Cica や SourceCodePro などのフォントが表示されません。macOS は、これらのフォントを等幅フォントと認識しないことが原因のようです。
+
+いくつか対処法がありますが、Terminal (注: Console ではありません) で一行で行う方法を示します。
+
+```{bash eval=FALSE}
+% defaults write -g NSFont -dict-add "SourceCodePro-Regular" -string "monospace"
+```
+
+Cica の場合は、"SourceCodePro-Regular" を "Cica-Regular" とします。
 
 ```{r echo=FALSE}
 save(i, file = "variable.RData")

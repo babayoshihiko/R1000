@@ -89,7 +89,20 @@ git tag -a v0.0.12 -m 'version 0.0.12'
 git push origin v0.0.12
 ```
 
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+TIP `r sprintf("%03d", i)` Git タブが表示されない
+:::
 
+いくつかの原因が考えられます。
+
+Globan Options と Project Options の git を確認します。
+
+```{r eval=FALSE}
+usethis::use_git()
+```
 
 
 
