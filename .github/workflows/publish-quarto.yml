@@ -1,5 +1,7 @@
 # https://thedatasavvycorner.com/blogs/03-quarto-github-actions
 # https://www.simonpcouch.com/blog/2020-12-27-r-github-actions-commit/
+# https://stackoverflow.com/questions/75791841/github-actions-cant-install-r-package-sf-because-gdal-config-not-found-or-not
+# https://r-in-production.org/github-actions.html
 
 name: Render and Publish
 on:
@@ -15,6 +17,9 @@ jobs:
       steps:
         - uses: actions/checkout@v3
         - uses: r-lib/actions/setup-r@v2
+        - name: Install packages
+          run: |
+            R -e 'install.packages("rmarkdown")'
         - name: Set up Quarto
           uses: quarto-dev/quarto-actions/setup@v2
           with:
