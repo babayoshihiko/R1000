@@ -15,12 +15,12 @@ jobs:
       steps:
         - name: Check out repository
           uses: actions/checkout@v3
-          
+
         - uses: r-lib/actions/setup-r@master
-        with:
-          r-version: ${{ matrix.config.r }}
-          http-user-agent: ${{ matrix.config.http-user-agent }}
-          
+          with:
+            r-version: ${{ matrix.config.r }}
+            http-user-agent: ${{ matrix.config.http-user-agent }}
+
         - name: Set up Quarto
           uses: quarto-dev/quarto-actions/setup@v2
           with:
