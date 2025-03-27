@@ -91,17 +91,17 @@ i <- i + 1
 TIP `r sprintf("%03d", i)`: ggplot で日本語を表示 (2): ragg
 :::
 
-まず、RStudio の環境設定、General Graphics の Backend を AGG にします。
+まず、RStudio の環境設定、General Graphics の Backend を AGG にする。
 
-ragg を使うには、以下のうちのいずれかを行います。
+ragg を使うには、以下のうちのいずれかを行う。
 
 1. 図を出力するチャンクオプションに `dev="ragg_png"` を追加する
 2. `knitr::opts_chunk(dev = "ragg_png")` を設定する
 3. YAML ヘッダ部分に `dev: "ragg_png"` を加える
 
-ragg の弱点として、Quarto/Rmd で knit/Build した場合には日本語が表示されますが、 Run Current Chunk をした場合には 文字化けしてしまいます。
+ragg の弱点として、Quarto/Rmd で knit/Build した場合には日本語が表示されるが、 Run Current Chunk をした場合には 文字化けする。
 
-::: callout-tip
+::: calloしてしまいますut-tip
 ```{r echo=FALSE}
 i <- i + 1
 ```
