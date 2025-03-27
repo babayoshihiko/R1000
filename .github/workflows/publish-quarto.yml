@@ -20,6 +20,28 @@ jobs:
         - name: Install packages
           run: |
             R -e 'install.packages("rmarkdown")'
+            R -e 'install.packages("magick")'
+            R -e 'install.packages("gridExtra")'
+            R -e 'install.packages("epiDisplay")'
+            R -e 'install.packages("DT")'
+            R -e 'install.packages("stargazer")'
+            R -e 'install.packages("gt")'
+            R -e 'install.packages("formattable")'
+            R -e 'install.packages("kableExtra")'
+            R -e 'install.packages("flextable")'
+            R -e 'install.packages("reactablefmtr")'
+            R -e 'install.packages("colorDF")'
+            R -e 'install.packages("crosstable")'
+            R -e 'install.packages("tables")'
+            R -e 'install.packages("tableone")'
+            R -e 'install.packages("rpivotTable")'
+            R -e 'install.packages("GGally")'
+            R -e 'install.packages("ggsci")'
+            R -e 'install.packages("blockrand")'
+            R -e 'install.packages("consort")'
+            R -e 'install.packages("covadap")'
+            R -e 'install.packages("reticulate")'
+            
         - name: Set up Quarto
           uses: quarto-dev/quarto-actions/setup@v2
           with:
