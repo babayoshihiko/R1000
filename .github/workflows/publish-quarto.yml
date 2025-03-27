@@ -1,4 +1,5 @@
 # https://thedatasavvycorner.com/blogs/03-quarto-github-actions
+# https://www.simonpcouch.com/blog/2020-12-27-r-github-actions-commit/
 
 name: Render and Publish
 on:
@@ -14,6 +15,11 @@ jobs:
       steps:
         - name: Check out repository
           uses: actions/checkout@v3
+          
+        - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
           
         - name: Set up Quarto
           uses: quarto-dev/quarto-actions/setup@v2
