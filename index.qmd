@@ -9,7 +9,7 @@ resources:
 
 R 言語は、統計解析を行うためのプログラミング言語です。RStudio は、R 言語を快適に使用する統合開発環境です。
 
-これまで、Zoom を使ってオンラインで RStudio 勉強会を開催してきました。時間帯は早朝 7:30-9:00 という朝活です。この勉強会は現在でも継続しています。https://saturdaymorning.connpass.com/
+これまで、Zoom を使ってオンラインで RStudio 勉強会を開催してきました。時間帯は早朝 6:30-9:00 という朝活です。この勉強会は現在でも継続しています。[https://saturdaymorning.connpass.com/](https://saturdaymorning.connpass.com/)
 
 このサイトは、勉強会から生まれたものです。このサイトの形式としては、Cookbook や逆引き辞典の様に、「R でやりたいこと」を小さく分割しています。基本的には、プログラミング初心者でもわかる様にしています。
 
