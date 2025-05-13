@@ -1,0 +1,40 @@
+# 地図 {#map}
+
+```{r echo=FALSE}
+load("variable.RData")
+```
+
+## ウェブ地図
+
+R/RStudio は、R Markdown や Quarto を使うことで、ウェブサイトやウェブページを作ることができます。
+
+ウェブ地図については、Geocomputation with R の [9 R で地図を作成](https://r.geocompx.org/jp/adv-map.html#interactive-maps)に詳しく書かれています。 ここでは、ウェブ地図をつくる代表的な方法を示します。
+
+ウェブ地図を作成するライブラリをまとめます。
+
+- tmap
+  - ウェブ地図とPDFが同じ方法で作成できる
+  - 注: Version 2 と Version 3 で文法が変わった。
+- leaflet
+  - 全画面表示ができる (パッケージ `leaflet.extras` が必要)
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: leaflet でウェブ地図
+:::
+
+最もシンプルなウェブ地図です。
+
+```{r eval=FALSE}
+library(leaflet)
+m <- leaflet()
+addTiles(m)
+```
+
+
+```{r echo=FALSE}
+save(i, file = "variable.RData")
+```
