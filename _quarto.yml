@@ -23,6 +23,7 @@ book:
     - tex.qmd
     - thesis.qmd
     - clinical.qmd
+    - map.qmd
     - os.qmd
     - python.qmd
 

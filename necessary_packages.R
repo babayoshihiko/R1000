@@ -19,3 +19,8 @@ install.packages("blockrand")
 install.packages("consort")
 install.packages("covadap")
 install.packages("reticulate")
+
+# map
+install.packages("leaflet")
+install.packages("leaflet.extras")
+install.packages("tmap")
