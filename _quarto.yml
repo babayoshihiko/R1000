@@ -7,6 +7,7 @@ book:
   title: "R1000"
   author: "Yoshihiko Baba"
   date: last-modified
+  DOI: "10.5281/zenodo.15596986"
   body-header: <a href="https://saturdaymorning.connpass.com">毎週土曜朝 7:00-9:00 Zoom 勉強会</a>
   chapters:
     - index.qmd
