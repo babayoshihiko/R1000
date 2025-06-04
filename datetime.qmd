@@ -68,7 +68,6 @@ TIP `r sprintf("%03d", i)`: **{lubridate}** Cheat Sheet
 
 ![Cheatsheet](https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf)
 
-
 ```{r echo=FALSE}
 save(i, file = "variable.RData")
 ```
