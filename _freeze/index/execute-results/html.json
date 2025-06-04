@@ -1,0 +1,16 @@
+{
+  "hash": "5c54bb751b58534639be1ebd7158e593",
+  "result": {
+    "markdown": "---\ntitle: R1000\ndate: last-modified\nresources:\n  - .nojekyll\n---\n\n\n# Preface {.unnumbered}\n\n![R1000](title.png){style=\"float: right; margin: 10px; width: 20%;\"}\nR 言語は、統計解析を行うためのプログラミング言語です。RStudio は、R 言語を快適に使用する統合開発環境です。\n\nこれまで、Zoom を使ってオンラインで RStudio 勉強会を開催してきました。時間帯は早朝 7:30-9:00 という朝活です。この勉強会は現在でも継続しています。 ぜひ、[https://saturdaymorning.connpass.com/](https://saturdaymorning.connpass.com/) をチェックしてください (日程が更新されていなくても、開催しています)。\n\nこのサイトは、勉強会から生まれたものです。このサイトの形式としては、Cookbook や逆引き辞典の様に、「R でやりたいこと」を小さく分割しています。基本的には、プログラミング初心者でもわかる様にしています。\n\n逆に、R に備わっているものの、ほとんど使わない機能などは紹介していません。\n\nR は、フリーソフトウェアです。10,000 を超えるパッケージがあり、たくさんの関数があります。パッケージは **{package}** と表示し、関数は `function()` と表示しています。\n\nまた、R を実行するためのコードは、\n\n\n::: {.cell}\n\n```{.r .cell-code}\na <- 1:10\n```\n:::\n\n\nという様に、背景を灰色にして表示しています。一部、R 以外のプログラミング言語のものもあります。\n\nR でやりたいことの分割単位を TIP と定義しています。\n\n::: {.callout-tip title=\"Tip with Title\"}\n\n::: {.cell}\n\n:::\n\nTIP 123: このように表示\n:::\n\nこの後、解説が続く形にしています。\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

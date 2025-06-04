@@ -1,0 +1,14 @@
+{
+  "hash": "1e2a3d9aad518d5452a7655088c1e19e",
+  "result": {
+    "markdown": "# 他のプログラミング言語 {#python}\n\n\n::: {.cell}\n\n:::\n\n\nQuarto Documento や R Markdown のコードチャンクは、R 言語だけではなく、Bash、D3、Python,\nRcpp、SQL、Stan にも対応しています。\n\n## Bash を使ってみる\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\n\nTIP 139 Bash を使ってみる\n:::\n\nBash は、macOS や Linux ではデフォルトでインストール済みのはずです。Windows ではインストールされていない場合があるので、その場合は使用できません。\n\nコードチャンクの {r} を {bash} にすると、Bash コードを実行するコードチャンクになります。\n\n\n::: {.cell}\n\n```{.bash .cell-code}\npwd\n```\n:::\n\n\n## Python を使ってみる\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\nTIP 140 Python を使ってみる\n:::\n\nPython は、macOS や Linux ではデフォルトでインストール済みのはずです。Windows ではインストールされていない場合があるので、インストールすることで使用することができます。\n\nコードチャンクの {r} を {python} にすると、Python コードを実行するコードチャンクになります。なお、**{reticulate}** パッケージを使います。\n\n\n::: {.cell}\n\n```{.python .cell-code}\nimport sys\nsys.version\n```\n:::\n\n\nこれを実行すると、Console が Python に変わり、`>` が `>>>` になります。\n\n\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

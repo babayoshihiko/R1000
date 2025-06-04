@@ -1,0 +1,14 @@
+{
+  "hash": "0e7f5a9362677655673566410cff9557",
+  "result": {
+    "markdown": "# Introduction {#introduction}\n\n\n::: {.cell}\n\n:::\n\n\nR は、統計に特化したプログラミング言語です。\n\nまた、RStudio は、R でプログラミングなどを行うために作られた統合環境です。\n\n## ファイル\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\nTIP 001: R のファイル\n:::\n\nR を行う場合、File \\> New File を見るとたくさんの種類のファイルが並んでいます。\n\nそれぞれに特徴がありますが、RStudio らしいのは 上から 2 つめの Quarto Document または 5 つめの R Markdown でしょう。\n\nQuarto Document や R Markdown を初めて作成する場合は、パッケージのインストールが必要になります。パッケージについては、次の節で説明します。\n\nまた研究などの場合は、New File ではなく New Project の方が良いでしょう。\n\nこのサイトは、Quarto Website (Quarto Document) 形式で作成しています。\n\n演習: https://github.com/babayoshihiko/R1000/blob/main/exercise/intro/Quarto.qmd\n\n## パッケージ\n\nR は、基本機能だけで作業することは少なく、必要に応じて「パッケージ」をインストールし、読み込んで使います。\n\nなお、以下のパッケージは基本機能に含まれています: base, compiler, datasets, grDevices, graphics, grid, methods, parallel, splines, stats, stats4, tcltk, tools, translations, utils\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\n\nTIP 002: パッケージの保存先\n:::\n\nパッケージの保存先は、\n\n\n::: {.cell}\n\n```{.r .cell-code}\n.libPaths()\n```\n:::\n\n\nで確認することができます。\n\nパッケージの保存先を変更したい場合、フォルダを作っておいた上で、以下のファイルを作成します。\n\nFile \\> New File \\> Text File (下から 4 つめ)\n\n* macOS: /Users/username/.Renviron \n* Windows: C:\\Users\\username\\Documents\\.Renviron\n\n(Windows の場合、\"My Document\" フォルダのことです。)\n\nR_LIBS=\"/Users/username/CRAN\"\n\nと書き込んでおきます。\n\nこの後、RStudio を閉じて立ち上げると、`.libPaths()` にフォルダ \"/Users/baba/CRAN\" が追加されています。\n\n特に、Windows ではデフォルトで OneDrive 内に保存することになっているので、必ず変更しておきましょう。理由は、OneDrive は、オンラインストレージなので、頻繁にネットに接続し、また同期していないとファイルが消えてしまうことがあります。さらに、ユーザ名が日本語の場合はエラーが出ます。\n\n厳密にいうと、パッケージは関数などのソースコードで、ライブラリはパッケージの保存場所を指します。\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

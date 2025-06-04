@@ -1,0 +1,16 @@
+{
+  "hash": "b28137649975740aa456a4a86f9b9e09",
+  "result": {
+    "markdown": "# 論文 {#thesis}\n\n\n::: {.cell}\n\n:::\n\n\n## Quarto\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\nTIP 128: Quarto Book\n:::\n\nNew Project \\> New Directory \\> Quarto Book\n\n\n## 文献管理\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\n\nTIP 129: Zotero を読み込む\n:::\n\nZotero で文献管理を行なっている場合、\n\nhttps://www.zotero.org/\n\nにログイン後、\n\nhttps://www.zotero.org/settings/keys\n\nから API キーをコピーしておきます。\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(grid)      # rasterGrob()\nlibrary(magick)    # image_read()\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nLinking to ImageMagick 6.9.12.93\nEnabled features: cairo, fontconfig, freetype, heic, lcms, pango, raw, rsvg, webp\nDisabled features: fftw, ghostscript, x11\n```\n:::\n\n```{.r .cell-code}\nlibrary(gridExtra) # grid.arrange\nimg1 <- rasterGrob(image_read(\"img/thesis-zotero.png\"))\nimg2 <- rasterGrob(image_read(\"img/thesis-zotero-2.png\"))\ngrid.arrange(img1, img2, ncol=2, nrow=1)\n```\n\n::: {.cell-output-display}\n![](thesis_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(RefManageR)\nReadZotero(user = \"7 桁の数字\",\n  .params = c(key = \"24 文字の API キー\"),\n  temp.file = \"references.bib\",\n  delete.file = FALSE)\n```\n:::\n\n::: {.cell}\n\n:::\n\n\n現状、以下の様なエラーが出て、一部しかダウンロードされていません。日本語に未対応か？\n\nError in ReadZotero(user = \"7 桁の数字\", .params = c(key = \"24 文字の API キー\"), : Could not parse the returned BibTeX results. If 'delete.file' is FALSE, you can try viewing and editing the file: references.bib\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [
+      "thesis_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "hash": "5614962ca9e8a6942abd481cf418a563",
+  "result": {
+    "markdown": "# パッケージ開発 {#packaging}\n\n\n::: {.cell}\n\n:::\n\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\nTIP 111 パッケージ作成の最初\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(devtools)\nload_all()\n```\n:::\n\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\nTIP 112 チェック\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndevtools::check()\n```\n:::\n\n\n時間がかかる。vignette も作成する。\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\nTIP 113 各種ドキュメントを作成する\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndevtools::document()\n```\n:::\n\n\n\n\n\n\n## OS 処理\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\nTIP 114 OS ごとに処理を変える\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\nif(Sys.info()['sysname'] == \"Darwin\"){\n  print(\"macOS\")\n} else if(Sys.info()['sysname'] == \"Linux\") {\n  print(\"Linux\")\n} else if(Sys.info()['sysname'] == \"Windows\") {\n  print(\"Windows\")\n}\n```\n:::\n\n\n## エラー処理\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\nTIP 115 `stop()`\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\nfunc <- function(someVal){\n  if (is.na(someVal)) stop(\"someVal is NA.\")\n}\n```\n:::\n\n\n##  データ\n\nパッケージにデータがある場合、多くの場合、`R/sysdata.rda` ファイルに保存されています。このファイルは、パッケージをアタッチした際に自動的に読み込まれます。\n\nsysdata.rda を作成するには、あらかじめベクトルやデータフレームなどを作成し、`use_data()` 関数を使います。\n\n\n::: {.cell}\n\n```{.r .cell-code}\ninternal_this <- 1\ninternal_that <- 2\nusethis::use_data(internal_this, internal_that, internal = TRUE)\n```\n:::\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

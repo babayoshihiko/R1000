@@ -1,0 +1,14 @@
+{
+  "hash": "843ad0dfc77ecb3a0cfae161e0673a83",
+  "result": {
+    "markdown": "# 特定の OS の問題 {#os}\n\n\n::: {.cell}\n\n:::\n\n\n## Windows\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\n\nTIP 134: OneDrive 問題\n:::\n\nWindows では、パッケージが OneDrive というフォルダに保存される。ところが、ユーザ名が日本語でああると、パッケージを読み込めなくなってしまう。また、この中には、R のバージョンごとにサブフォルダがある。つまり、バージョンアップをするたびに今までのパッケージは使われなくなる（これは macOS や Linux でも同様）。R のバージョンアップのたびに、パッケージを一からインストールるしなければならない。\n\nこうした問題を避けるため、(1) 別の場所にパッケージ専用のフォルダを作成し、(2) そこを読み込むように設定する。\n\n(1) C ドライブ直下に R フォルダ（\"C:\\\\R\"）を作っておく。\n\n(2) 以下のディレクトリ内に .Renviron というファイルを作成しよう（ファイル名の最初はドット記号）。\n\n-   Windows : C:\\\\Users\\\\username\\\\Documents\n\n\nテキストファイルは、RStudio のメニューから、File \\> New File \\> Text File を選択する。\n\nここに、以下のように記述する。\n\nR_LIBS=\"C:\\\\R\" \nLANGUAGE=\"en\" \\# 日本語の場合 ja\n\nまた、一時ディレクトリが使えないエラーが出たときは、以下のように追加する。\n\nTMPDIR=\"C:\\\\tmp\" \nTMP=\"C:\\\\tmp\" \nTEMP=\"C:\\\\tmp\"\n\nWindows ではバックスラッシュが正しいが、R ではスラッシュを使う点に注意。\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\nTIP 135 Git タブが表示されない\n:::\n\nGitHub 関連のプロジェクトを、ユーザーディレクトリ以外に保存しいると、Git タブが表示されないことがある。\n\nC:\\\\Users\\\\username\\\\.gitconfig\n\nに、\n\n```\n[safe]\n    directory = *\n```\n\nと追加する。\n\n## macOS\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\n\nTIP 136: ggplot で日本語を表示 (1): フォント指定\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\ntheme(text = element_text(family = \"HiraginoSans-W3\"))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ntm_layout(fontfamily = \"HiraginoSans-W3\")\n```\n:::\n\n\nなお、以下は ggplot ではない Base プロット\n\n\n::: {.cell}\n\n```{.r .cell-code}\ngrid.text(\"B. 線に沿った標高\", gp = gpar(fontfamily=\"HiraginoSans-W3\"))\n```\n:::\n\n\n::: callout-tip\n\n::: {.cell}\n\n:::\n\nTIP 137: ggplot で日本語を表示 (2): ragg\n:::\n\nまず、RStudio の環境設定、General Graphics の Backend を AGG にする。\n\nragg を使うには、以下のうちのいずれかを行う。\n\n1. 図を出力するチャンクオプションに `dev=\"ragg_png\"` を追加する\n2. `knitr::opts_chunk(dev = \"ragg_png\")` を設定する\n3. YAML ヘッダ部分に `dev: \"ragg_png\"` を加える\n\nragg の弱点として、Quarto/Rmd で knit/Build した場合には日本語が表示されるが、 Run Current Chunk をした場合には 文字化けする。\n\n::: calloしてしまいますut-tip\n\n::: {.cell}\n\n:::\n\nTIP 138: プログラミングフォント\n:::\n\nGlobal Options > Appearance で 、プログラミングフォントのうち Cica や SourceCodePro などのフォントが表示されない。macOS は、これらのフォントを等幅フォントと認識しないことが原因。\n\nいくつか対処法があるが、Terminal (注: Console ではありません) で一行で行う方法を示す。\n\n\n::: {.cell}\n\n```{.bash .cell-code}\n% defaults write -g NSFont -dict-add \"SourceCodePro-Regular\" -string \"monospace\"\n```\n:::\n\n\nCica の場合は、\"SourceCodePro-Regular\" を \"Cica-Regular\" とする。\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
