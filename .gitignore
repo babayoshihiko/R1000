@@ -13,4 +13,4 @@ R1000.Rproj
 .Rdata
 .httr-oauth
 .quarto
-/docs/
+_freeze
