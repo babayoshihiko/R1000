@@ -110,13 +110,22 @@ TIP `r sprintf("%03d", i)`: プログラミングフォント
 
 Global Options > Appearance で 、プログラミングフォントのうち Cica や SourceCodePro などのフォントが表示されない。macOS は、これらのフォントを等幅フォントと認識しないことが原因。
 
-いくつか対処法があるが、Terminal (注: Console ではありません) で一行で行う方法を示す。
+Cica などを RStudio で使えるようにするために、Python ツールを使って Cica を当幅フォントとする。`ttx` が。Python のツール。
 
 ```{bash eval=FALSE}
-% defaults write -g NSFont -dict-add "SourceCodePro-Regular" -string "monospace"
+% pip install fonttools
+% ttx -o Cica-Fixed.ttf -m Cica-Regular.ttf
 ```
 
-Cica の場合は、"SourceCodePro-Regular" を "Cica-Regular" とする。
+Cica-Fixed.ttx ファイルをテキストエディタで開き、`  <isFixedPitch value="0"/>` を `<isFixedPitch value="1"/>` にする。
+
+つぎに、フォントを作成する。
+
+```{bash eval=FALSE}
+ttx Cica-Fixed.ttx
+```
+
+こうしてできた Cica-Fixed をインストールする。
 
 ```{r echo=FALSE}
 save(i, file = "variable.RData")
