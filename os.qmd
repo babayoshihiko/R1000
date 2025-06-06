@@ -113,11 +113,11 @@ Global Options > Appearance で 、プログラミングフォントのうち Ci
 Cica などを RStudio で使えるようにするために、Python ツールを使って Cica を当幅フォントとする。`ttx` が。Python のツール。
 
 ```{bash eval=FALSE}
-% pip install fonttools
+% pip3 install fonttools
 % ttx -o Cica-Fixed.ttf -m Cica-Regular.ttf
 ```
 
-Cica-Fixed.ttx ファイルをテキストエディタで開き、`  <isFixedPitch value="0"/>` を `<isFixedPitch value="1"/>` にする。
+Cica-Fixed.ttx ファイルをテキストエディタで開き、`<isFixedPitch value="0"/>` を `<isFixedPitch value="1"/>` にする。
 
 つぎに、フォントを作成する。
 
