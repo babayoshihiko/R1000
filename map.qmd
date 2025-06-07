@@ -34,6 +34,17 @@ m <- leaflet()
 addTiles(m)
 ```
 
+全画面表示ボタンを追加します。
+
+```{r eval=FALSE}
+library(leaflet)
+library(leaflet.extras)
+library(tidyverse)
+
+leaflet() %>%
+  addTiles() %>%
+  addFullscreenControl()
+```
 
 ```{r echo=FALSE}
 save(i, file = "variable.RData")
