@@ -39,11 +39,10 @@ addTiles(m)
 ```{r eval=FALSE}
 library(leaflet)
 library(leaflet.extras)
-library(tidyverse)
 
-leaflet() %>%
-  addTiles() %>%
-  addFullscreenControl()
+m <- leaflet()
+m <- addTiles()
+addFullscreenControl(m)
 ```
 
 ```{r echo=FALSE}

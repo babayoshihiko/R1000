@@ -127,6 +127,8 @@ ttx Cica-Fixed.ttx
 
 こうしてできた Cica-Fixed をインストールする。
 
+![macOS で Cica フォント](img/os_macos_programmingfont.png)
+
 ```{r echo=FALSE}
 save(i, file = "variable.RData")
 ```
