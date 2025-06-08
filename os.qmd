@@ -29,14 +29,18 @@ Windows では、パッケージが OneDrive というフォルダに保存さ�
 
 ここに、以下のように記述する。
 
+```{bash eval=FALSE}
 R_LIBS="C:\\R" 
 LANGUAGE="en" \# 日本語の場合 ja
+```
 
 また、一時ディレクトリが使えないエラーが出たときは、以下のように追加する。
 
+```{bash eval=FALSE}
 TMPDIR="C:\\tmp" 
 TMP="C:\\tmp" 
 TEMP="C:\\tmp"
+```
 
 Windows ではバックスラッシュが正しいが、R ではスラッシュを使う点に注意。
 
