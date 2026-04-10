@@ -91,10 +91,16 @@ i <- i + 1
 TIP `r sprintf("%03d", i)`: クロス集計 **{rpivotTable}**
 :::
 
+Package ‘rpivotTable’ was removed from the CRAN repository.
+
+Formerly available versions can be obtained from the archive.
+
+Archived on 2026-03-25 as issues were not corrected despite reminders. 
+
 
 最後に、インタラクティブに操作することができる **{rpivotTable}** パッケージを紹介します。 これは、HTML の特徴を生かして、ウェブページ上で表示を変えることができるものになります。
 
-```{r}
+```{r eval=FALSE}
 library(rpivotTable)
 rpivotTable(dfInjury, rows="Gender", cols="Reason", width="100%", height="400px")
 ```

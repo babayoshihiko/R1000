@@ -4,6 +4,8 @@
 load("variable.RData")
 ```
 
+## TeX のインストール
+
 ::: callout-tip
 ```{r echo=FALSE}
 i <- i + 1
@@ -20,6 +22,24 @@ Rmd や Bookdown、Quarto などで、PDF 出力をするときに、裏で TeX 
 
 TeX は、独自のシステムなので https://www.tug.org/texlive/ からインストールすることもできます。ところが、R でインストールすることもできます。それが tinytex という CRAN パッケージです。
 
+```{r eval=FALSE}
+install.packages(tinytex)
+tinytex::install_tinytex()
+```
+
+なお、TinyTex は、Tiny でありながら、インストール直後で 300MB 程度 (2026年確認)、よくつかうパッケージをインストールすると 3GB くらいにはなります。
+
+TinyTex の本体は、Windows では `C:/Users/username/AppData/Roaming/TinyTex` にあります。
+
+このため、外付けディスクなどにインストールすることも可能です。
+
+```{r eval=FALSE}
+tinytex::install_tinytex(dir = "E:/TinyTex")
+```
+
+通常と異なる場所に保存すると、R で TeX が見つからないことがあります。いろいろ解決方法はありますが、Windows であれば `C:/Users/username/AppData/Roaming/TinyTex` にリンクを張るとよいでしょう。
+
+
 ::: callout-tip
 ```{r echo=FALSE}
 i <- i + 1
@@ -31,18 +51,28 @@ TIP `r sprintf("%03d", i)`: tinytex で TeX パッケージをインストール
 TeX も、R と同様に必要なパッケージを追加インストールする方式になっています。**{tinytex}** は、その名の通りインストールは小さめなので、必要に応じて TeX パッケージをインストールします。
 
 ```{r eval=FALSE}
-library(tinytex)
-tinytex::tlmgr_install("multirow")
+tinytex::tlmgr_install("パッケージ名")
 tinytex::tlmgr_update()
 ```
 
-tinytex::tlmgr_install("scheme-full") で、すべての TeX パッケージをインストールしておく。
+tinytex::tlmgr_install("scheme-full") で、多くの TeX パッケージ (2026年に確認したところ 4899 個だった) をインストールしておくとよいでしょう。これで 3GB くらいになります。
 
-apalike がないというエラーが出たら、\_output.yml に以下を追加
+apalike がないというエラーが出たら、`\_output.yml` に以下を追加
 
 citation_package: natbib
 
 この他、"upmendex"、"multirow"、"pdfcrop" などを追加でインストールしておくと良い。
+
+
+::: callout-tip
+```{r echo=FALSE}
+i <- i + 1
+```
+
+TIP `r sprintf("%03d", i)`: ほかに必要なもの
+:::
+
+[Ghostscript](https://ghostscript.com/) は必須です。
 
 ## 日本語 PDF
 

@@ -570,7 +570,13 @@ i <- i + 1
 TIP `r sprintf("%03d", i)`: **{reactable}**
 :::
 
-```{r}
+Package ‘reactablefmtr’ was removed from the CRAN repository.
+
+Formerly available versions can be obtained from the archive.
+
+Archived on 2026-03-17 as issues were not corrected despite reminders. 
+
+```{r eval=FALSE}
 library(reactable)
 library(reactablefmtr)
 reactable(df,
