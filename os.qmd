@@ -105,7 +105,7 @@ ragg を使うには、以下のうちのいずれかを行う。
 
 ragg の弱点として、Quarto/Rmd で knit/Build した場合には日本語が表示されるが、 Run Current Chunk をした場合には 文字化けする。
 
-::: calloしてしまいますut-tip
+::: callout-tip
 ```{r echo=FALSE}
 i <- i + 1
 ```
@@ -114,22 +114,37 @@ TIP `r sprintf("%03d", i)`: プログラミングフォント
 
 Global Options > Appearance で 、プログラミングフォントのうち Cica や SourceCodePro などのフォントが表示されない。macOS は、これらのフォントを等幅フォントと認識しないことが原因。
 
-Cica などを RStudio で使えるようにするために、Python ツールを使って Cica を当幅フォントとする。`ttx` が。Python のツール。
+Cica などを RStudio で使えるようにするために、Python ツールを使って Cica を当幅フォントとする。以下は、bash で行う。
 
 ```{bash eval=FALSE}
 % pip3 install fonttools
-% ttx -o Cica-Fixed.ttf -m Cica-Regular.ttf
+% ttx Cica-Regular.ttf
 ```
 
-Cica-Fixed.ttx ファイルをテキストエディタで開き、`<isFixedPitch value="0"/>` を `<isFixedPitch value="1"/>` にする。
+なお、一行目の後で、以下のような警告が出ることがある。
+
+```
+  WARNING: The scripts fonttools, pyftmerge, pyftsubset and ttx are installed in '/Users/baba/Library/Python/3.9/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+```
+
+これは、ttx にパスが通っていないということである。その場合は、このように入力する。
+
+```{bash eval=FALSE}
+% /Users/ユーザー名/Library/Python/3.9/bin/ttx Cica-Regular.ttf
+```
+
+Cica-Regular.ttx ファイルというファイルができている。これをテキストエディタで開き、`<isFixedPitch value="0"/>` を `<isFixedPitch value="1"/>` にする。
 
 つぎに、フォントを作成する。
 
 ```{bash eval=FALSE}
-ttx Cica-Fixed.ttx
+% ttx -o Cica-Fixed.ttf -m Cica-Regular.ttf Cica-Regular.ttx
 ```
 
-こうしてできた Cica-Fixed をインストールする。
+こうしてできた Cica-Fixed.ttf をインストールする。Font Book においても、等幅フォントになっているはずである。
+
+RStudio が立ち上がっている場合、いちど終了して立ちあげなおす。RStudio が Cica-Fixed を認識するはずである。フォント名は Cica Regular。
 
 ![macOS で Cica フォント](img/os_macos_programmingfont.png)
 

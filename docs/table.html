@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>9&nbsp; 表 – R1000</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,19 +72,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./na.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2641b481724464e61c86985d8c912b6f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-574a2d89ad2e7a6bbbb45f5b262642d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-2641b481724464e61c86985d8c912b6f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b9eaee60a963b5d74e9d33cc267de6a6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-8a9943d1ce9ddb433c6137f1d467fc6a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b9eaee60a963b5d74e9d33cc267de6a6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -110,9 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
-
 <script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
-
 
 
 </head>
@@ -301,9 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R1000</a> 
         <div class="sidebar-tools-main">
@@ -490,10 +488,10 @@ Tip
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(dfInjury, <span class="at">row.vars =</span> <span class="st">"Gender"</span>, <span class="at">col.vars =</span> <span class="st">"Reason"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       Reason すり傷 その他 ねんざ 切り傷 頭痛 発熱 腹痛
+<pre><code>       Reason すり傷 その他 ねんざ 切り傷 発熱 腹痛 頭痛
 Gender                                                  
-F                  2      2      2      3   10    3    2
-M                  7      1      1      2    3    0    3</code></pre>
+F                  2      2      2      3    3    2   10
+M                  7      1      1      2    0    3    3</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -514,7 +512,7 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(crosstable)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_flextable</span>(<span class="fu">crosstable</span>(dfInjury, <span class="at">cols =</span> Reason, <span class="at">by =</span> Gender))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-ffe990ca{table-layout:auto;}.cl-ffe260de{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ffe260e8{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ffe5451a{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ffe5452e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ffe5452f{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ffe58142{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(0, 0, 0, 1.00);border-top: 1.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ffe5814c{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 1.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ffe5814d{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ffe5814e{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ffe58156{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-ffe990ca"><thead><tr style="overflow-wrap:break-word;"><th rowspan="2" class="cl-ffe58142"><p class="cl-ffe5451a"><span class="cl-ffe260de">label</span></p></th><th rowspan="2" class="cl-ffe58142"><p class="cl-ffe5451a"><span class="cl-ffe260de">variable</span></p></th><th colspan="2" class="cl-ffe5814c"><p class="cl-ffe5451a"><span class="cl-ffe260de">Gender</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-ffe5814d"><p class="cl-ffe5451a"><span class="cl-ffe260de">F</span></p></th><th class="cl-ffe5814d"><p class="cl-ffe5451a"><span class="cl-ffe260de">M</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td rowspan="7" class="cl-ffe5814e"><p class="cl-ffe5452e"><span class="cl-ffe260e8">Reason</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">すり傷</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">2 (22.22%)</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">7 (77.78%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">その他</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">2 (66.67%)</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">1 (33.33%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">ねんざ</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">2 (66.67%)</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">1 (33.33%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">切り傷</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">3 (60.00%)</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">2 (40.00%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">頭痛</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">10 (76.92%)</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">3 (23.08%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">発熱</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">3 (100%)</span></p></td><td class="cl-ffe58156"><p class="cl-ffe5452e"><span class="cl-ffe260e8">0 (0%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ffe5814e"><p class="cl-ffe5452f"><span class="cl-ffe260e8">腹痛</span></p></td><td class="cl-ffe5814e"><p class="cl-ffe5452f"><span class="cl-ffe260e8">2 (40.00%)</span></p></td><td class="cl-ffe5814e"><p class="cl-ffe5452f"><span class="cl-ffe260e8">3 (60.00%)</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-78db509c{table-layout:auto;}.cl-78d8cf70{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-78d8cf71{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-78d9e4e6{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-78d9e4f0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-78d9e4f1{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-78d9f0da{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(0, 0, 0, 1.00);border-top: 1.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-78d9f0db{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 1.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-78d9f0dc{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-78d9f0e4{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-78d9f0e5{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-78db509c"><thead><tr style="overflow-wrap:break-word;"><th rowspan="2" class="cl-78d9f0da"><p class="cl-78d9e4e6"><span class="cl-78d8cf70">label</span></p></th><th rowspan="2" class="cl-78d9f0da"><p class="cl-78d9e4e6"><span class="cl-78d8cf70">variable</span></p></th><th colspan="2" class="cl-78d9f0db"><p class="cl-78d9e4e6"><span class="cl-78d8cf70">Gender</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-78d9f0dc"><p class="cl-78d9e4e6"><span class="cl-78d8cf70">F</span></p></th><th class="cl-78d9f0dc"><p class="cl-78d9e4e6"><span class="cl-78d8cf70">M</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td rowspan="7" class="cl-78d9f0e4"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">Reason</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">すり傷</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">2 (22.22%)</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">7 (77.78%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">その他</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">2 (66.67%)</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">1 (33.33%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">ねんざ</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">2 (66.67%)</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">1 (33.33%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">切り傷</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">3 (60.00%)</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">2 (40.00%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">発熱</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">3 (100%)</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">0 (0%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">腹痛</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">2 (40.00%)</span></p></td><td class="cl-78d9f0e5"><p class="cl-78d9e4f0"><span class="cl-78d8cf71">3 (60.00%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-78d9f0e4"><p class="cl-78d9e4f1"><span class="cl-78d8cf71">頭痛</span></p></td><td class="cl-78d9f0e4"><p class="cl-78d9e4f1"><span class="cl-78d8cf71">10 (76.92%)</span></p></td><td class="cl-78d9f0e4"><p class="cl-78d9e4f1"><span class="cl-78d8cf71">3 (23.08%)</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 </section>
@@ -572,18 +570,18 @@ Tip
 <td>2</td>
 </tr>
 <tr class="center odd">
-<th class="left" data-quarto-table-cell-role="th">頭痛</th>
-<td>10</td>
-<td>3</td>
-</tr>
-<tr class="center even">
 <th class="left" data-quarto-table-cell-role="th">発熱</th>
 <td>3</td>
 <td>0</td>
 </tr>
-<tr class="center odd">
+<tr class="center even">
 <th class="left" data-quarto-table-cell-role="th">腹痛</th>
 <td>2</td>
+<td>3</td>
+</tr>
+<tr class="center odd">
+<th class="left" data-quarto-table-cell-role="th">頭痛</th>
+<td>10</td>
 <td>3</td>
 </tr>
 </tbody>
@@ -618,9 +616,9 @@ Tip
      その他                 2 ( 8.3)      1 (  5.9)             
      ねんざ                 2 ( 8.3)      1 (  5.9)             
      切り傷                 3 (12.5)      2 ( 11.8)             
-     頭痛                  10 (41.7)      3 ( 17.6)             
      発熱                   3 (12.5)      0 (  0.0)             
      腹痛                   2 ( 8.3)      3 ( 17.6)             
+     頭痛                  10 (41.7)      3 ( 17.6)             
   Gender = M (%)            0 ( 0.0)     17 (100.0)  &lt;0.001     </code></pre>
 </div>
 </div>

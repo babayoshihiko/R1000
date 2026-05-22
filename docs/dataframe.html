@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>7&nbsp; データフレーム – R1000</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,19 +72,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./if.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2641b481724464e61c86985d8c912b6f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-574a2d89ad2e7a6bbbb45f5b262642d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-2641b481724464e61c86985d8c912b6f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b9eaee60a963b5d74e9d33cc267de6a6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-8a9943d1ce9ddb433c6137f1d467fc6a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b9eaee60a963b5d74e9d33cc267de6a6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -110,33 +112,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
-
 <script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-
 <link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-
 <script src="site_libs/datatables-binding-0.34.0/datatables.js"></script>
-
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-
 <link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
-
 <link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
-
 <script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
-
 <link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
-
 <script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
-
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
 <link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
-
 <script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
-
 
 
 </head>
@@ -325,9 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R1000</a> 
         <div class="sidebar-tools-main">
@@ -688,8 +674,8 @@ Tip
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-2bc825a25fec28ab6f57" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-2bc825a25fec28ab6f57">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],[1,2,3,4],[1,2,3,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>col1<\/th>\n      <th>col2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"col1","targets":1},{"name":"col2","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-cddcd19a3ad2285e4fd1" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-cddcd19a3ad2285e4fd1">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],[1,2,3,4],[1,2,3,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>col1<\/th>\n      <th>col2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"col1","targets":1},{"name":"col2","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -905,8 +891,8 @@ Tip
 <p>おそらく、このような表を作成するのではないでしょうか。</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-770d0ff4d1f7e7475780" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-770d0ff4d1f7e7475780">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[1,2,3,4,5,6,7,8,9,10],[11.87,11.34,11.08,11.87,11.93,10.31,11.58,11.26,10.02,10.04],[3.06,3.06,3.27,3.36,3.25,2.6,2.73,3.22,2.9,2.52],[10.12,9.02,10.92,10.96,9.470000000000001,10.74,11.18,9.17,12,9.359999999999999],[2.77,3.48,3.27,3.08,2.98,2.72,3,2.76,3.15,2.68],[10.72,9.06,9.800000000000001,10.42,11.44,9.470000000000001,11.87,10.87,11.64,10.66],[2.99,2.81,3.99,4.23,3.49,3.93,3.26,4.29,3.11,2.98]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>StudentID<\/th>\n      <th>Speed (April)<\/th>\n      <th>Jump (April)<\/th>\n      <th>Speed (September)<\/th>\n      <th>Jump (September)<\/th>\n      <th>Speed (March)<\/th>\n      <th>Jump (March)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"StudentID","targets":1},{"name":"Speed (April)","targets":2},{"name":"Jump (April)","targets":3},{"name":"Speed (September)","targets":4},{"name":"Jump (September)","targets":5},{"name":"Speed (March)","targets":6},{"name":"Jump (March)","targets":7}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-90b222ad5ecb564abb35" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-90b222ad5ecb564abb35">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[1,2,3,4,5,6,7,8,9,10],[11.87,11.34,11.08,11.87,11.93,10.31,11.58,11.26,10.02,10.04],[3.06,3.06,3.27,3.36,3.25,2.6,2.73,3.22,2.9,2.52],[10.12,9.02,10.92,10.96,9.470000000000001,10.74,11.18,9.17,12,9.359999999999999],[2.77,3.48,3.27,3.08,2.98,2.72,3,2.76,3.15,2.68],[10.72,9.06,9.800000000000001,10.42,11.44,9.470000000000001,11.87,10.87,11.64,10.66],[2.99,2.81,3.99,4.23,3.49,3.93,3.26,4.29,3.11,2.98]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>StudentID<\/th>\n      <th>Speed (April)<\/th>\n      <th>Jump (April)<\/th>\n      <th>Speed (September)<\/th>\n      <th>Jump (September)<\/th>\n      <th>Speed (March)<\/th>\n      <th>Jump (March)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"StudentID","targets":1},{"name":"Speed (April)","targets":2},{"name":"Jump (April)","targets":3},{"name":"Speed (September)","targets":4},{"name":"Jump (September)","targets":5},{"name":"Speed (March)","targets":6},{"name":"Jump (March)","targets":7}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>このように、被験者一人につき一つの行で、50m走3回と幅跳び3回分を横に広く (wide) に書く形式を Wide 形式と言います。</p>
@@ -927,8 +913,8 @@ Tip
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-fe471fd3a0a03737340c" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-fe471fd3a0a03737340c">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"],[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10],["April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March"],["speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump"],[10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>StudentID<\/th>\n      <th>Season<\/th>\n      <th>Subject<\/th>\n      <th>Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"StudentID","targets":1},{"name":"Season","targets":2},{"name":"Subject","targets":3},{"name":"Value","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-7396bd0740cc32382985" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7396bd0740cc32382985">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"],[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10],["April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","April","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","September","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March","March"],["speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump","speed","jump"],[10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8,10.2,2.8]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>StudentID<\/th>\n      <th>Season<\/th>\n      <th>Subject<\/th>\n      <th>Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"StudentID","targets":1},{"name":"Season","targets":2},{"name":"Subject","targets":3},{"name":"Value","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>このように、数値が常に同じ列に入っているような形式を Long 形式といいます。</p>
@@ -958,8 +944,8 @@ Tip
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(dfKentei4Dirty)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-c11665bcbc49276afca6" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-c11665bcbc49276afca6">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],["M","F","M","M","F","F","M","M","F","m","f","Ⅿ","Ｆ","1","2","1","2","1","2","1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>PatientID<\/th>\n      <th>Sex<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"PatientID","targets":1},{"name":"Sex","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-84ca64f70aaed27ca832" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-84ca64f70aaed27ca832">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],["M","F","M","M","F","F","M","M","F","m","f","Ⅿ","Ｆ","1","2","1","2","1","2","1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>PatientID<\/th>\n      <th>Sex<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"PatientID","targets":1},{"name":"Sex","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
@@ -1045,8 +1031,8 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xtable)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">xtable</span>(df), <span class="at">type =</span> <span class="st">"html"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;!-- html table generated in R 4.5.3 by xtable 1.8-8 package --&gt;
-&lt;!-- Sat Apr 11 07:40:54 2026 --&gt;
+<pre><code>&lt;!-- html table generated in R 4.6.0 by xtable 1.8-8 package --&gt;
+&lt;!-- Fri May 22 19:10:24 2026 --&gt;
 &lt;table border=1&gt;
 &lt;tr&gt; &lt;th&gt;  &lt;/th&gt; &lt;th&gt; Number &lt;/th&gt; &lt;th&gt; English &lt;/th&gt; &lt;th&gt; Japanese &lt;/th&gt;  &lt;/tr&gt;
   &lt;tr&gt; &lt;td align="right"&gt; 1 &lt;/td&gt; &lt;td align="right"&gt;   1 &lt;/td&gt; &lt;td&gt; one &lt;/td&gt; &lt;td&gt; いち &lt;/td&gt; &lt;/tr&gt;
@@ -1108,8 +1094,8 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-3356900bbbeda7b8552d" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-3356900bbbeda7b8552d">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],[1,2,3,4],["one","two","three","four"],["いち","に","さん","よん"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Number<\/th>\n      <th>English<\/th>\n      <th>Japanese<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Number","targets":1},{"name":"English","targets":2},{"name":"Japanese","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-9450c659b99123c3c0a0" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9450c659b99123c3c0a0">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],[1,2,3,4],["one","two","three","four"],["いち","に","さん","よん"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Number<\/th>\n      <th>English<\/th>\n      <th>Japanese<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Number","targets":1},{"name":"English","targets":2},{"name":"Japanese","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>{DT}</strong> は、大きなデータを HTML で表示するときに最適です。</p>
@@ -1134,23 +1120,23 @@ Tip
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>)),</span>
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> English))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="hvtpdztbmq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hvtpdztbmq table {
+<div id="krkckapbvg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#krkckapbvg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hvtpdztbmq thead, #hvtpdztbmq tbody, #hvtpdztbmq tfoot, #hvtpdztbmq tr, #hvtpdztbmq td, #hvtpdztbmq th {
+#krkckapbvg thead, #krkckapbvg tbody, #krkckapbvg tfoot, #krkckapbvg tr, #krkckapbvg td, #krkckapbvg th {
   border-style: none;
 }
 
-#hvtpdztbmq p {
+#krkckapbvg p {
   margin: 0;
   padding: 0;
 }
 
-#hvtpdztbmq .gt_table {
+#krkckapbvg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1176,12 +1162,12 @@ Tip
   border-left-color: #D3D3D3;
 }
 
-#hvtpdztbmq .gt_caption {
+#krkckapbvg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hvtpdztbmq .gt_title {
+#krkckapbvg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1193,7 +1179,7 @@ Tip
   border-bottom-width: 0;
 }
 
-#hvtpdztbmq .gt_subtitle {
+#krkckapbvg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1205,7 +1191,7 @@ Tip
   border-top-width: 0;
 }
 
-#hvtpdztbmq .gt_heading {
+#krkckapbvg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1217,13 +1203,13 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#hvtpdztbmq .gt_bottom_border {
+#krkckapbvg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hvtpdztbmq .gt_col_headings {
+#krkckapbvg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1238,7 +1224,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#hvtpdztbmq .gt_col_heading {
+#krkckapbvg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1258,7 +1244,7 @@ Tip
   overflow-x: hidden;
 }
 
-#hvtpdztbmq .gt_column_spanner_outer {
+#krkckapbvg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1270,15 +1256,15 @@ Tip
   padding-right: 4px;
 }
 
-#hvtpdztbmq .gt_column_spanner_outer:first-child {
+#krkckapbvg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hvtpdztbmq .gt_column_spanner_outer:last-child {
+#krkckapbvg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hvtpdztbmq .gt_column_spanner {
+#krkckapbvg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1290,11 +1276,11 @@ Tip
   width: 100%;
 }
 
-#hvtpdztbmq .gt_spanner_row {
+#krkckapbvg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hvtpdztbmq .gt_group_heading {
+#krkckapbvg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1320,7 +1306,7 @@ Tip
   text-align: left;
 }
 
-#hvtpdztbmq .gt_empty_group_heading {
+#krkckapbvg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1335,15 +1321,15 @@ Tip
   vertical-align: middle;
 }
 
-#hvtpdztbmq .gt_from_md > :first-child {
+#krkckapbvg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hvtpdztbmq .gt_from_md > :last-child {
+#krkckapbvg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hvtpdztbmq .gt_row {
+#krkckapbvg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1362,7 +1348,7 @@ Tip
   overflow-x: hidden;
 }
 
-#hvtpdztbmq .gt_stub {
+#krkckapbvg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1375,7 +1361,7 @@ Tip
   padding-right: 5px;
 }
 
-#hvtpdztbmq .gt_stub_row_group {
+#krkckapbvg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1389,15 +1375,15 @@ Tip
   vertical-align: top;
 }
 
-#hvtpdztbmq .gt_row_group_first td {
+#krkckapbvg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hvtpdztbmq .gt_row_group_first th {
+#krkckapbvg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hvtpdztbmq .gt_summary_row {
+#krkckapbvg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1407,16 +1393,16 @@ Tip
   padding-right: 5px;
 }
 
-#hvtpdztbmq .gt_first_summary_row {
+#krkckapbvg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hvtpdztbmq .gt_first_summary_row.thick {
+#krkckapbvg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hvtpdztbmq .gt_last_summary_row {
+#krkckapbvg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1426,7 +1412,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#hvtpdztbmq .gt_grand_summary_row {
+#krkckapbvg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1436,7 +1422,7 @@ Tip
   padding-right: 5px;
 }
 
-#hvtpdztbmq .gt_first_grand_summary_row {
+#krkckapbvg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1446,7 +1432,7 @@ Tip
   border-top-color: #D3D3D3;
 }
 
-#hvtpdztbmq .gt_last_grand_summary_row_top {
+#krkckapbvg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1456,11 +1442,11 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#hvtpdztbmq .gt_striped {
+#krkckapbvg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hvtpdztbmq .gt_table_body {
+#krkckapbvg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1469,7 +1455,7 @@ Tip
   border-bottom-color: #D3D3D3;
 }
 
-#hvtpdztbmq .gt_footnotes {
+#krkckapbvg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1483,7 +1469,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#hvtpdztbmq .gt_footnote {
+#krkckapbvg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1492,7 +1478,7 @@ Tip
   padding-right: 5px;
 }
 
-#hvtpdztbmq .gt_sourcenotes {
+#krkckapbvg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1506,7 +1492,7 @@ Tip
   border-right-color: #D3D3D3;
 }
 
-#hvtpdztbmq .gt_sourcenote {
+#krkckapbvg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1514,72 +1500,72 @@ Tip
   padding-right: 5px;
 }
 
-#hvtpdztbmq .gt_left {
+#krkckapbvg .gt_left {
   text-align: left;
 }
 
-#hvtpdztbmq .gt_center {
+#krkckapbvg .gt_center {
   text-align: center;
 }
 
-#hvtpdztbmq .gt_right {
+#krkckapbvg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hvtpdztbmq .gt_font_normal {
+#krkckapbvg .gt_font_normal {
   font-weight: normal;
 }
 
-#hvtpdztbmq .gt_font_bold {
+#krkckapbvg .gt_font_bold {
   font-weight: bold;
 }
 
-#hvtpdztbmq .gt_font_italic {
+#krkckapbvg .gt_font_italic {
   font-style: italic;
 }
 
-#hvtpdztbmq .gt_super {
+#krkckapbvg .gt_super {
   font-size: 65%;
 }
 
-#hvtpdztbmq .gt_footnote_marks {
+#krkckapbvg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hvtpdztbmq .gt_asterisk {
+#krkckapbvg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hvtpdztbmq .gt_indent_1 {
+#krkckapbvg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hvtpdztbmq .gt_indent_2 {
+#krkckapbvg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hvtpdztbmq .gt_indent_3 {
+#krkckapbvg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hvtpdztbmq .gt_indent_4 {
+#krkckapbvg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hvtpdztbmq .gt_indent_5 {
+#krkckapbvg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hvtpdztbmq .katex-display {
+#krkckapbvg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hvtpdztbmq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#krkckapbvg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1775,7 +1761,7 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">flextable</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-567c6706{}.cl-5673dda2{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-56775ab8{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-56775ac2{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-56779406{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56779410{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-56779411{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5677941a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5677941b{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-5677941c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-567c6706"><thead><tr style="overflow-wrap:break-word;"><th class="cl-56779406"><p class="cl-56775ab8"><span class="cl-5673dda2">Number</span></p></th><th class="cl-56779410"><p class="cl-56775ac2"><span class="cl-5673dda2">English</span></p></th><th class="cl-56779410"><p class="cl-56775ac2"><span class="cl-5673dda2">Japanese</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-56779411"><p class="cl-56775ab8"><span class="cl-5673dda2">1</span></p></td><td class="cl-5677941a"><p class="cl-56775ac2"><span class="cl-5673dda2">one</span></p></td><td class="cl-5677941a"><p class="cl-56775ac2"><span class="cl-5673dda2">いち</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-56779411"><p class="cl-56775ab8"><span class="cl-5673dda2">2</span></p></td><td class="cl-5677941a"><p class="cl-56775ac2"><span class="cl-5673dda2">two</span></p></td><td class="cl-5677941a"><p class="cl-56775ac2"><span class="cl-5673dda2">に</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-56779411"><p class="cl-56775ab8"><span class="cl-5673dda2">3</span></p></td><td class="cl-5677941a"><p class="cl-56775ac2"><span class="cl-5673dda2">three</span></p></td><td class="cl-5677941a"><p class="cl-56775ac2"><span class="cl-5673dda2">さん</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-5677941b"><p class="cl-56775ab8"><span class="cl-5673dda2">4</span></p></td><td class="cl-5677941c"><p class="cl-56775ac2"><span class="cl-5673dda2">four</span></p></td><td class="cl-5677941c"><p class="cl-56775ac2"><span class="cl-5673dda2">よん</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-7700a358{}.cl-76fde5b4{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-76fef954{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-76fef95e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-76ff04f8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-76ff0502{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-76ff0503{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-76ff0504{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-76ff0505{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-76ff050c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-7700a358"><thead><tr style="overflow-wrap:break-word;"><th class="cl-76ff04f8"><p class="cl-76fef954"><span class="cl-76fde5b4">Number</span></p></th><th class="cl-76ff0502"><p class="cl-76fef95e"><span class="cl-76fde5b4">English</span></p></th><th class="cl-76ff0502"><p class="cl-76fef95e"><span class="cl-76fde5b4">Japanese</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-76ff0503"><p class="cl-76fef954"><span class="cl-76fde5b4">1</span></p></td><td class="cl-76ff0504"><p class="cl-76fef95e"><span class="cl-76fde5b4">one</span></p></td><td class="cl-76ff0504"><p class="cl-76fef95e"><span class="cl-76fde5b4">いち</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-76ff0503"><p class="cl-76fef954"><span class="cl-76fde5b4">2</span></p></td><td class="cl-76ff0504"><p class="cl-76fef95e"><span class="cl-76fde5b4">two</span></p></td><td class="cl-76ff0504"><p class="cl-76fef95e"><span class="cl-76fde5b4">に</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-76ff0503"><p class="cl-76fef954"><span class="cl-76fde5b4">3</span></p></td><td class="cl-76ff0504"><p class="cl-76fef95e"><span class="cl-76fde5b4">three</span></p></td><td class="cl-76ff0504"><p class="cl-76fef95e"><span class="cl-76fde5b4">さん</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-76ff0505"><p class="cl-76fef954"><span class="cl-76fde5b4">4</span></p></td><td class="cl-76ff050c"><p class="cl-76fef95e"><span class="cl-76fde5b4">four</span></p></td><td class="cl-76ff050c"><p class="cl-76fef95e"><span class="cl-76fde5b4">よん</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <p><strong>{flextable}</strong> は、余計なメッセージが出るので、コードチャンクに <code>message = FALSE</code> を追加します。</p>

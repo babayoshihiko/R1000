@@ -1,17 +1,29 @@
 
 
+# Data
+install.packages("epiDisplay")
+
+# 6 Dataframe
+install.packages("kableExtra")
+
+# 18 Python
+install.packages("reticulate")
+
+
+
+
 install.packages("stargazer")
 install.packages("gt")
 
 install.packages("formattable")
-install.packages("reactablefmtr")
+# install.packages("reactablefmtr")
 
 ## table
 install.packages("crosstable")
 install.packages("tables")
 install.packages("colorDF")
 install.packages("tableone")
-install.packages("rpivotTable")
+# install.packages("rpivotTable")
 
 ## ggplot2
 install.packages("ggplot2")

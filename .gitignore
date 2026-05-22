@@ -16,3 +16,4 @@ R1000.Rproj
 _freeze
 
 **/*.quarto_ipynb
+.positai
